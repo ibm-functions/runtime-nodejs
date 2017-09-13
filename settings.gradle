@@ -4,8 +4,6 @@ def owDirectory = new File(owPath)
 include 'common:scala'; project(':common:scala').projectDir = new File(owDirectory, 'common/scala')
 include 'core:controller'; project(':core:controller').projectDir = new File(owDirectory, 'core/controller')
 include 'core:invoker'; project(':core:invoker').projectDir = new File(owDirectory, 'core/invoker')
-include 'core:nodejs6Action'; project(':core:nodejs6Action').projectDir = new File(owDirectory, 'core/nodejs6Action')
-include 'tools:cli'; project(':tools:cli').projectDir = new File(owDirectory, 'tools/cli')
 include 'whisktests'; project(':whisktests').projectDir = new File(owDirectory, 'tests')
 
 include 'tests'
