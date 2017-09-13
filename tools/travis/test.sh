@@ -19,6 +19,11 @@ ${WHISK_CLI} action update getNodeVersion ${ROOTDIR}/tests/dat/getNodeVersion.js
 ${WHISK_CLI} action get getNodeVersion
 ${WHISK_CLI} action invoke getNodeVersion -b
 
+
+export OPENWHISK_HOME=$WHISKDIR
+cd ${ROOTDIR}
+./gradlew :tests:test
+
 #For some reason there no activations, maybe index not ready
 #${WHISK_CLI} activation get --last
 
