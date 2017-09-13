@@ -1,0 +1,38 @@
+# A Travis CI configuration file.
+
+sudo: required
+
+group: deprecated-2017Q3
+
+language: scala
+scala:
+   - 2.11.8
+
+services:
+  - docker
+
+env:
+  global:
+    - secure: "M1QxFjz7QZEnzqZQSkOdy+LyPzcl0d/7vF870szoM5hTCij/dt+AJQnEbC99KI1KekGnuQQvZl9kcMo6H18bbFqC0XzjyfPaGxuu/+2ny416he3PyFQpL3x6TJA7yrYIzzSScBFbZYxzLBKmJseqFV4oyac6hnfNx4TRLTLEJeQXGtZOMFofqXH2TIG9c1cWcfDjsTq5gTpVRSDlc4bARHAfGvf6RmAMxB3prdOxvsPgwJc/N88mPVO1nGT8LjDQman6/WjPje0Ee9aToiANM9noyHkVRysolkxsaSUuXKxz+SuEOiy0xIL4d7vz8L3u1EHC9Nf85jAxO4CLLWQy4zFcAUYogoVa8pUxY6iVhZI0PEqGV3f4wnI+KDsyxvF2lzwQPLR0acCDZ8mQ7SovbZvrv+H5TBvd+mWwjwIYK94BA+xuPpMsdUXKzzWWRmqPB9nGmYTqqBge6XpTNXyPrG4ePrsoRKuvG5c4u38y0tbKiHZPnemB6oz9+xds6I2BBg2U7miYrHh/0NeruK6+1oNz8doyvj9uLnzV4Z1K5EH/DlYEuZtTJHvw7/VD7P1VW9UWSMEjBCEE3xZ6ywGQ4BcXcaEFnjULYDIpZNCASoOIqNSHIK3tsDdQPstFfyB+ur6B3OOvoKMNVDQMyz7ro9xb43BRpSn2GbdJUGlu+Co="
+    - secure: "qSmlmGt3GSr7HBy7vYHhOlZta2QPeNGWUscaiCPpuSCAnrjFgyMi+tkEjLkC2qUZO9OVOWXG6QfDnmuN8lJEnMZq1v9JVLRcPlI8usjRof3tZhWDVhZZRAEtF4pnI+ix+561pqFd5FUmLn5Fg/4av1XdUfOzEGpYcID1ildXouC/qxbezGv/XZcfQL74Dldp5JkimcclyUOh5+qIoQCDJLH9/xLDH/46YGJE2Bw2SE/erTit+aJY/w0sJDjr4POluIdcd1+STKy30xdhi/RdjHD7c2l4UIBHqTz5hFpbjLre9zwu67+QEuKqdupDGv9HtNUg9LG8NDp2IzT+VsIHVscujyo4GGdqZ69ElfV0QfKCU0ytjyiymScVCQDMddep2pvedrsw1jEUOCxDZjLIi3wruKy2TheAptAzGFQqPocpgErVygd9GnCtug3sKW7IHOlc5vKIo1gXLecJuwfEGA9zEq90ASx0tHokbmAsiHL2DMHRY47jnuWRZ659h67BZfJwdlYMOD9d4MzWKaSLgTN4oOa+VEcrpbBU5cE6vSsXjteG5F8xF4VxihpkyL+3n4s9DD7Rx5czVvZMiItRxY52m0vxlBDQmJHJvjvQubCqoBrYzw1Z3OVJXEUMX3QBHXwZnVtOMD+7u/OsmCpFy+d+JWmwquPdgvEqElPDoV0="
+
+before_install:
+  - ./tools/travis/setup.sh
+
+install: true
+
+script:
+  - ./tools/travis/build.sh
+
+deploy:
+  # deploy latest
+  - provider: script
+    script: ./tools/travis/deploy.sh csantanapr "action-nodejs-ibm-v8.5" latest ./8.5
+    on:
+      branch: master
+  # deploy tag
+  - provider: script
+    script: ./tools/travis/deploy.sh csantanapr "action-nodejs-ibm-v8.5" $TRAVIS_TAG ./8.5
+    on:
+      tags: true
+      all_branches: true
