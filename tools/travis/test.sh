@@ -1,5 +1,5 @@
 #!/bin/bash
-set -ex
+set -x
 
 # Build script for Travis-CI.
 
@@ -18,12 +18,18 @@ curl -s -k https://${WHISK_APIHOST} | jq '.runtimes.nodejs | any(.kind == "nodej
 ${WHISK_CLI} action update getNodeVersion ${ROOTDIR}/tests/dat/getNodeVersion.js --kind nodejs-ibm:8.5
 ${WHISK_CLI} action get getNodeVersion
 ${WHISK_CLI} action invoke getNodeVersion -b
+#DEBUG logs
+cat /tmp/wsklogs/controller0/controller0_logs.log
+cat /tmp/wsklogs/controller1/controller1_logs.log
+cat /tmp/wsklogs/invoker0/invoker0_logs.log
+cat /tmp/wsklogs/invoker1/invoker1_logs.log
+
+set -e
+export OPENWHISK_HOME=$WHISKDIR
+cd ${ROOTDIR}
+TERM=dumb ./gradlew :tests:test
 
 #For some reason there no activations, maybe index not ready
 #${WHISK_CLI} activation get --last
 
-#DEBUG logs
-#cat /tmp/wsklogs/controller0/controller0_logs.log
-#cat /tmp/wsklogs/controller1/controller1_logs.log
-#cat /tmp/wsklogs/invoker0/invoker0_logs.log
-#cat /tmp/wsklogs/invoker1/invoker1_logs.log
+

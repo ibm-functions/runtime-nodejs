@@ -1,2 +1,12 @@
 node_modules
 package-lock.json
+
+.gradle
+build/
+.project
+
+tests/.cache-main
+tests/.classpath
+tests/.gitignore
+tests/.project
+tests/.settings/
