@@ -23,6 +23,7 @@ install: true
 
 script:
   - ./tools/travis/build.sh
+  - ./tools/travis/test.sh
 
 deploy:
   # deploy latest

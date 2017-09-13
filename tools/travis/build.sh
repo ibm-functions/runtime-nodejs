@@ -15,15 +15,30 @@ docker tag action-nodejs-ibm-v8.5 testing/action-nodejs-ibm-v8.5
 
 
 # Build OpenWhisk
+
 cd $WHISKDIR
 export OPENWHISK_HOME=$WHISKDIR
-#fast options only build what we need
+IMAGE_PREFIX="testing"
+#superfast option
+docker pull openwhisk/controller
+docker tag openwhisk/controller ${IMAGE_PREFIX}/controller
+docker pull openwhisk/invoker
+docker tag openwhisk/invoker ${IMAGE_PREFIX}/invoker
+docker pull openwhisk/nodejs6action
+docker tag openwhisk/nodejs6action ${IMAGE_PREFIX}/nodejs6action
+
+#Build CLI
 TERM=dumb ./gradlew \
-:core:controller:distDocker \
-:core:invoker:distDocker \
-:core:nodejs6Action:distDocker \
 :tools:cli:distDocker \
--PdockerImagePrefix=testing
+-PdockerImagePrefix=${IMAGE_PREFIX}
+
+#fast options only build what we need
+#TERM=dumb ./gradlew \
+#:core:controller:distDocker \
+#:core:invoker:distDocker \
+#:core:nodejs6Action:distDocker \
+#:tools:cli:distDocker \
+#-PdockerImagePrefix=testing
 
 #long version
 #TERM=dumb ./gradlew distDocker -PdockerImagePrefix=testing
@@ -39,9 +54,10 @@ $ANSIBLE_CMD initdb.yml
 $ANSIBLE_CMD wipe.yml
 $ANSIBLE_CMD openwhisk.yml -e "${RUNTIMES_MANIFEST}"
 
+cat $WHISKDIR/whisk.properties
 curl -s -k https://172.17.0.1
+curl -s -k https://172.17.0.1/api/v1
 
-jq --help
 
 
 
