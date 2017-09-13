@@ -9,12 +9,12 @@ HOMEDIR="$SCRIPTDIR/../../../"
 WHISKDIR="$ROOTDIR/../openwhisk"
 
 #Deployment
-WHISK_APIHOST="172.17.0.1"
-WHISK_AUTH=`cat ${WHISKDIR}/ansible/files/auth.guest`
 WHISK_CLI="${WHISKDIR}/bin/wsk"
 
 # Check kind from manifest nodejs-ibm:8.5
 curl -s -k https://${WHISK_APIHOST} | jq '.runtimes.nodejs | any(.kind == "nodejs-ibm:8.5")'
 
-
+# Run a simple action using the kind
+${WHISK_CLI} action update getNodeVersion ${ROOTDIR}/tests/dat/getNodeVersion.js --kind nodejs-ibm:8.5
+${WHISK_CLI} action invoke getNodeVersion -r
 
