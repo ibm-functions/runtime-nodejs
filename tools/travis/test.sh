@@ -9,7 +9,7 @@ HOMEDIR="$SCRIPTDIR/../../../"
 WHISKDIR="$ROOTDIR/../openwhisk"
 
 #Deployment
-WHISK_CLI="${WHISKDIR}/bin/wsk"
+WHISK_CLI="${WHISKDIR}/bin/wsk -i"
 
 # Check kind from manifest nodejs-ibm:8.5
 curl -s -k https://${WHISK_APIHOST} | jq '.runtimes.nodejs | any(.kind == "nodejs-ibm:8.5")'
