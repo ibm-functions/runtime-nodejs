@@ -1,5 +1,5 @@
 IBM Functions runtimes for nodejs
-[![Build Status](https://travis-ci.org/ibm-functions/ibm-functions-runtime-nodejs.svg)](https://travis-ci.org/ibm-functions/ibm-functions-runtime-nodejs)
+[![Build Status](https://travis-ci.org/ibm-functions/runtime-nodejs.svg?branch=master)](https://travis-ci.org/ibm-functions/runtime-nodejs)
 
 **Work in progress**
 
