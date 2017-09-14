@@ -21,9 +21,7 @@ ${WHISK_CLI} action get getNodeVersion
 if ! ${WHISK_CLI} action invoke getNodeVersion -b; then
   #DEBUG get the logs to check why it failed
   cat /tmp/wsklogs/controller0/controller0_logs.log
-  cat /tmp/wsklogs/controller1/controller1_logs.log
   cat /tmp/wsklogs/invoker0/invoker0_logs.log
-  cat /tmp/wsklogs/invoker1/invoker1_logs.log
 fi
 
 set -e
@@ -34,5 +32,3 @@ TERM=dumb ./gradlew :tests:test
 
 #For some reason there no activations, maybe index not ready
 #${WHISK_CLI} activation get --last
-
-
