@@ -5,7 +5,6 @@ set -x
 
 SCRIPTDIR=$(cd $(dirname "$0") && pwd)
 ROOTDIR="$SCRIPTDIR/../.."
-HOMEDIR="$SCRIPTDIR/../../../"
 WHISKDIR="$ROOTDIR/../openwhisk"
 
 #Deployment
