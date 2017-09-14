@@ -16,12 +16,15 @@ curl -s -k https://${WHISK_APIHOST} | jq '.runtimes.nodejs | any(.kind == "nodej
 # Run a simple action using the kind
 ${WHISK_CLI} action update getNodeVersion ${ROOTDIR}/tests/dat/getNodeVersion.js --kind nodejs-ibm:8.5
 ${WHISK_CLI} action get getNodeVersion
-${WHISK_CLI} action invoke getNodeVersion -b
-#DEBUG logs
-cat /tmp/wsklogs/controller0/controller0_logs.log
-cat /tmp/wsklogs/controller1/controller1_logs.log
-cat /tmp/wsklogs/invoker0/invoker0_logs.log
-cat /tmp/wsklogs/invoker1/invoker1_logs.log
+
+#This command sometimes it fails
+if ! ${WHISK_CLI} action invoke getNodeVersion -b; then
+  #DEBUG get the logs to check why it failed
+  cat /tmp/wsklogs/controller0/controller0_logs.log
+  cat /tmp/wsklogs/controller1/controller1_logs.log
+  cat /tmp/wsklogs/invoker0/invoker0_logs.log
+  cat /tmp/wsklogs/invoker1/invoker1_logs.log
+fi
 
 set -e
 export OPENWHISK_HOME=$WHISKDIR
