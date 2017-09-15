@@ -5,7 +5,6 @@ set -ex
 
 SCRIPTDIR=$(cd $(dirname "$0") && pwd)
 ROOTDIR="$SCRIPTDIR/../.."
-HOMEDIR="$SCRIPTDIR/../../../"
 WHISKDIR="$ROOTDIR/../openwhisk"
 
 # Build IBM nodejs runtime
@@ -45,14 +44,13 @@ TERM=dumb ./gradlew \
 
 # Deploy OpenWhisk
 cd $WHISKDIR/ansible
-RUNTIMES_MANIFEST='{"runtimesManifest":{"defaultImagePrefix": "openwhisk", "defaultImageTag": "latest", "blackboxes": [{"name": "dockerskeleton"}], "runtimes": { "nodejs": [{"deprecated": false, "kind": "nodejs-ibm:8.5", "image": {"name": "action-nodejs-ibm-v8.5"}}, {"default": true, "deprecated": false, "kind": "nodejs:6", "image": {"name": "nodejs6action"}}]}}}'
-ANSIBLE_CMD="ansible-playbook -i environments/local -e docker_image_prefix=testing"
+ANSIBLE_CMD="ansible-playbook -i ${ROOTDIR}/ansible/environments/local -e docker_image_prefix=testing"
 $ANSIBLE_CMD setup.yml
 $ANSIBLE_CMD prereq.yml
 $ANSIBLE_CMD couchdb.yml
 $ANSIBLE_CMD initdb.yml
 $ANSIBLE_CMD wipe.yml
-$ANSIBLE_CMD openwhisk.yml -e "${RUNTIMES_MANIFEST}"
+$ANSIBLE_CMD openwhisk.yml
 
 docker images
 docker ps
