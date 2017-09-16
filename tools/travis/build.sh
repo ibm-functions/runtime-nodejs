@@ -6,6 +6,7 @@ set -ex
 SCRIPTDIR=$(cd $(dirname "$0") && pwd)
 ROOTDIR="$SCRIPTDIR/../.."
 WHISKDIR="$ROOTDIR/../openwhisk"
+IMAGE_PREFIX="testing"
 
 export OPENWHISK_HOME=$WHISKDIR
 
@@ -18,7 +19,6 @@ TERM=dumb ./gradlew \
 
 # Build OpenWhisk
 cd $WHISKDIR
-IMAGE_PREFIX="testing"
 #superfast option
 docker pull openwhisk/controller
 docker tag openwhisk/controller ${IMAGE_PREFIX}/controller
