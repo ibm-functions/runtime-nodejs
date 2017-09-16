@@ -28,12 +28,12 @@ script:
 deploy:
   # deploy latest
   - provider: script
-    script: ./tools/travis/deploy.sh ibmfunctions "action-nodejs-ibm-v8.5" latest ./8.5
+    script: ./tools/travis/deploy.sh ibmfunctions latest
     on:
       branch: master
   # deploy tag
   - provider: script
-    script: ./tools/travis/deploy.sh ibmfunctions "action-nodejs-ibm-v8.5" $TRAVIS_TAG ./8.5
+    script: ./tools/travis/deploy.sh ibmfunctions $TRAVIS_TAG
     on:
       tags: true
       all_branches: true
