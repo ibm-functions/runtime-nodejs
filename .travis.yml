@@ -22,7 +22,6 @@ before_install:
 install: true
 
 script:
-  - ./tools/travis/deploy.sh ibmfunctions latest
   - ./tools/travis/build.sh
   - ./tools/travis/test.sh
 
