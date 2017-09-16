@@ -29,6 +29,7 @@ fi
 set -e
 export OPENWHISK_HOME=$WHISKDIR
 cd ${ROOTDIR}
+TERM=dumb ./gradlew :tests:checkScalafmtAll
 TERM=dumb ./gradlew :tests:test
 
 #For some reason there no activations, maybe index not ready

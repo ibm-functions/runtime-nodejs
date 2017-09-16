@@ -17,18 +17,22 @@ bx wsk action update myAction myAction.js --docker ibmfunctions/action-nodejs-ib
 ```
 This works on any deployment of Apache OpenWhisk
 
-### Future: On IBM Functions (Apache OpenWhisk on IBM Cloud)
-To use as special nodejs kind action
+### Future: IBM Functions (Apache OpenWhisk on IBM Cloud)
+To use as a special nodejs kind action
 ```
 bx wsk action update myAction myAction --kind nodejs-ibm:8.5
 ```
 
 ### Local development
-
-Build image
 ```
-cd 8.5/
-docker build . -t whisk/action-nodejs-ibm-v8.5 
+./gradlew 8.5:distDocker
+```
+This will produce the image `whisk/action-nodejs-ibm-v8.5`
+
+Build and Push image
+```
+docker login
+./gradlew 8.5:distDocker -PdockerImagePrefix=$prefix-user -PdockerRegistry=docker.io 
 ```
 
 Deploy OpenWhisk using ansible environment that adds the new king `nodejs-ibm:8.5`
