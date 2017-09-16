@@ -6,18 +6,19 @@ set -ex
 SCRIPTDIR=$(cd $(dirname "$0") && pwd)
 ROOTDIR="$SCRIPTDIR/../.."
 WHISKDIR="$ROOTDIR/../openwhisk"
+IMAGE_PREFIX="testing"
+
+export OPENWHISK_HOME=$WHISKDIR
 
 # Build IBM nodejs runtime
-cd $ROOTDIR/8.5
-docker build . -t action-nodejs-ibm-v8.5
-docker tag action-nodejs-ibm-v8.5 testing/action-nodejs-ibm-v8.5
+cd $ROOTDIR
+TERM=dumb ./gradlew \
+:8.5:distDocker \
+-PdockerImagePrefix=${IMAGE_PREFIX}
 
 
 # Build OpenWhisk
-
 cd $WHISKDIR
-export OPENWHISK_HOME=$WHISKDIR
-IMAGE_PREFIX="testing"
 #superfast option
 docker pull openwhisk/controller
 docker tag openwhisk/controller ${IMAGE_PREFIX}/controller
