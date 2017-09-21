@@ -1,4 +1,4 @@
-FROM node:8.5
+FROM node:8.5.0
 RUN apt-get update && apt-get install -y \
     imagemagick \
     unzip \

@@ -1,0 +1,2 @@
+ext.dockerImageName = 'action-nodejs-ibm-v8'
+apply from: '../gradle/docker.gradle'
