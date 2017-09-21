@@ -34,10 +34,10 @@ runtimes_manifest:
       image:
         name: "nodejs6action"
       deprecated: false
-    - kind: "nodejs-ibm:8.5"
+    - kind: "nodejs-ibm:8"
       default: false
       image:
-        name: "action-nodejs-ibm-v8.5"
+        name: "action-nodejs-ibm-v8"
       deprecated: false
   blackboxes:
     - name: "dockerskeleton"
