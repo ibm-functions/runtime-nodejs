@@ -1,5 +1,5 @@
 #!/bin/bash
-set -x
+set -ex
 
 # Build script for Travis-CI.
 
@@ -9,9 +9,6 @@ WHISKDIR="$ROOTDIR/../openwhisk"
 
 #Deployment
 WHISK_CLI="${WHISKDIR}/bin/wsk -i"
-
-# Check kind from manifest nodejs-ibm:8
-curl -s -k https://${WHISK_APIHOST} | jq '.runtimes.nodejs | any(.kind == "nodejs-ibm:8")'
 
 # Run a simple action using the kind
 ${WHISK_CLI} action update getNodeVersion ${ROOTDIR}/tests/dat/getNodeVersion.js --kind nodejs-ibm:8
@@ -24,7 +21,6 @@ if ! ${WHISK_CLI} action invoke getNodeVersion -b; then
   cat /tmp/wsklogs/invoker0/invoker0_logs.log
 fi
 
-set -e
 export OPENWHISK_HOME=$WHISKDIR
 cd ${ROOTDIR}
 TERM=dumb ./gradlew :tests:checkScalafmtAll
