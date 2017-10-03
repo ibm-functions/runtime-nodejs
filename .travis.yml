@@ -18,14 +18,12 @@ env:
 
 before_install:
   - ./tools/travis/setup.sh
-  - ./tools/travis/setupdb2.sh
 
 install: true
 
 script:
   - ./tools/travis/build.sh
   - ./tools/travis/test.sh
-  - ./tools/travis/test_db2.sh
 
 deploy:
   # deploy latest
