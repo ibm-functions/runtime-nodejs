@@ -24,4 +24,4 @@ package-lock.json
 .idea
 *.class
 out/
-runtime-nodejs.iml
+*.iml
