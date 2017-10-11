@@ -64,6 +64,13 @@ wsk action update myAction myAction.js --docker $user_prefix/action-nodejs-ibm-v
 ```
 The `$user_prefix` is usually your dockerhub user id.
 
+### Testing
+
+To run all tests: `./gradlew tests:test`
+
+To run a single test-class: `./gradlew tests:test --tests <SomeGradleTestFilter>`
+
+For example, in order to execute the tests in /tests/src/test/scala/actionContainers/IBMNodeJSActionDB2Tests.scala, run:  `./gradlew tests:test --tests *IBMNodeJsActionDB2Tests`
 
 
 # License
