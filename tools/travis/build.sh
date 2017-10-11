@@ -13,7 +13,7 @@ export OPENWHISK_HOME=$WHISKDIR
 # Build IBM nodejs runtime
 cd $ROOTDIR
 TERM=dumb ./gradlew \
-:8:distDocker \
+:nodejs8:distDocker \
 -PdockerImagePrefix=${IMAGE_PREFIX}
 
 

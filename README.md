@@ -27,14 +27,14 @@ bx wsk action update myAction myAction --kind nodejs-ibm:8
 Prerequisite: *Export* OPENWHISK_HOME to point to your incubator/openwhisk cloned directory.
 
 ```
-./gradlew 8:distDocker
+./gradlew nodejs8:distDocker
 ```
 This will produce the image `whisk/action-nodejs-ibm-v8`
 
 Build and Push image
 ```
 docker login
-./gradlew 8:distDocker -PdockerImagePrefix=$prefix-user -PdockerRegistry=docker.io
+./gradlew nodejs8:distDocker -PdockerImagePrefix=$prefix-user -PdockerRegistry=docker.io
 ```
 
 Deploy OpenWhisk using ansible environment that adds the new king `nodejs-ibm:8`

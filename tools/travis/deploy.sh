@@ -14,12 +14,12 @@ docker login -u "${DOCKER_USER}" -p "${DOCKER_PASSWORD}"
 
 export OPENWHISK_HOME=$WHISKDIR
 cd $ROOTDIR
-pwd 
+pwd
 ls
-DEBUG_CMD="TERM=dumb ./gradlew :8:distDocker -PdockerImagePrefix=${dockerhub_image_prefix} -PdockerImageTag=${dockerhub_image_tag}"
+DEBUG_CMD="TERM=dumb ./gradlew :nodejs8:distDocker -PdockerImagePrefix=${dockerhub_image_prefix} -PdockerImageTag=${dockerhub_image_tag}"
 echo $DEBUG_CMD
 TERM=dumb ./gradlew \
-:8:distDocker \
+:nodejs8:distDocker \
 -PdockerImagePrefix=${dockerhub_image_prefix} \
 -PdockerImageTag=${dockerhub_image_tag} \
 -PdockerRegistry=docker.io
