@@ -13,7 +13,7 @@ export OPENWHISK_HOME=$WHISKDIR
 # Build IBM nodejs runtime
 cd $ROOTDIR
 TERM=dumb ./gradlew \
-:8:distDocker \
+:nodejs8:distDocker \
 -PdockerImagePrefix=${IMAGE_PREFIX}
 
 
@@ -31,17 +31,6 @@ docker tag openwhisk/nodejs6action ${IMAGE_PREFIX}/nodejs6action
 TERM=dumb ./gradlew \
 :tools:cli:distDocker \
 -PdockerImagePrefix=${IMAGE_PREFIX}
-
-#fast options only build what we need
-#TERM=dumb ./gradlew \
-#:core:controller:distDocker \
-#:core:invoker:distDocker \
-#:core:nodejs6Action:distDocker \
-#:tools:cli:distDocker \
-#-PdockerImagePrefix=testing
-
-#long version
-#TERM=dumb ./gradlew distDocker -PdockerImagePrefix=testing
 
 # Deploy OpenWhisk
 cd $WHISKDIR/ansible
