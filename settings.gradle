@@ -8,7 +8,7 @@ include 'whisktests'; project(':whisktests').projectDir = new File(owDirectory, 
 
 include 'tests'
 
-include '8'
+include 'nodejs8'
 
 rootProject.name = 'action-nodejs-ibm'
 
