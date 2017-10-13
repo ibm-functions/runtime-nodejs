@@ -4,6 +4,7 @@ tests/.classpath
 tests/.gitignore
 tests/.project
 tests/.settings/
+tests/credentials.json
 
 # Linux
 *~
