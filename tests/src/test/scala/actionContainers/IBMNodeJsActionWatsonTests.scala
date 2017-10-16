@@ -8,10 +8,9 @@ import common.Wsk
 import common.WskProps
 import java.io.File
 import spray.json._
+import common.TestUtils
 import spray.json.DefaultJsonProtocol._
 import org.scalatest.BeforeAndAfterAll
-
-// Run test suite with : `./gradlew tests:test --tests *IBMNodeJsActionWatsonTests`
 
 @RunWith(classOf[JUnitRunner])
 class IBMNodeJsActionWatsonTests extends TestHelpers with WskTestHelpers with BeforeAndAfterAll {
@@ -20,6 +19,8 @@ class IBMNodeJsActionWatsonTests extends TestHelpers with WskTestHelpers with Be
   var defaultKind = Some("nodejs-ibm:8")
   val wsk = new Wsk
   val datdir = System.getProperty("user.dir") + "/dat/"
+
+  var creds = TestUtils.getVCAPcredentials("language_translator")
 
   it should "Test whether or not watson package is useable within a nodejs8 action" in withAssetCleaner(wskprops) {
     (wp, assetHelper) =>
@@ -47,4 +48,31 @@ class IBMNodeJsActionWatsonTests extends TestHelpers with WskTestHelpers with Be
       }
 
   }
+
+  /*
+    Uses Watson Translation Service to translate the word "Hello" in English, to "Hola" in Spanish.
+   */
+  it should "Test whether watson translate service is reachable" in withAssetCleaner(wskprops) { (wp, assetHelper) =>
+    val file = Some(new File(datdir, "testWatsonAction2.js").toString())
+    assetHelper.withCleaner(wsk.action, "testWatsonAction2") { (action, _) =>
+      action.create(
+        "testWatsonAction2",
+        file,
+        main = Some("main"),
+        kind = defaultKind,
+        parameters = Map(
+          "url" -> JsString(creds.get("url")),
+          "username" -> JsString(creds.get("username")),
+          "password" -> JsString(creds.get("password"))))
+    }
+
+    withActivation(wsk.activation, wsk.action.invoke("testWatsonAction2")) { activation =>
+      val response = activation.response
+      response.result.get.fields.get("error") shouldBe empty
+      response.result.get.fields.get("translations") should be(
+        Some(JsArray(JsObject("translation" -> JsString("Hola")))))
+    }
+
+  }
+
 }

@@ -24,7 +24,7 @@ fi
 export OPENWHISK_HOME=$WHISKDIR
 cd ${ROOTDIR}
 TERM=dumb ./gradlew :tests:checkScalafmtAll
-TERM=dumb ./gradlew :tests:test
+TERM=dumb ./gradlew :tests:testWithoutCredentials
 
 #For some reason there no activations, maybe index not ready
 #${WHISK_CLI} activation get --last
