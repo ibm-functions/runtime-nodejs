@@ -24,7 +24,14 @@ fi
 export OPENWHISK_HOME=$WHISKDIR
 cd ${ROOTDIR}
 TERM=dumb ./gradlew :tests:checkScalafmtAll
-TERM=dumb ./gradlew :tests:testWithoutCredentials
+if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
+  TERM=dumb ./gradlew :tests:test
+else
+  TERM=dumb ./gradlew :tests:testWithoutCredentials
+fi
+
+
+
 
 #For some reason there no activations, maybe index not ready
 #${WHISK_CLI} activation get --last

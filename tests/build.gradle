@@ -17,6 +17,10 @@ tasks.withType(Test) {
     outputs.upToDateWhen { false } // force tests to run every time
 }
 
+task testWithoutCredentials(type: Test) {
+  exclude '**/*Credentials*'
+}
+
 dependencies {
     compile "org.scala-lang:scala-library:${gradle.scala.version}"
     compile project(':whisktests')
