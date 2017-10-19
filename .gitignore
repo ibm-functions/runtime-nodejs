@@ -5,6 +5,7 @@ tests/.gitignore
 tests/.project
 tests/.settings/
 tests/credentials.json
+tests/vcap_services.json
 
 # Linux
 *~

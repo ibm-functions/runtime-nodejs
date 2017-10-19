@@ -10,9 +10,6 @@ import java.io.File
 import spray.json._
 import spray.json.DefaultJsonProtocol._
 import org.scalatest.BeforeAndAfterAll
-
-// Run test suite with : `./gradlew tests:test --tests *IBMNodeJsActionWatsonTests`
-
 @RunWith(classOf[JUnitRunner])
 class IBMNodeJsActionWatsonTests extends TestHelpers with WskTestHelpers with BeforeAndAfterAll {
 
@@ -47,4 +44,5 @@ class IBMNodeJsActionWatsonTests extends TestHelpers with WskTestHelpers with Be
       }
 
   }
+
 }
