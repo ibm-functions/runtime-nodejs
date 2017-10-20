@@ -87,7 +87,21 @@ you need to set up a tests/credentials.json file containing Watson credentials i
         "username": ""  
       }  
     }  
-  ]  
+  ],  
+  "cloudantNoSQLDB":[
+    {
+      "name":"",  
+      "label":"",  
+      "plan":"",  
+      "credentials": {  
+        "url": "",  
+        "host": "",  
+        "port": "" ,  
+        "password": "",  
+        "username": ""  
+      }  
+    }
+  ]
 }  
 ```
 Then update the `whisk.properties` file located in the directory `$OPENWHISK_HOME`, using the variable `vcap.services.file`
