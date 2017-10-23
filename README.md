@@ -66,14 +66,21 @@ The `$user_prefix` is usually your dockerhub user id.
 
 ### Testing
 
-Note: If you're running all tests locally (either of these two commands: `./gradlew tests:test` or `./gradlew tests:test --tests *CredentialsIBMNodeJsActionWatsonTests`), you need to set up a tests/vcap_services.json file containing Watson credentials in the format of:
+
+To run all tests: `./gradlew tests:test` this include tests depending on credentials
+
+To run all tests except those which do not rely on credentials `./gradlew tests:testWithoutCredentials`
+
+To run a single test-class: `./gradlew tests:test --tests <SomeGradleTestFilter>`
+
+For example, in order to execute the tests in /tests/src/test/scala/actionContainers/IBMNodeJSActionDB2Tests.scala, run:  `./gradlew tests:test --tests *IBMNodeJsActionDB2Tests`
+
+Note: If you're running all tests locally with credentials like `./gradlew tests:test` or `./gradlew tests:test --tests *CredentialsIBMNodeJsActionWatsonTests`
+you need to set up a tests/credentials.json file containing Watson credentials in the format of:
 ```  
 {  
   "language_translation":[  
-    {  
-      "name":"",  
-      "label":"",  
-      "plan":"",  
+    {
       "credentials": {  
         "url": "",  
         "password": "",  
@@ -82,15 +89,8 @@ Note: If you're running all tests locally (either of these two commands: `./grad
     }  
   ]  
 }  
-```  
-
-To run all tests: `./gradlew tests:test`
-
-To run all tests except those which do not rely on credentials `./gradlew tests:testWithoutCredentials`
-
-To run a single test-class: `./gradlew tests:test --tests <SomeGradleTestFilter>`
-
-For example, in order to execute the tests in /tests/src/test/scala/actionContainers/IBMNodeJSActionDB2Tests.scala, run:  `./gradlew tests:test --tests *IBMNodeJsActionDB2Tests`
+```
+Then update the `whisk.properties` file located in the directory `$OPENWHISK_HOME`, using the variable `vcap.services.file`
 
 
 # License

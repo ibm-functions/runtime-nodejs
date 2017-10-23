@@ -1,3 +1,18 @@
+/*
+ * Copyright 2017 IBM Corporation
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package actionContainers
 
 import common.TestHelpers
@@ -21,44 +36,7 @@ class IBMNodeJsActionDB2Tests extends TestHelpers with WskTestHelpers with Befor
   val wsk = new Wsk
   val userdir = System.getProperty("user.dir")
   val db2dir = userdir + "/dat/db2/"
-
-  /*
-    Runs the supplied shell script and returns the result in the form of the TestUtils.RunResult object
-      RunResult.stdout : String of standard output
-      RunResult.stderr : String of standard error
-      RunResult.exitCode : successful code is 0; otherwise another number
-
-    Example usage:
-    val result = runShellScript("docker ps -a")
-    println("Expecting: 0; Actual: " + result.exitCode)
-   */
-  def runShellScript(cmd: String): TestUtils.RunResult = {
-    val cmdParts = ArrayBuffer[String]();
-    var openQuote = false;
-    var strBuilder = "";
-    for (c <- cmd) {
-      if (!openQuote && c == ' ') { //Space found outside of a quoted area
-        cmdParts.append(strBuilder)
-        strBuilder = ""
-      } else if (c == '"') { //A quote encountered
-        //strBuilder += "\"" - Note: ProcessBuilder (underlying functionality) does not play well with quotes.
-        if (!openQuote) {
-          openQuote = true
-        } else {
-          openQuote = false
-          cmdParts.append(strBuilder)
-          strBuilder = ""
-        }
-      } else {
-        strBuilder += c
-      }
-    }
-    if (strBuilder.length > 0) {
-      cmdParts.append(strBuilder)
-    }
-
-    TestUtils.runCmd(0, (new File(userdir)), cmdParts: _*)
-  }
+  val db2containerName = "db2test"
 
   it should "Test creation, get, and delete of a nodejs8 action" in withAssetCleaner(wskprops) { (wp, assetHelper) =>
     val file = Some(new File(db2dir, "testdb2action.js").toString())
@@ -83,24 +61,65 @@ class IBMNodeJsActionDB2Tests extends TestHelpers with WskTestHelpers with Befor
 
   override def beforeAll() {
     //setup db2 docker container
-    var result = runShellScript(
-      "docker run -d -p 50000:50000 -e DB2INST1_PASSWORD=db2inst1-pwd -e LICENSE=accept --name db2test ibmcom/db2express-c:latest db2start")
-    result.exitCode should equal(0)
+
+    TestUtils.runCmd(TestUtils.DONTCARE_EXIT, new File("."), "docker", "kill", db2containerName)
+    TestUtils.runCmd(TestUtils.DONTCARE_EXIT, new File("."), "docker", "rm", db2containerName)
+    TestUtils.runCmd(
+      0,
+      new File("."),
+      "docker",
+      "run",
+      "-d",
+      "-p",
+      "50000:50000",
+      "-e",
+      "DB2INST1_PASSWORD=db2inst1-pwd",
+      "-e",
+      "LICENSE=accept",
+      "--name",
+      db2containerName,
+      "ibmcom/db2express-c",
+      "db2start")
+
     Thread.sleep(30000)
 
     //place setup sql script on docker container; then run it to initialize the initial database and tables
-    result = runShellScript("docker cp " + db2dir + "setup.sql db2test:/home/db2inst1/setup.sql")
-    result.exitCode should equal(0)
-    result = runShellScript("docker exec -t --user db2inst1 db2test bash -c \"~/sqllib/bin/db2 -tvf ~/setup.sql\"")
-    result.exitCode should equal(0)
+    TestUtils.runCmd(
+      0,
+      new File("."),
+      "docker",
+      "cp",
+      db2dir + "setup.sql",
+      db2containerName + ":/home/db2inst1/setup.sql")
+    println("Creating db2 database, might take up to 5 minutes")
+    TestUtils.runCmd(
+      0,
+      new File("."),
+      "docker",
+      "exec",
+      "-t",
+      "--user",
+      "db2inst1",
+      db2containerName,
+      "/home/db2inst1/sqllib/bin/db2",
+      "-tvf",
+      "/home/db2inst1/setup.sql")
   }
 
   override def afterAll() {
     //clean up db2 container resources
-    if ((runShellScript("docker inspect -f {{.State.Running}} db2test")).stdout.trim == "true") {
-      runShellScript("docker stop db2test")
+    val isdb2Running = TestUtils
+      .runCmd(TestUtils.DONTCARE_EXIT, new File("."), "docker", "inspect", "-f", "{{.State.Running}}", db2containerName)
+      .stdout
+      .trim == "true"
+
+    if (isdb2Running) {
+      TestUtils.runCmd(TestUtils.DONTCARE_EXIT, new File("."), "docker", "stop", db2containerName)
     }
-    runShellScript("docker rm db2test")
+    if ((runShellScript("docker inspect -f {{.State.Running}} db2test")).stdout.trim == "true") {
+      TestUtils.runCmd(TestUtils.DONTCARE_EXIT, new File("."), "docker", "rm", db2containerName)
+    }
+
   }
 
 }
