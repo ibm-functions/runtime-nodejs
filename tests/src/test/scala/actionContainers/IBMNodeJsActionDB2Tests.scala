@@ -58,6 +58,42 @@ class IBMNodeJsActionDB2Tests extends TestHelpers with WskTestHelpers with Befor
 
   }
 
+  /*
+  Need to wait till the db2 start command has completed.
+  The following executes a `db2 list active databases` commands and if the start
+  command wasn't completed, it will return an exitCode 4.
+  Other exit codes are acceptable, for example 2 means that there was no active databases
+  exitCode 4 = SQL1032N  No start database manager command was issued.
+  exitCode 2 = SQL1611W  No data was returned by Database System Monitor.
+   */
+  def sleepUntilContainerRunning() {
+    var counter = 5;
+    var running = false;
+    do {
+      counter = counter - 1
+      val isdb2Running = TestUtils
+        .runCmd(
+          TestUtils.DONTCARE_EXIT,
+          new File("."),
+          "docker",
+          "exec",
+          "-t",
+          "--user",
+          "db2inst1",
+          db2containerName,
+          "/home/db2inst1/sqllib/bin/db2",
+          "list",
+          "active",
+          "databases")
+
+      if (isdb2Running.exitCode == 4) {
+        Thread.sleep(5000)
+      } else {
+        running = true;
+      }
+    } while (counter > 0 && running == false);
+  }
+
   override def beforeAll() {
     //setup db2 docker container
 
@@ -80,7 +116,7 @@ class IBMNodeJsActionDB2Tests extends TestHelpers with WskTestHelpers with Befor
       "ibmcom/db2express-c",
       "db2start")
 
-    Thread.sleep(30000)
+    sleepUntilContainerRunning()
 
     //place setup sql script on docker container; then run it to initialize the initial database and tables
     TestUtils.runCmd(
@@ -106,17 +142,8 @@ class IBMNodeJsActionDB2Tests extends TestHelpers with WskTestHelpers with Befor
   }
 
   override def afterAll() {
-    //clean up db2 container resources
-    val isdb2Running = TestUtils
-      .runCmd(TestUtils.DONTCARE_EXIT, new File("."), "docker", "inspect", "-f", "{{.State.Running}}", db2containerName)
-      .stdout
-      .trim == "true"
-
-    if (isdb2Running) {
-      TestUtils.runCmd(TestUtils.DONTCARE_EXIT, new File("."), "docker", "stop", db2containerName)
-    }
+    TestUtils.runCmd(TestUtils.DONTCARE_EXIT, new File("."), "docker", "kill", db2containerName)
     TestUtils.runCmd(TestUtils.DONTCARE_EXIT, new File("."), "docker", "rm", db2containerName)
-
   }
 
 }
