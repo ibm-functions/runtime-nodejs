@@ -25,7 +25,6 @@ import java.io.File
 import spray.json._
 import spray.json.DefaultJsonProtocol._
 import common.TestUtils
-import scala.collection.mutable.ArrayBuffer
 import org.scalatest.BeforeAndAfterAll
 
 @RunWith(classOf[JUnitRunner])
@@ -116,9 +115,7 @@ class IBMNodeJsActionDB2Tests extends TestHelpers with WskTestHelpers with Befor
     if (isdb2Running) {
       TestUtils.runCmd(TestUtils.DONTCARE_EXIT, new File("."), "docker", "stop", db2containerName)
     }
-    if ((runShellScript("docker inspect -f {{.State.Running}} db2test")).stdout.trim == "true") {
-      TestUtils.runCmd(TestUtils.DONTCARE_EXIT, new File("."), "docker", "rm", db2containerName)
-    }
+    TestUtils.runCmd(TestUtils.DONTCARE_EXIT, new File("."), "docker", "rm", db2containerName)
 
   }
 
