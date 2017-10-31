@@ -22,7 +22,7 @@ task testWithoutCredentials(type: Test) {
 }
 
 task testBlueCI(type: Test) {
-  exclude 'actionContainers.IBMNodeJsActionDB2Tests'
+  exclude '**/IBMNodeJsActionDB2Tests*'
 }
 
 dependencies {
