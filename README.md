@@ -17,7 +17,7 @@ bx wsk action update myAction myAction.js --docker ibmfunctions/action-nodejs-ib
 ```
 This works on any deployment of Apache OpenWhisk or IBM Cloud Functions
 
-### Future: IBM Functions (based on Apache OpenWhisk)
+### Future: IBM Cloud Functions (based on Apache OpenWhisk)
 To use as a nodejs kind action
 ```
 bx wsk action update myAction myAction --kind nodejs-ibm:8
