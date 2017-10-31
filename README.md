@@ -6,9 +6,10 @@ This repository is work in progress, braking changes might occur
 
 The runtime provides [nodejs v8](8/) with a set of [npm packages](8/package.json)
 The images provides the following npm packages for IBM Services/Products
-- IBM DB2/DashDB and IBM Informix [ibm_db@2.1.0](https://www.npmjs.com/package/ibm_db)
-- IBM Cloudant [cloudant@1.8.0](https://www.npmjs.com/package/cloudant)
-- IBM Watson Cloud [watson-developer-cloud@2.39.0](https://www.npmjs.com/package/watson-developer-cloud)
+- IBM DB2/DashDB and IBM Informix [ibm_db@2.2.1](https://www.npmjs.com/package/ibm_db)
+- IBM Cloudant [cloudant@1.9.0](https://www.npmjs.com/package/cloudant)
+- IBM Watson Cloud [watson-developer-cloud@2.41.1](https://www.npmjs.com/package/watson-developer-cloud)
+- IBM Cloud Object Storage [ibm-cos-sdk@1.0.2](https://www.npmjs.com/package/ibm-cos-sdk)
 
 ### Give it a try today
 To use as a docker action
