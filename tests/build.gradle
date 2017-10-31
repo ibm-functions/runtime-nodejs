@@ -21,6 +21,10 @@ task testWithoutCredentials(type: Test) {
   exclude '**/*Credentials*'
 }
 
+task testBlueCI(type: Test) {
+  exclude '**/IBMNodeJsActionDB2Tests*'
+}
+
 dependencies {
     compile "org.scala-lang:scala-library:${gradle.scala.version}"
     compile project(':whisktests')

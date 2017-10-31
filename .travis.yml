@@ -22,8 +22,10 @@ deploy:
   script: "./tools/travis/deploy.sh ibmfunctions latest"
   on:
     branch: master
+    repo: ibm-functions/runtime-nodejs
 - provider: script
   script: "./tools/travis/deploy.sh ibmfunctions $TRAVIS_TAG"
   on:
     tags: true
     all_branches: true
+    repo: ibm-functions/runtime-nodejs
