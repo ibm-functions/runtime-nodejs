@@ -19,7 +19,7 @@ class CredentialsIBMNodeJsActionCloudantTests extends TestHelpers with WskTestHe
   val datdir = System.getProperty("user.dir") + "/dat/"
   var creds = TestUtils.getVCAPcredentials("cloudantNoSQLDB")
 
-  it should "Test whether or not cloudant npm module is useable within a nodejs8 action" in withAssetCleaner(wskprops) {
+  it should "Test whether or not cloudant database is reachable using cloudant npm module" in withAssetCleaner(wskprops) {
     (wp, assetHelper) =>
       val file = Some(new File(datdir, "testCloudantAction.js").toString())
 

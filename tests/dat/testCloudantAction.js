@@ -7,8 +7,22 @@ function main(args){
 
   //Configuration to use Cloudant
   var cloudant = Cloudant({account:username, password:password, plugin:'promises'});
+
+  var beforeAction = new Promise(function(resolve ,reject){
+    cloudant.db.destroy(dbName)
+    .then(function(){
+      console.log("Previous database with name: "+dbName+"existed; it was cleaned up so that tests can run");
+      return resolve();
+    })
+    .catch(function(){
+      return resolve();
+    })
+  });
+
   //Create the cloudant database
-  return cloudant.db.create(dbName)
+  return beforeAction.then(function(){
+    return cloudant.db.create(dbName)
+  })
   .then(function(data){
     //Switch to use that newly created database.
     return cloudant.db.use(dbName);
