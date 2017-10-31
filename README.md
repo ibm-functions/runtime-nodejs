@@ -1,30 +1,30 @@
-#IBM Functions runtimes for nodejs
+# IBM Cloud Functions runtime for nodejs
+
 [![Build Status](https://travis-ci.org/ibm-functions/runtime-nodejs.svg?branch=master)](https://travis-ci.org/ibm-functions/runtime-nodejs)
 
-## Work in progress**
-This repository is work in progress, braking changes might occur
+The runtime provides [nodejs v8](nodejs8/) with a set of [npm packages](8/package.json)
 
-The runtime provides [nodejs v8](8/) with a set of [npm packages](8/package.json)
-The images provides the following npm packages for IBM Services/Products
+The runtime provides the following npm packages for [IBM Cloud](https://bluemix.net):
 - IBM DB2/DashDB and IBM Informix [ibm_db@2.2.1](https://www.npmjs.com/package/ibm_db)
 - IBM Cloudant [cloudant@1.9.0](https://www.npmjs.com/package/cloudant)
 - IBM Watson Cloud [watson-developer-cloud@2.41.1](https://www.npmjs.com/package/watson-developer-cloud)
 - IBM Cloud Object Storage [ibm-cos-sdk@1.0.2](https://www.npmjs.com/package/ibm-cos-sdk)
 
-### Give it a try today
+### How to use as a docker Action
 To use as a docker action
 ```
 bx wsk action update myAction myAction.js --docker ibmfunctions/action-nodejs-ibm-v8
 ```
-This works on any deployment of Apache OpenWhisk
+This works on any deployment of Apache OpenWhisk or IBM Cloud Functions
 
-### Future: IBM Functions (Apache OpenWhisk on IBM Cloud)
-To use as a special nodejs kind action
+### Future: IBM Functions (based on Apache OpenWhisk)
+To use as a nodejs kind action
 ```
 bx wsk action update myAction myAction --kind nodejs-ibm:8
 ```
+Tip: Not available yet in the IBM Cloud
 
-### Local development  
+### Working with the local git repo 
 Prerequisite: *Export* OPENWHISK_HOME to point to your incubator/openwhisk cloned directory.
 
 ```
@@ -91,9 +91,6 @@ you need to set up a tests/credentials.json file containing Watson credentials i
   ],  
   "cloudantNoSQLDB":[
     {
-      "name":"",  
-      "label":"",  
-      "plan":"",  
       "credentials": {  
         "url": "",  
         "host": "",  
