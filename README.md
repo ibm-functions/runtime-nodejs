@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/ibm-functions/runtime-nodejs.svg?branch=master)](https://travis-ci.org/ibm-functions/runtime-nodejs)
 
-The runtime provides [nodejs v8](nodejs8/) with a set of [npm packages](8/package.json)
+The runtime provides [nodejs v8](nodejs8/) with a set of [npm packages](nodejs8/package.json)
 
 The runtime provides the following npm packages for [IBM Cloud](https://bluemix.net):
 - IBM DB2/DashDB and IBM Informix [ibm_db@2.2.1](https://www.npmjs.com/package/ibm_db)
