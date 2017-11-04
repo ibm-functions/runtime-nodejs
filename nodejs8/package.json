@@ -50,7 +50,7 @@
     "superagent": "3.8.0",
     "swagger-tools": "0.10.3",
     "tmp": "0.0.33",
-    "twilio": "3.9.1",
+    "twilio": "3.9.2",
     "underscore": "1.8.3",
     "uuid": "3.1.0",
     "validator": "9.1.1",
