@@ -99,7 +99,14 @@ you need to set up a tests/credentials.json file containing Watson credentials i
         "username": ""  
       }  
     }
-  ]
+  ],
+  "dashDB":[
+      {
+        "credentials": {  
+          "ssldsn": "DATABASE=BLUDB;HOSTNAME=<hostname_value>;PORT=50001;PROTOCOL=TCPIP;UID=<username_value>;PWD=<password_value>;Security=SSL;"
+        }  
+      }
+    ]
 }  
 ```
 Then update the `whisk.properties` file located in the directory `$OPENWHISK_HOME`, using the variable `vcap.services.file`
