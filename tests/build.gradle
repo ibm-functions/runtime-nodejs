@@ -24,6 +24,10 @@ task testWithoutCredentials(type: Test) {
 task testBlueCI(type: Test) {
   exclude '**/IBMNodeJsActionDB2Tests*'
 }
+task testBlueDeployment(type: Test) {
+  include 'integration/**'
+  include 'system/**'
+}
 
 dependencies {
     compile "org.scala-lang:scala-library:${gradle.scala.version}"
