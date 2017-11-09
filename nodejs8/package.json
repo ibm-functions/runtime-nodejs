@@ -4,13 +4,14 @@
   "description": "IBM Functions",
   "repository": {
     "type": "git",
-    "url": "git@github.com:ibm-functions/runtime-nodejs.git"
+    "url": "https://github.com/ibm-functions/runtime-nodejs.git"
   },
   "license": "Apache-2.0",
   "dependencies": {
     "@sendgrid/mail": "6.1.4",
     "apn": "2.1.5",
     "async": "2.6.0",
+    "bent": "1.1.0",
     "body-parser": "1.18.2",
     "btoa": "1.1.2",
     "cloudant": "1.10.0",

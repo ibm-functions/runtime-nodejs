@@ -3,17 +3,19 @@
 
 ## 1.2.0
 Changes:
-  - update nodejs from `8.9.0` to `8.9.1`
+  - update NodeJS Runtime from `8.9.0` to `8.9.1`
   - update async from `2.5.0` to `2.6.0` 
   - update superagent from `3.8.0` to `3.8.1` 
   - update ws from `3.3.0` to `3.3.1`
+  - add bent package `1.1.0`
 
-Node version: 
+NodeJS version: 
   - [8.9.1](https://nodejs.org/en/blog/release/v8.9.1)
 
 NPM Packages:
   - [apn v2.1.5](https://www.npmjs.com/package/apn) - A Node.js module for interfacing with the Apple Push Notification service.
   - [async v2.6.0](https://www.npmjs.com/package/async) - Provides functions for working with asynchronous functions.
+  - [bent v1.1.0](https://www.npmjs.com/package/btoa) - A port of the browser's btoa function.
   - [btoa v1.1.2](https://www.npmjs.com/package/btoa) - A port of the browser's btoa function.
   - [cloudant v1.10.0](https://www.npmjs.com/package/cloudant) - This is the official Cloudant library for Node.js.
   - [commander v2.11.0](https://www.npmjs.com/package/commander) - The complete solution for node.js command-line interfaces.
