@@ -26,7 +26,7 @@ NPM Packages:
   - [ibm-cos-sdk v1.0.2](https://www.npmjs.com/package/ibm-cos-sdk) - IBM Cloud Object Storage SDK for Node.js
   - [ibm_db v2.2.1](https://www.npmjs.com/package/ibm_db) - An asynchronous/synchronous interface for node.js to IBM DB2 and IBM Informix. 
   - [lodash v4.17.4](https://www.npmjs.com/package/lodash) - The Lodash library exported as Node.js modules.
-  - [log4js v0.6.38](https://www.npmjs.com/package/log4js) - This is a conversion of the log4js framework to work with Node.
+  - [log4js v2.3.11](https://www.npmjs.com/package/log4js) - This is a conversion of the log4js framework to work with Node.
   - [iconv-lite v0.4.19](https://www.npmjs.com/package/iconv-lite) - Pure JS character encoding conversion
   - [marked v0.3.6](https://www.npmjs.com/package/marked) - A full-featured markdown parser and compiler, written in JavaScript. Built for speed.
   - [merge v1.2.0](https://www.npmjs.com/package/merge) - Merge multiple objects into one, optionally creating a new cloned object.
