@@ -21,7 +21,7 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class WskUnicodeIBMNodeTests extends WskRestUnicodeNodeTests {
 
-  override lazy val actionKind = "nodejs-ibm:8"
+  override lazy val actionKind = "nodejs:8"
   override lazy val actionSource = "unicode.js"
 
 }

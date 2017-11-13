@@ -26,7 +26,7 @@ import org.scalatest.BeforeAndAfterAll
 class CredentialsIBMNodeJsDb2CloudTests extends TestHelpers with WskTestHelpers with BeforeAndAfterAll {
 
   implicit val wskprops: WskProps = WskProps()
-  var defaultKind = Some("nodejs-ibm:8")
+  var defaultKind = Some("nodejs:8")
   val wsk = new Wsk
   val datdir = System.getProperty("user.dir") + "/dat/"
   val creds = TestUtils.getVCAPcredentials("dashDB")
