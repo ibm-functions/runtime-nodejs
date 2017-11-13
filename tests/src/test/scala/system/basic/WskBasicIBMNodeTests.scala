@@ -32,7 +32,7 @@ class WskBasicIBMNodeTests extends TestHelpers with WskTestHelpers with JsHelper
 
   implicit val wskprops: WskProps = WskProps()
   val wsk = new Wsk
-  var defaultKind = Some("nodejs-ibm:8")
+  var defaultKind = Some("nodejs:8")
 
   behavior of s"Basic NodeJS runtime with kind ${defaultKind.get}"
 

@@ -20,7 +20,7 @@ This works on any deployment of Apache OpenWhisk or IBM Cloud Functions
 ### Future: IBM Cloud Functions (based on Apache OpenWhisk)
 To use as a nodejs kind action
 ```
-bx wsk action update myAction myAction --kind nodejs-ibm:8
+bx wsk action update myAction myAction --kind nodejs:8
 ```
 Tip: Not available yet in the IBM Cloud
 
@@ -38,7 +38,7 @@ docker login
 ./gradlew nodejs8:distDocker -PdockerImagePrefix=$prefix-user -PdockerRegistry=docker.io
 ```
 
-Deploy OpenWhisk using ansible environment that adds the new king `nodejs-ibm:8`
+Deploy OpenWhisk using ansible environment that adds the new king `nodejs:8`
 Assuming you have OpenWhisk already deploy localy and `OPENWHISK_HOME` pointing to root directory of OpenWhisk core repository.
 
 Set `ROOTDIR` to the root directory of this repository.

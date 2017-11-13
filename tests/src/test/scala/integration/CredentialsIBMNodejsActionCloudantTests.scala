@@ -29,7 +29,7 @@ import common.TestUtils
 class CredentialsIBMNodeJsActionCloudantTests extends TestHelpers with WskTestHelpers {
 
   implicit val wskprops: WskProps = WskProps()
-  var defaultKind = Some("nodejs-ibm:8")
+  var defaultKind = Some("nodejs:8")
   val wsk = new Wsk
   val datdir = System.getProperty("user.dir") + "/dat/"
   var creds = TestUtils.getVCAPcredentials("cloudantNoSQLDB")

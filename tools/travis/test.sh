@@ -11,7 +11,7 @@ WHISKDIR="$ROOTDIR/../openwhisk"
 WHISK_CLI="${WHISKDIR}/bin/wsk -i"
 
 # Run a simple action using the kind
-${WHISK_CLI} action update getNodeVersion ${ROOTDIR}/tests/dat/getNodeVersion.js --kind nodejs-ibm:8
+${WHISK_CLI} action update getNodeVersion ${ROOTDIR}/tests/dat/getNodeVersion.js --kind nodejs:8
 ${WHISK_CLI} action get getNodeVersion
 
 #This command sometimes it fails
