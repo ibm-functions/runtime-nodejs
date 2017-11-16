@@ -21,6 +21,6 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class IBMNodeJsActionContainerTests extends NodeJsActionContainerTests {
 
-  override lazy val nodejsContainerImageName = "action-nodejs-ibm-v8"
+  override lazy val nodejsContainerImageName = "action-nodejs-v8"
 
 }
