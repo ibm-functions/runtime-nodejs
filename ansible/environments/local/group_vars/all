@@ -37,7 +37,7 @@ runtimes_manifest:
     - kind: "nodejs:8"
       default: false
       image:
-        name: "action-nodejs-ibm-v8"
+        name: "action-nodejs-v8"
       deprecated: false
   blackboxes:
     - name: "dockerskeleton"
