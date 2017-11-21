@@ -19,18 +19,19 @@ import common.TestHelpers
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import common.WskTestHelpers
-import common.Wsk
 import common.WskProps
 import java.io.File
+import common.rest.WskRest
 import spray.json._
 import spray.json.DefaultJsonProtocol._
 import org.scalatest.BeforeAndAfterAll
+
 @RunWith(classOf[JUnitRunner])
 class IBMNodeJsActionWatsonTests extends TestHelpers with WskTestHelpers with BeforeAndAfterAll {
 
   implicit val wskprops: WskProps = WskProps()
   var defaultKind = Some("nodejs:8")
-  val wsk = new Wsk
+  val wsk = new WskRest
   val datdir = System.getProperty("user.dir") + "/dat/"
 
   it should "Test whether or not watson package is useable within a nodejs8 action" in withAssetCleaner(wskprops) {

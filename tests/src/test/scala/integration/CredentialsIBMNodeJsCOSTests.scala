@@ -19,15 +19,16 @@ import common._
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import java.io.File
-
+import common.rest.WskRest
 import spray.json._
 import org.scalatest.BeforeAndAfterAll
+
 @RunWith(classOf[JUnitRunner])
 class CredentialsIBMNodeJsCOSTests extends TestHelpers with WskTestHelpers with BeforeAndAfterAll {
 
   implicit val wskprops: WskProps = WskProps()
   var defaultKind = Some("nodejs:8")
-  val wsk = new Wsk
+  val wsk = new WskRest
   val datdir = System.getProperty("user.dir") + "/dat/"
   val creds = TestUtils.getVCAPcredentials("cloud-object-storage")
   val apikey = creds.get("apikey")

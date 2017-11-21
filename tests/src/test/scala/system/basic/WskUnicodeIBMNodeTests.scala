@@ -13,13 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package system.basic
 
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
 @RunWith(classOf[JUnitRunner])
-class WskUnicodeIBMNodeTests extends WskRestUnicodeNodeTests {
+class WskUnicodeIBMNodeTests extends WskRestUnicodeNode8Tests {
 
   override lazy val actionKind = "nodejs:8"
   override lazy val actionSource = "unicode.js"

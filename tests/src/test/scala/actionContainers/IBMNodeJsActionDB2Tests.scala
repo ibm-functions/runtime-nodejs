@@ -19,12 +19,12 @@ import common.TestHelpers
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import common.WskTestHelpers
-import common.Wsk
 import common.WskProps
 import java.io.File
 import spray.json._
 import spray.json.DefaultJsonProtocol._
 import common.TestUtils
+import common.rest.WskRest
 import org.scalatest.BeforeAndAfterAll
 
 @RunWith(classOf[JUnitRunner])
@@ -32,7 +32,7 @@ class IBMNodeJsActionDB2Tests extends TestHelpers with WskTestHelpers with Befor
 
   implicit val wskprops: WskProps = WskProps()
   var defaultKind = Some("nodejs:8")
-  val wsk = new Wsk
+  val wsk = new WskRest
   val userdir = System.getProperty("user.dir")
   val db2dir = userdir + "/dat/db2/"
   val db2containerName = "db2test"
