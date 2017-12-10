@@ -15,7 +15,6 @@ Changes:
   - update nodemailer from `4.3.1` to `4.4.1`
   - update validator from `9.1.1` to `9.2.0`
   - update watson-developer-cloud from `2.42.0` to `3.0.2`
-  - update watson-developer-cloud from `3.3.1` to `3.3.2`
 
 NodeJS version: 
   - [8.9.3](https://nodejs.org/en/blog/release/v8.9.3)
