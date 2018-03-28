@@ -17,6 +17,7 @@
     "btoa": "1.1.2",
     "cassandra-driver": "3.4.1",
     "cloudant": "1.10.0",
+    "@cloudant/cloudant": "2.1.0",
     "commander": "2.15.0",
     "composeaddresstranslator": "1.0.4",
     "consul": "0.30.0",

@@ -6,7 +6,7 @@ The runtime provides [nodejs v8](nodejs8/) with a set of [npm packages](nodejs8/
 
 The runtime provides the following npm packages for [IBM Cloud](https://bluemix.net):
 - IBM DB2/DashDB and IBM Informix [ibm_db@2.2.1](https://www.npmjs.com/package/ibm_db)
-- IBM Cloudant [cloudant@1.10.0](https://www.npmjs.com/package/cloudant)
+- IBM Cloudant [cloudant@1.10.0](https://www.npmjs.com/package/cloudant) & [@cloudant/cloudant@2.1.0](https://www.npmjs.com/package/@cloudant/cloudant)
 - IBM Watson Cloud [watson-developer-cloud@2.42.0](https://www.npmjs.com/package/watson-developer-cloud)
 - IBM Cloud Object Storage [ibm-cos-sdk@1.0.2](https://www.npmjs.com/package/ibm-cos-sdk)
 
