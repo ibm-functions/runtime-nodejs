@@ -16,17 +16,29 @@
 # limitations under the License.
 #
 
-set -e
+set -eux
 
 # Build script for Travis-CI.
 
 SCRIPTDIR=$(cd $(dirname "$0") && pwd)
 ROOTDIR="$SCRIPTDIR/../.."
-HOMEDIR="$SCRIPTDIR/../../../"
+WHISKDIR="$ROOTDIR/../openwhisk"
 
-# OpenWhisk stuff
-cd $HOMEDIR
-git clone --depth=1 https://github.com/apache/incubator-openwhisk.git openwhisk
-cd openwhisk
-./tools/travis/setup.sh
+export OPENWHISK_HOME=$WHISKDIR
 
+IMAGE_PREFIX=$1
+IMAGE_TAG=$2
+RUNTIME="nodejs8"
+
+
+if [[ ! -z ${DOCKER_USER} ]] && [[ ! -z ${DOCKER_PASSWORD} ]]; then
+docker login -u "${DOCKER_USER}" -p "${DOCKER_PASSWORD}"
+fi
+
+if [[ ! -z ${RUNTIME} ]]; then
+TERM=dumb ./gradlew \
+:${RUNTIME}:distDocker \
+-PdockerRegistry=docker.io \
+-PdockerImagePrefix=${IMAGE_PREFIX} \
+-PdockerImageTag=${IMAGE_TAG}
+fi
