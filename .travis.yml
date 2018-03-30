@@ -12,8 +12,7 @@ before_install:
 - "./tools/travis/setup.sh"
 install: true
 script:
-- "./tools/travis/build.sh"
-- "./tools/travis/test.sh"
+- "./tools/travis/build.sh && ./tools/travis/deploy.sh && ./tools/travis/test.sh"
 deploy:
 - provider: script
   script: "./tools/travis/deploy.sh ibmfunctions latest"
@@ -21,7 +20,7 @@ deploy:
     branch: master
     repo: ibm-functions/runtime-nodejs
 - provider: script
-  script: "./tools/travis/deploy.sh ibmfunctions $TRAVIS_TAG"
+  script: "./tools/travis/publish.sh ibmfunctions $TRAVIS_TAG"
   on:
     tags: true
     all_branches: true
