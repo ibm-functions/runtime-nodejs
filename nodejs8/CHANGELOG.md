@@ -253,7 +253,7 @@ NPM Packages:
 
 ## 1.3.0
 Changes:
-  - update NodeJS Runtime from `8.9.1` to `8.9.3`
+  - update Node.js Runtime from `8.9.1` to `8.9.3`
   - update commander from `2.11.0` to `2.12.2`
   - update ibm-cos-sdk from `1.0.2` to `1.1.1`
   - update log4js from `2.3.11` to `2.3.12`
@@ -266,7 +266,7 @@ Changes:
   - update validator from `9.1.1` to `9.2.0`
   - update watson-developer-cloud from `2.42.0` to `3.0.2`
 
-NodeJS version:
+Node.js version:
   - [8.9.3](https://nodejs.org/en/blog/release/v8.9.3)
 
 NPM Packages:
