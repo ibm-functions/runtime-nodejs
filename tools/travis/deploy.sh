@@ -11,9 +11,16 @@ export OPENWHISK_HOME=$WHISKDIR
 
 IMAGE_PREFIX="testing"
 
-# Deploy OpenWhisk
+
+
+# Setup Ansible CMD
 cd $WHISKDIR/ansible
 ANSIBLE_CMD="ansible-playbook -i ${ROOTDIR}/ansible/environments/local -e docker_image_prefix=${IMAGE_PREFIX}"
+
+# Weird probem with Travis container names already taken, but we are suppose to get a clean VM
+$ANSIBLE_CMD teardown.yml
+
+# Deploy OpenWhisk
 $ANSIBLE_CMD setup.yml
 $ANSIBLE_CMD prereq.yml
 $ANSIBLE_CMD couchdb.yml
