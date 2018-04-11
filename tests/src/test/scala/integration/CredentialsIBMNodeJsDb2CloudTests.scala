@@ -29,7 +29,7 @@ class CredentialsIBMNodeJsDb2CloudTests extends TestHelpers with WskTestHelpers 
   implicit val wskprops: WskProps = WskProps()
   var defaultKind = Some("nodejs:8")
   val wsk = new WskRest
-  val datdir = System.getProperty("user.dir") + "/dat/"
+  val datdir = "tests/dat/"
   val creds = TestUtils.getVCAPcredentials("dashDB")
   val ssldsn = creds.get("ssldsn")
   val __bx_creds = JsObject("dashDB" -> JsObject("ssldsn" -> JsString(ssldsn)))
