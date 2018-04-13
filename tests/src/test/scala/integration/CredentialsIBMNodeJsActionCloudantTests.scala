@@ -31,7 +31,7 @@ class CredentialsIBMNodeJsActionCloudantTests extends TestHelpers with WskTestHe
   implicit val wskprops: WskProps = WskProps()
   var defaultKind = Some("nodejs:8")
   val wsk = new WskRest
-  val datdir = System.getProperty("user.dir") + "/dat/"
+  val datdir = "tests/dat/"
   var creds = TestUtils.getVCAPcredentials("cloudantNoSQLDB")
 
   it should "Test whether or not cloudant database is reachable using cloudant npm module" in withAssetCleaner(wskprops) {

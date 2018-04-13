@@ -29,7 +29,7 @@ class CredentialsIBMNodeJsCOSTests extends TestHelpers with WskTestHelpers with 
   implicit val wskprops: WskProps = WskProps()
   var defaultKind = Some("nodejs:8")
   val wsk = new WskRest
-  val datdir = System.getProperty("user.dir") + "/dat/"
+  val datdir = "tests/dat/"
   val creds = TestUtils.getVCAPcredentials("cloud-object-storage")
   val apikey = creds.get("apikey")
   var resource_instance_id = creds.get("resource_instance_id")

@@ -32,7 +32,7 @@ class CredentialsIBMNodeJsActionWatsonTests extends TestHelpers with WskTestHelp
   implicit val wskprops: WskProps = WskProps()
   var defaultKind = Some("nodejs:8")
   val wsk = new WskRest
-  val datdir = System.getProperty("user.dir") + "/dat/"
+  val datdir = "tests/dat/"
 
   var creds = TestUtils.getVCAPcredentials("language_translator")
 

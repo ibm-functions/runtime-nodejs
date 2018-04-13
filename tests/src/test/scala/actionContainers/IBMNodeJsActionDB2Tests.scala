@@ -33,8 +33,7 @@ class IBMNodeJsActionDB2Tests extends TestHelpers with WskTestHelpers with Befor
   implicit val wskprops: WskProps = WskProps()
   var defaultKind = Some("nodejs:8")
   val wsk = new WskRest
-  val userdir = System.getProperty("user.dir")
-  val db2dir = userdir + "/dat/db2/"
+  val db2dir = "tests/dat/db2/"
   val db2containerName = "db2test"
 
   it should "Test creation, get, and delete of a nodejs8 action" in withAssetCleaner(wskprops) { (wp, assetHelper) =>

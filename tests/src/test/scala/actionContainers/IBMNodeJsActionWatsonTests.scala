@@ -32,7 +32,7 @@ class IBMNodeJsActionWatsonTests extends TestHelpers with WskTestHelpers with Be
   implicit val wskprops: WskProps = WskProps()
   var defaultKind = Some("nodejs:8")
   val wsk = new WskRest
-  val datdir = System.getProperty("user.dir") + "/dat/"
+  val datdir = "tests/dat/"
 
   it should "Test whether or not watson package is useable within a nodejs8 action" in withAssetCleaner(wskprops) {
     (wp, assetHelper) =>
