@@ -15,11 +15,6 @@ script:
 - "./tools/travis/build.sh && ./tools/travis/deploy.sh && ./tools/travis/test.sh"
 deploy:
 - provider: script
-  script: "./tools/travis/deploy.sh ibmfunctions latest"
-  on:
-    branch: master
-    repo: ibm-functions/runtime-nodejs
-- provider: script
   script: "./tools/travis/publish.sh ibmfunctions $TRAVIS_TAG"
   on:
     tags: true
