@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package actionContainers
+package runtime.actionContainers
 
 import common.TestHelpers
 import org.junit.runner.RunWith
@@ -23,28 +23,40 @@ import common.WskProps
 import java.io.File
 import common.rest.WskRest
 import spray.json._
+import spray.json.DefaultJsonProtocol._
 import org.scalatest.BeforeAndAfterAll
 
 @RunWith(classOf[JUnitRunner])
-class IBMNodeJsActionCloudantTests extends TestHelpers with WskTestHelpers with BeforeAndAfterAll {
+class IBMNodeJsActionWatsonTests extends TestHelpers with WskTestHelpers with BeforeAndAfterAll {
 
   implicit val wskprops: WskProps = WskProps()
   var defaultKind = Some("nodejs:8")
   val wsk = new WskRest
   val datdir = "tests/dat/"
 
-  it should "Test whether or not cloudant package is accessible within a nodejs8 action" in withAssetCleaner(wskprops) {
+  it should "Test whether or not watson package is useable within a nodejs8 action" in withAssetCleaner(wskprops) {
     (wp, assetHelper) =>
-      val file = Some(new File(datdir, "testCloudantActionNoCreds.js").toString())
+      /*
+     Disclaimer : Does not Use / Connect to a watson service! Tests that the
+     watson-developer-cloud npm package is useable by verifying creating a new
+     discover object creates the expected object with the expected properties.
+       */
 
-      assetHelper.withCleaner(wsk.action, "testCloudantActionNoCreds") { (action, _) =>
-        action.create("testCloudantActionNoCreds", file, main = Some("main"), kind = defaultKind)
+      val file = Some(new File(datdir, "testWatsonAction.js").toString())
+
+      assetHelper.withCleaner(wsk.action, "testWatsonAction") { (action, _) =>
+        action.create(
+          "testWatsonAction",
+          file,
+          main = Some("main"),
+          kind = defaultKind,
+          parameters = Map("hostname" -> wskprops.apihost.toJson))
       }
 
-      withActivation(wsk.activation, wsk.action.invoke("testCloudantActionNoCreds")) { activation =>
+      withActivation(wsk.activation, wsk.action.invoke("testWatsonAction")) { activation =>
         val response = activation.response
         response.result.get.fields.get("error") shouldBe empty
-        response.result.get.fields.get("message") should be(Some(JsString("cloudant url formed successfully")))
+        response.result.get.fields.get("message") should be(Some(JsString("2017-08-01")))
       }
 
   }

@@ -66,7 +66,16 @@ wsk action update myAction myAction.js --docker $user_prefix/action-nodejs-ibm-v
 The `$user_prefix` is usually your dockerhub user id.
 
 ### Testing
+Install dependencies from the root directory on $OPENWHISK_HOME repository
+```
+./gradlew install
+```
 
+#### Using IntelliJ:
+- Import project as gradle project.
+- Make sure working directory is root of the project/repo
+
+#### Using Gradle
 
 To run all tests: `./gradlew tests:test` this include tests depending on credentials
 
