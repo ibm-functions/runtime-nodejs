@@ -24,4 +24,5 @@ deploy:
     script: "./tools/travis/publish.sh ibmfunctions master"
     on:
       branch: master
+      repo: ibm-functions/runtime-nodejs
 
