@@ -15,23 +15,20 @@
  */
 package integration
 
-import common.TestHelpers
+import common.{TestHelpers, WskTestHelpers, WskProps, TestUtils, WskActorSystem}
+import common.rest.WskRestOperations
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import common.WskTestHelpers
-import common.WskProps
 import java.io.File
 import spray.json._
-import common.TestUtils
-import common.rest.WskRest
 import org.scalatest.BeforeAndAfterAll
 
 @RunWith(classOf[JUnitRunner])
-class CredentialsIBMNodeJsActionWatsonTests extends TestHelpers with WskTestHelpers with BeforeAndAfterAll {
+class CredentialsIBMNodeJsActionWatsonTests extends TestHelpers with WskTestHelpers with BeforeAndAfterAll with WskActorSystem {
 
   implicit val wskprops: WskProps = WskProps()
   var defaultKind = Some("nodejs:8")
-  val wsk = new WskRest
+  val wsk = new WskRestOperations
   val datdir = "tests/dat/"
 
   var creds = TestUtils.getVCAPcredentials("language_translator")

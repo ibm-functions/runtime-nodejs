@@ -15,22 +15,20 @@
  */
 package runtime.actionContainers
 
-import common.TestHelpers
+import common.{TestHelpers, WskTestHelpers, WskProps, WskActorSystem}
+import common.rest.WskRestOperations
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import common.WskTestHelpers
-import common.WskProps
 import java.io.File
-import common.rest.WskRest
 import spray.json._
 import org.scalatest.BeforeAndAfterAll
 
 @RunWith(classOf[JUnitRunner])
-class IBMNodeJsActionCloudantTests extends TestHelpers with WskTestHelpers with BeforeAndAfterAll {
+class IBMNodeJsActionCloudantTests extends TestHelpers with WskTestHelpers with BeforeAndAfterAll with WskActorSystem {
 
   implicit val wskprops: WskProps = WskProps()
   var defaultKind = Some("nodejs:8")
-  val wsk = new WskRest
+  val wsk = new WskRestOperations
   val datdir = "tests/dat/"
 
   it should "Test whether or not cloudant package is accessible within a nodejs8 action" in withAssetCleaner(wskprops) {

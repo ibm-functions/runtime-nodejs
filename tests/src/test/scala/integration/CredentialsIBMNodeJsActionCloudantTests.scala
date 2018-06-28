@@ -15,22 +15,19 @@
  */
 package integration
 
-import common.TestHelpers
+import common.{TestHelpers, WskTestHelpers, WskProps, TestUtils, WskActorSystem}
+import common.rest.WskRestOperations
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import common.WskTestHelpers
-import common.WskProps
 import java.io.File
 import spray.json._
-import common.TestUtils
-import common.rest.WskRest
 
 @RunWith(classOf[JUnitRunner])
-class CredentialsIBMNodeJsActionCloudantTests extends TestHelpers with WskTestHelpers {
+class CredentialsIBMNodeJsActionCloudantTests extends TestHelpers with WskTestHelpers with WskActorSystem {
 
   implicit val wskprops: WskProps = WskProps()
   var defaultKind = Some("nodejs:8")
-  val wsk = new WskRest
+  val wsk = new WskRestOperations
   val datdir = "tests/dat/"
   var creds = TestUtils.getVCAPcredentials("cloudantNoSQLDB")
 
