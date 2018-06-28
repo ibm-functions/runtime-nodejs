@@ -24,7 +24,11 @@ import spray.json._
 import org.scalatest.BeforeAndAfterAll
 
 @RunWith(classOf[JUnitRunner])
-class CredentialsIBMNodeJsDb2CloudTests extends TestHelpers with WskTestHelpers with BeforeAndAfterAll with WskActorSystem {
+class CredentialsIBMNodeJsDb2CloudTests
+    extends TestHelpers
+    with WskTestHelpers
+    with BeforeAndAfterAll
+    with WskActorSystem {
 
   implicit val wskprops: WskProps = WskProps()
   var defaultKind = Some("nodejs:8")

@@ -15,7 +15,7 @@
  */
 package integration
 
-import common.{TestHelpers, WskTestHelpers, WskProps, TestUtils, WskActorSystem}
+import common.{TestHelpers, TestUtils, WskActorSystem, WskProps, WskTestHelpers}
 import common.rest.WskRestOperations
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
@@ -24,7 +24,11 @@ import spray.json._
 import org.scalatest.BeforeAndAfterAll
 
 @RunWith(classOf[JUnitRunner])
-class CredentialsIBMNodeJsActionWatsonTests extends TestHelpers with WskTestHelpers with BeforeAndAfterAll with WskActorSystem {
+class CredentialsIBMNodeJsActionWatsonTests
+    extends TestHelpers
+    with WskTestHelpers
+    with BeforeAndAfterAll
+    with WskActorSystem {
 
   implicit val wskprops: WskProps = WskProps()
   var defaultKind = Some("nodejs:8")

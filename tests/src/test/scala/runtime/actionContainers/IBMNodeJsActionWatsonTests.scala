@@ -15,7 +15,7 @@
  */
 package runtime.actionContainers
 
-import common.{TestHelpers, WskActorSystem, WskTestHelpers, WskProps}
+import common.{TestHelpers, WskActorSystem, WskProps, WskTestHelpers}
 import common.rest.WskRestOperations
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
@@ -25,7 +25,7 @@ import spray.json.DefaultJsonProtocol._
 import org.scalatest.BeforeAndAfterAll
 
 @RunWith(classOf[JUnitRunner])
-class IBMNodeJsActionWatsonTests extends TestHelpers with WskTestHelpers with BeforeAndAfterAll with WskActorSystem { 
+class IBMNodeJsActionWatsonTests extends TestHelpers with WskTestHelpers with BeforeAndAfterAll with WskActorSystem {
 
   implicit val wskprops: WskProps = WskProps()
   var defaultKind = Some("nodejs:8")
