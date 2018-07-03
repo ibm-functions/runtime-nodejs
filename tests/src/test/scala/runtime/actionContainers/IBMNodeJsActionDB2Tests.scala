@@ -15,24 +15,21 @@
  */
 package runtime.actionContainers
 
-import common.TestHelpers
+import common.{TestHelpers, TestUtils, WskActorSystem, WskProps, WskTestHelpers}
+import common.rest.WskRestOperations
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
-import common.WskTestHelpers
-import common.WskProps
 import java.io.File
 import spray.json._
 import spray.json.DefaultJsonProtocol._
-import common.TestUtils
-import common.rest.WskRest
 import org.scalatest.BeforeAndAfterAll
 
 @RunWith(classOf[JUnitRunner])
-class IBMNodeJsActionDB2Tests extends TestHelpers with WskTestHelpers with BeforeAndAfterAll {
+class IBMNodeJsActionDB2Tests extends TestHelpers with WskTestHelpers with BeforeAndAfterAll with WskActorSystem {
 
   implicit val wskprops: WskProps = WskProps()
   var defaultKind = Some("nodejs:8")
-  val wsk = new WskRest
+  val wsk = new WskRestOperations
   val db2dir = "tests/dat/db2/"
   val db2containerName = "db2test"
 

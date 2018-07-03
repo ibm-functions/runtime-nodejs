@@ -16,19 +16,23 @@
 package integration
 
 import common._
+import common.rest.WskRestOperations
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import java.io.File
-import common.rest.WskRest
 import spray.json._
 import org.scalatest.BeforeAndAfterAll
 
 @RunWith(classOf[JUnitRunner])
-class CredentialsIBMNodeJsDb2CloudTests extends TestHelpers with WskTestHelpers with BeforeAndAfterAll {
+class CredentialsIBMNodeJsDb2CloudTests
+    extends TestHelpers
+    with WskTestHelpers
+    with BeforeAndAfterAll
+    with WskActorSystem {
 
   implicit val wskprops: WskProps = WskProps()
   var defaultKind = Some("nodejs:8")
-  val wsk = new WskRest
+  val wsk = new WskRestOperations
   val datdir = "tests/dat/"
   val creds = TestUtils.getVCAPcredentials("dashDB")
   val ssldsn = creds.get("ssldsn")
