@@ -1,8 +1,13 @@
 # IBM Functions NodeJS 8 Runtime Container
 
+# 1.16.1
+Changes:
+  - Disallow re-initialization.
+  - Fix bug where some log messages appear after the log maker.
+
 # 1.16.0
 Changes:
-  - update NodeJS from `8.11.2` to `8.11.3` 
+  - update NodeJS from `8.11.2` to `8.11.3`
   - update @cloudant/cloudant from `2.2.0` to `2.3.0`
   - update @sendgrid/mail from `6.2.1` to `6.3.1`
   - update consul from `0.32.0` to `0.33.1`
@@ -404,7 +409,7 @@ NPM Packages:
 Changes:
   - update openwhisk from `3.14.0` to `3.15.0`
 
-NodeJS version: 
+NodeJS version:
   - [8.11.1](https://nodejs.org/en/blog/release/v8.11.1)
 
 NPM Packages:
