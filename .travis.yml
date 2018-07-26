@@ -21,7 +21,7 @@ deploy:
       all_branches: true
       repo: ibm-functions/runtime-nodejs
   - provider: script
-    script: "./tools/travis/publish.sh ibmfunctions master"
+    script: "./tools/travis/publish.sh ibmfunctions latest"
     on:
       branch: master
       repo: ibm-functions/runtime-nodejs
