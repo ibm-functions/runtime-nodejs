@@ -22,13 +22,12 @@ set -ex
 
 SCRIPTDIR=$(cd $(dirname "$0") && pwd)
 ROOTDIR="$SCRIPTDIR/../.."
-WHISKDIR="$ROOTDIR/../openwhisk"
+export OPENWHISK_HOME="$ROOTDIR/../openwhisk"
 
-export OPENWHISK_HOME=$WHISKDIR
-
+# run scala tests
 cd ${ROOTDIR}
 TERM=dumb ./gradlew :tests:checkScalafmtAll
-if [ "$TRAVIS_PULL_REQUEST" = "false" ]; then
+if [ "$TRAVIS_PULL_REQUEST" = "false" ] && [ "$TRAVIS_REPO_SLUG" = "ibm-functions/runtime-nodejs"]; then
   TERM=dumb ./gradlew :tests:test
 else
   TERM=dumb ./gradlew :tests:testWithoutCredentials
