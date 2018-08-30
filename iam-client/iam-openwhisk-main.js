@@ -12,6 +12,7 @@ const Routes = require('./routes.js')
 const Client = require('./client.js')
 const AuthHandler = require('@ibm-functions/iam-token-manager')
 const IAM_NAMESPACE_API_KEY = '__OW_IAM_NAMESPACE_API_KEY'
+const IAM_NAMESPACE_URL = '__OW_IAM_API_URL'
 const NAMESPACE = '__OW_NAMESPACE'
 const OpenWhisk = (options) => {
   options = options || {}
@@ -19,6 +20,9 @@ const OpenWhisk = (options) => {
     if (!options.auth_handler) {
       if(!options.iamApikey){
         options.iamApikey = process.env[IAM_NAMESPACE_API_KEY]
+      }
+      if(process.env[IAM_NAMESPACE_URL] && !options.iamUrl){
+        options.iamUrl = process.env[IAM_NAMESPACE_URL]
       }
       options.auth_handler = new AuthHandler(options)
     }
