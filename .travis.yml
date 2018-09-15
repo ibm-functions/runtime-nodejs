@@ -17,7 +17,7 @@ notifications:
       secure: kLdOkrKzqb3ihx6PTWV/CLunhdIVdayNEYIiFSh6X8fDLSuLyjJnYWYrb71c8qdYwDwrgOzulEDMouWjwg2sFBzsNJXLxGjYaMTXJtCtgWegFDK90VkrGNDoRzm4Emh+Ou8+8nM72k4Mnb02RFXkJACVPwrcYEHFtlXvm+ZEb9+bvUwu1UbrFWhFqCpjYzpyLrJaZRhhU3N3EJoGOLkOnNQRtC9x2hY2bkoFDSqCqji75tB/MvdEL70mT5fYgZ/iLIoJ9FjoPHzRZ4b4sP6isfrHk/SI9FAiqXO4p6Kg70RWPLAipN/MZrWz5qepSzdn2Njk3LxDH+XxsDaU0jKbK0c9F0g75CkKNLwHpHNxGDNEkWf7ELSJ2H2ekgIoq5OHEvyPBV+u8iJXVt3AS7jEcVIsL+CEnbbUF0mb4sC8auyUS4FQIHzgUxHQt3pzQffDBTqP9lhmWy9ceeHc6SlAdehzo8RQ5NkFUfSGWhlzCCP5xRuEY+BIaoeeTZNny1pPmeLd69pnYjIBnODtPDy4n3kFCZaS5rSHHcDZHY7hq+RLbhrAnoVtiw7sy1bAKNn+iJvnFTveKeBD/aD/nadBlSg+4mBXxvc0ggldt8niOH0oq1c42/s7XIsD9RY7WkJw4VCyMunGa0dhbtnyy4Te2uN3oXvGY+ObDhMwLA2ftsc=
 
 before_install:
-- 'if [ "$TRAVIS_PULL_REQUEST" = "false" ] && [ "$TRAVIS_REPO_SLUG" = "ibm-functions/runtime-nodejs"]; then openssl aes-256-cbc -K $encrypted_a2f40e331ab3_key -iv $encrypted_a2f40e331ab3_iv -in tests/credentials.json.enc -out tests/credentials.json -d; fi'
+- 'if [ "$TRAVIS_PULL_REQUEST" = "false" ] && [ "$TRAVIS_REPO_SLUG" = "ibm-functions/runtime-nodejs" ]; then openssl aes-256-cbc -K $encrypted_a2f40e331ab3_key -iv $encrypted_a2f40e331ab3_iv -in tests/credentials.json.enc -out tests/credentials.json -d; fi'
 - "./tools/travis/setup.sh"
 install: true
 script:
