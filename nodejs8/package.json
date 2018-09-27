@@ -50,7 +50,7 @@
     "nano": "7.1.0",
     "nodemailer": "4.6.8",
     "oauth2-server": "3.0.1",
-    "openwhisk": "3.17",
+    "openwhisk": "3.18.0",
     "path-to-regexp": "2.4.0",
     "pg": "7.4.3",
     "process": "0.11.10",
