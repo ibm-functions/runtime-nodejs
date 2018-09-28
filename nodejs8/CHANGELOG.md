@@ -12,6 +12,7 @@ Changes:
   - update mongodb from `3.1.5` to `3.1.6`
   - update mustache from `2.3.2` to `3.0.0`
   - update nano from `7.0.0` to `7.1.0`
+  - update openwhisk from `3.17.0` to `3.18.0`
   - update twilio from `3.19.2` to `3.20.0`
   - update validator from `10.7.1` to `10.8.0`
   - update watson-developer-cloud from `3.10.0` to `3.11.0`
@@ -58,7 +59,7 @@ NPM Packages:
   - [nano v7.0.1](https://www.npmjs.com/package/nano) - minimalistic couchdb driver for Node.js.
   - [nodemailer v4.6.8](https://www.npmjs.com/package/nodemailer) - Send e-mails from Node.js – easy as cake!
   - [oauth2-server v3.0.1](https://www.npmjs.com/package/oauth2-server) - Complete, compliant and well tested module for implementing an OAuth2 Server/Provider with express in Node.js.
-  - [openwhisk v3.17.0](https://www.npmjs.com/package/openwhisk) - JavaScript client library for the OpenWhisk platform. Provides a wrapper around the OpenWhisk APIs.
+  - [openwhisk v3.18.0](https://www.npmjs.com/package/openwhisk) - JavaScript client library for the OpenWhisk platform. Provides a wrapper around the OpenWhisk APIs.
   - [path-to-regex v2.4.0](https://www.npmjs.com/package/path-to-regexp) - Turn a path string such as /user/:name into a regular expression which can then be used to match against URL paths.
   - [pg v7.4.3](https://www.npmjs.com/package/pg) - Non-blocking PostgreSQL client for node.js. Pure JavaScript and optional native libpq bindings.
   - [process v0.11.10](https://www.npmjs.com/package/process) - require('process'); just like any other module.
