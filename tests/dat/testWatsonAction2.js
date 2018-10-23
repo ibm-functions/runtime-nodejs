@@ -1,5 +1,5 @@
 
-var LanguageTranslatorV2 = require('watson-developer-cloud/language-translator/v2');
+var LanguageTranslatorV3 = require('watson-developer-cloud/language-translator/v3');
 
 /*
 Args in the form of:
@@ -8,7 +8,7 @@ Args in the form of:
   args.password;
 */
 function main(args){
-  var language_translator = new LanguageTranslatorV2(args);
+  var language_translator = new LanguageTranslatorV3(args);
   var params = {
     text: 'hello',
     source: 'en',
