@@ -49,6 +49,7 @@ class CredentialsIBMNodeJsActionWatsonTests
         main = Some("main"),
         kind = defaultKind,
         parameters = Map(
+          "version" -> JsString("2018-05-01"),
           "url" -> JsString(creds.get("url")),
           "username" -> JsString(creds.get("username")),
           "password" -> JsString(creds.get("password"))))
