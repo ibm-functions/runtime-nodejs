@@ -59,9 +59,8 @@ class NodeJsSDKTests extends TestHelpers with WskTestHelpers with WskActorSystem
       // should have a field named "activationId" which is the date action's activationId
       activation.response.result.get.fields("activationId").toString.length should be >= 32
 
-      // check for "date" field that comes from invoking the date action
-      whisk.utils.JsHelpers.fieldPathExists(activation.response.result.get, "response", "result", "date") should be(
-        true)
+      val result = activation.response.result.get.fields("response").asJsObject().fields("result").asJsObject()
+      result.fields.get("date") shouldBe defined
     }
   }
 
