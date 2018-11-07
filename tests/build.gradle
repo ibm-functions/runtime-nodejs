@@ -8,6 +8,7 @@ repositories {
 }
 
 tasks.withType(Test) {
+    systemProperties = System.getProperties() // Forward defined properties to the test JVM
     testLogging {
         events "passed", "skipped", "failed"
         showStandardStreams = true
