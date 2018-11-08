@@ -20,5 +20,5 @@ import org.scalatest.junit.JUnitRunner
 
 @RunWith(classOf[JUnitRunner])
 class IBMNodeJs10ActionCloudantTests extends IBMNodeJsActionCloudantTests {
-  override lazy val defaultKind = Some("nodejs:10")
+  override lazy val defaultKind = "nodejs:10"
 }
