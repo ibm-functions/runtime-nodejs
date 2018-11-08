@@ -33,9 +33,9 @@ class IBMNodeJsActionCloudantTests extends TestHelpers with WskTestHelpers with 
 
   it should s"""Test whether or not cloudant package is accessible within a $defaultKind action""" in withAssetCleaner(
     wskprops) { (wp, assetHelper) =>
-    val file = Some(new File(datdir, "testCloudantActionNoCreds.js").toString())
+    val file = Some(new File(datdir, "cloudant/testCloudantActionNoCreds.js").toString())
 
-    assetHelper.withCleaner(wsk.action, "cloudant/testCloudantActionNoCreds") { (action, _) =>
+    assetHelper.withCleaner(wsk.action, "testCloudantActionNoCreds") { (action, _) =>
       action.create("testCloudantActionNoCreds", file, main = Some("main"), kind = Some(defaultKind))
     }
 
