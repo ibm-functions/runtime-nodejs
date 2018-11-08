@@ -1,9 +1,9 @@
-var Cloudant = require("cloudant");
+var Cloudant = process.version.startsWith('v8.') ? require("cloudant") : require("@cloudant/cloudant")
 
 function main(args){
   var username = args.username;
   var password = args.password;
-  var dbName = "test_cloud_functions_nodejs_8_ibm_runtime"
+  var dbName = `test_cloud_functions_nodejs_${process.version}_ibm_runtime`
 
   //Configuration to use Cloudant
   var cloudant = Cloudant({account:username, password:password, plugin:'promises'});

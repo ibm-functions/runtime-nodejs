@@ -40,7 +40,7 @@ class IBMNodeJsActionWatsonTests extends TestHelpers with WskTestHelpers with Be
      discover object creates the expected object with the expected properties.
      */
 
-    val file = Some(new File(datdir, "testWatsonAction.js").toString())
+    val file = Some(new File(datdir, "watson/testWatsonAction.js").toString())
 
     assetHelper.withCleaner(wsk.action, "testWatsonAction") { (action, _) =>
       action.create(

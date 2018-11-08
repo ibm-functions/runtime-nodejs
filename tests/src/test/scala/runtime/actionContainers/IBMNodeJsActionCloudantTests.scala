@@ -35,7 +35,7 @@ class IBMNodeJsActionCloudantTests extends TestHelpers with WskTestHelpers with 
     wskprops) { (wp, assetHelper) =>
     val file = Some(new File(datdir, "testCloudantActionNoCreds.js").toString())
 
-    assetHelper.withCleaner(wsk.action, "testCloudantActionNoCreds") { (action, _) =>
+    assetHelper.withCleaner(wsk.action, "cloudant/testCloudantActionNoCreds") { (action, _) =>
       action.create("testCloudantActionNoCreds", file, main = Some("main"), kind = Some(defaultKind))
     }
 

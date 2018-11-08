@@ -33,7 +33,7 @@ class CredentialsIBMNodeJsActionCloudantTests extends TestHelpers with WskTestHe
 
   it should "Test whether or not cloudant database is reachable using cloudant npm module" in withAssetCleaner(wskprops) {
     (wp, assetHelper) =>
-      val file = Some(new File(datdir, "testCloudantAction.js").toString())
+      val file = Some(new File(datdir, "cloudant/testCloudantAction.js").toString())
 
       assetHelper.withCleaner(wsk.action, "testCloudantAction") { (action, _) =>
         action.create(
