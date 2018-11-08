@@ -28,34 +28,34 @@ import org.scalatest.BeforeAndAfterAll
 class IBMNodeJsActionWatsonTests extends TestHelpers with WskTestHelpers with BeforeAndAfterAll with WskActorSystem {
 
   implicit val wskprops: WskProps = WskProps()
-  var defaultKind = Some("nodejs:8")
+  var defaultKind = "nodejs:8"
   val wsk = new WskRestOperations
   val datdir = "tests/dat/"
 
-  it should "Test whether or not watson package is useable within a nodejs8 action" in withAssetCleaner(wskprops) {
-    (wp, assetHelper) =>
-      /*
+  it should s"""Test whether or not watson package is useable within a $defaultKind action""" in withAssetCleaner(
+    wskprops) { (wp, assetHelper) =>
+    /*
      Disclaimer : Does not Use / Connect to a watson service! Tests that the
      watson-developer-cloud npm package is useable by verifying creating a new
      discover object creates the expected object with the expected properties.
-       */
+     */
 
-      val file = Some(new File(datdir, "testWatsonAction.js").toString())
+    val file = Some(new File(datdir, "testWatsonAction.js").toString())
 
-      assetHelper.withCleaner(wsk.action, "testWatsonAction") { (action, _) =>
-        action.create(
-          "testWatsonAction",
-          file,
-          main = Some("main"),
-          kind = defaultKind,
-          parameters = Map("hostname" -> wskprops.apihost.toJson))
-      }
+    assetHelper.withCleaner(wsk.action, "testWatsonAction") { (action, _) =>
+      action.create(
+        "testWatsonAction",
+        file,
+        main = Some("main"),
+        kind = Some(defaultKind),
+        parameters = Map("hostname" -> wskprops.apihost.toJson))
+    }
 
-      withActivation(wsk.activation, wsk.action.invoke("testWatsonAction")) { activation =>
-        val response = activation.response
-        response.result.get.fields.get("error") shouldBe empty
-        response.result.get.fields.get("message") should be(Some(JsString("2017-08-01")))
-      }
+    withActivation(wsk.activation, wsk.action.invoke("testWatsonAction")) { activation =>
+      val response = activation.response
+      response.result.get.fields.get("error") shouldBe empty
+      response.result.get.fields.get("message") should be(Some(JsString("2017-08-01")))
+    }
 
   }
 

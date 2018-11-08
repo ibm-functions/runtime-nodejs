@@ -28,29 +28,30 @@ import org.scalatest.BeforeAndAfterAll
 class IBMNodeJsActionDB2Tests extends TestHelpers with WskTestHelpers with BeforeAndAfterAll with WskActorSystem {
 
   implicit val wskprops: WskProps = WskProps()
-  var defaultKind = Some("nodejs:8")
+  lazy val defaultKind = "nodejs:8"
   val wsk = new WskRestOperations
   val db2dir = "tests/dat/db2/"
   val db2containerName = "db2test"
 
-  it should "Test creation, get, and delete of a nodejs8 action" in withAssetCleaner(wskprops) { (wp, assetHelper) =>
-    val file = Some(new File(db2dir, "testdb2action.js").toString())
+  it should s"""Test creation, get, and delete of a $defaultKind action""" in withAssetCleaner(wskprops) {
+    (wp, assetHelper) =>
+      val file = Some(new File(db2dir, "testdb2action.js").toString())
 
-    assetHelper.withCleaner(wsk.action, "testdb2action") { (action, _) =>
-      action.create(
-        "testdb2action",
-        file,
-        main = Some("main"),
-        kind = defaultKind,
-        parameters = Map("hostname" -> wskprops.apihost.toJson))
-    }
+      assetHelper.withCleaner(wsk.action, "testdb2action") { (action, _) =>
+        action.create(
+          "testdb2action",
+          file,
+          main = Some("main"),
+          kind = Some(defaultKind),
+          parameters = Map("hostname" -> wskprops.apihost.toJson))
+      }
 
-    withActivation(wsk.activation, wsk.action.invoke("testdb2action")) { activation =>
-      val response = activation.response
-      response.result.get.fields.get("error") shouldBe empty
-      response.result.get.fields.get("message") should be(
-        Some(JsString("Tested db2 create, select, and delete of a table row.")))
-    }
+      withActivation(wsk.activation, wsk.action.invoke("testdb2action")) { activation =>
+        val response = activation.response
+        response.result.get.fields.get("error") shouldBe empty
+        response.result.get.fields.get("message") should be(
+          Some(JsString("Tested db2 create, select, and delete of a table row.")))
+      }
 
   }
 

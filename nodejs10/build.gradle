@@ -1,0 +1,14 @@
+ext.dockerImageName = 'action-nodejs-v10'
+apply from: '../gradle/docker.gradle'
+
+distDocker.dependsOn 'copyIAMClient'
+distDocker.finalizedBy('cleanup')
+
+task copyIAMClient(type: Copy) {
+    from '../iam-client'
+    into 'iam-client'
+}
+
+task cleanup(type: Delete) {
+    delete 'iam-client'
+}
