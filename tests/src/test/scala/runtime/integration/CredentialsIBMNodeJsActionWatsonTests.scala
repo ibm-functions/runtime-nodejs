@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package integration
+package runtime.integration
 
 import common.{TestHelpers, TestUtils, WskActorSystem, WskProps, WskTestHelpers}
 import common.rest.WskRestOperations
@@ -41,7 +41,7 @@ class CredentialsIBMNodeJsActionWatsonTests
     Uses Watson Translation Service to translate the word "Hello" in English, to "Hola" in Spanish.
    */
   it should "Test whether watson translate service is reachable" in withAssetCleaner(wskprops) { (wp, assetHelper) =>
-    val file = Some(new File(datdir, "testWatsonAction2.js").toString())
+    val file = Some(new File(datdir, "watson/testWatsonAction2.js").toString())
     assetHelper.withCleaner(wsk.action, "testWatsonAction2") { (action, _) =>
       action.create(
         "testWatsonAction2",

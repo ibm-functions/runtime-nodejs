@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package integration
+package runtime.integration
 
 import common.{TestHelpers, TestUtils, WskActorSystem, WskProps, WskTestHelpers}
 import common.rest.WskRestOperations
@@ -26,14 +26,14 @@ import spray.json._
 class CredentialsIBMNodeJsActionCloudantTests extends TestHelpers with WskTestHelpers with WskActorSystem {
 
   implicit val wskprops: WskProps = WskProps()
-  var defaultKind = Some("nodejs:8")
+  lazy val defaultKind = Some("nodejs:8")
   val wsk = new WskRestOperations
   val datdir = "tests/dat/"
   var creds = TestUtils.getVCAPcredentials("cloudantNoSQLDB")
 
   it should "Test whether or not cloudant database is reachable using cloudant npm module" in withAssetCleaner(wskprops) {
     (wp, assetHelper) =>
-      val file = Some(new File(datdir, "testCloudantAction.js").toString())
+      val file = Some(new File(datdir, "cloudant/testCloudantAction.js").toString())
 
       assetHelper.withCleaner(wsk.action, "testCloudantAction") { (action, _) =>
         action.create(

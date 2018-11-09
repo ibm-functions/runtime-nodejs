@@ -41,6 +41,11 @@ runtimes_manifest:
       image:
         name: "action-nodejs-v8"
       deprecated: false
+    - kind: "nodejs:10"
+      default: false
+      image:
+        name: "action-nodejs-v10"
+      deprecated: false
   blackboxes:
     - name: "dockerskeleton"
 

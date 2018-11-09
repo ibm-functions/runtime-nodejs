@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package integration
+package runtime.integration
 
 import common._
 import common.rest.WskRestOperations
@@ -27,7 +27,7 @@ import org.scalatest.BeforeAndAfterAll
 class CredentialsIBMNodeJsCOSTests extends TestHelpers with WskTestHelpers with BeforeAndAfterAll with WskActorSystem {
 
   implicit val wskprops: WskProps = WskProps()
-  var defaultKind = Some("nodejs:8")
+  lazy val defaultKind = Some("nodejs:8")
   val wsk = new WskRestOperations
   val datdir = "tests/dat/"
   val creds = TestUtils.getCredentials("cloud-object-storage")

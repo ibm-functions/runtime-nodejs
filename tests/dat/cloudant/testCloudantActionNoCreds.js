@@ -1,4 +1,4 @@
-var Cloudant = require("cloudant");
+var Cloudant = process.version.startsWith('v8.') ? require("cloudant") : require("@cloudant/cloudant")
 
 function main(args){
   var cloudant = Cloudant({account: "test", password: "test",plugin:'promises'})

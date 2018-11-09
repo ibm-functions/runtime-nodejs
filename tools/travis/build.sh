@@ -48,6 +48,4 @@ TERM=dumb ./gradlew \
 
 # Build runtime
 cd $ROOTDIR
-TERM=dumb ./gradlew \
-:nodejs8:distDocker \
--PdockerImagePrefix=${IMAGE_PREFIX}
+TERM=dumb ./gradlew distDocker -PdockerImagePrefix=${IMAGE_PREFIX}
