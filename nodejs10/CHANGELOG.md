@@ -1,5 +1,13 @@
 # IBM Functions NodeJS 10 Runtime Container
 
+## Migrating from `nodejs:8` to `nodejs:10`
+- The `ibm_db` npm package is not available in `nodejs:10`. The `ibm_db` currently doesn't support nodejs10, track progress in [issue ibmdb/node-ibm_db/issues/482](https://github.com/ibmdb/node-ibm_db/issues/482#issuecomment-436895541) expected on Dec. 7th 2018
+- The `cloudant` npm package is not available in `nodejs:10`, the package is deprecated, you need to use the official npm package [@cloudant/cloudant](https://www.npmjs.com/package/@cloudant/cloudant) when importing the nodejs module (i.e `require('@cloudant/cloudant')).
+- The `cradle` npm package is not available in `nodejs:10`.
+- The `log4js` npm package is not available in `nodejs10`. The `log4js` will be added onced the new major version `4.0.0` is released, to track use issue [log4js-node/issues/805](https://github.com/log4js-node/log4js-node/issues/805)
+- The `watson-developer-cloud` npm package is not availble in `nodejs:10`. The `watson-developer-cloud` will be added once the new major version `4.0.0` is released,to track progress on the new version in this [watson-developer-cloud/node-sdk/issues/780](https://github.com/watson-developer-cloud/node-sdk/issues/780)
+- The version of `superagent` npm package is `4.0.0-beta.5` and could potentially have braking changes as the `nodejs:10` picks up updates while in beta.
+
 # 1.0.0
 Initial release.
 This release doesn't include package `watson-developer-cloud` because it intends to include new major release `4.x` in the near future.
@@ -27,7 +35,7 @@ NPM Packages:
   - [formidable v1.2.1](https://www.npmjs.com/package/formidable) - A Node.js module for parsing form data, especially file uploads.
   - [glob v7.1.3](https://www.npmjs.com/package/glob) - Match files using the patterns the shell uses, like stars and stuff.
   - [gm v1.23.1](https://www.npmjs.com/package/gm) - GraphicsMagick and ImageMagick for Node.
-  - [ibm-cos-sdk v1.3.1](https://www.npmjs.com/package/ibm-cos-sdk) - {{site.data.keyword.cos_full}} SDK for Node.js
+  - [ibm-cos-sdk v1.3.2](https://www.npmjs.com/package/ibm-cos-sdk) - {{site.data.keyword.cos_full}} SDK for Node.js
   - [ibm_db v2.4.1](https://www.npmjs.com/package/ibm_db) - An asynchronous/synchronous interface for node.js to IBM DB2 and IBM Informix.
   - [ibmiotf v0.2.41](https://www.npmjs.com/package/ibmiotf) - The node.js client is used for simplifying the interaction with the IBM Watson Internet of Things Platform.
   - [iconv-lite v0.4.24](https://www.npmjs.com/package/iconv-lite) - Pure JS character encoding conversion
@@ -38,7 +46,7 @@ NPM Packages:
   - [marked v0.5.1](https://www.npmjs.com/package/marked) - A full-featured markdown parser and compiler, written in JavaScript. Built for speed.
   - [merge v1.2.1](https://www.npmjs.com/package/merge) - Merge multiple objects into one, optionally creating a new cloned object.
   - [moment v2.22.2](https://www.npmjs.com/package/moment) - A lightweight JavaScript date library for parsing, validating, manipulating, and formatting dates.
-  - [mongodb v3.1.8](https://www.npmjs.com/package/mongodb) - The official MongoDB driver for Node.js.
+  - [mongodb v3.1.9](https://www.npmjs.com/package/mongodb) - The official MongoDB driver for Node.js.
   - [mysql v2.16.0](https://www.npmjs.com/package/mysql) - This is a node.js driver for mysql.
   - [mustache v3.0.0](https://www.npmjs.com/package/mustache) - mustache.js is an implementation of the mustache template system in JavaScript.
   - [nano v7.0.1](https://www.npmjs.com/package/nano) - minimalistic couchdb driver for Node.js.
@@ -46,7 +54,7 @@ NPM Packages:
   - [oauth2-server v3.0.1](https://www.npmjs.com/package/oauth2-server) - Complete, compliant and well tested module for implementing an OAuth2 Server/Provider with express in Node.js.
   - [openwhisk v3.18.0](https://www.npmjs.com/package/openwhisk) - JavaScript client library for the OpenWhisk platform. Provides a wrapper around the OpenWhisk APIs.
   - [path-to-regex v2.4.0](https://www.npmjs.com/package/path-to-regexp) - Turn a path string such as /user/:name into a regular expression which can then be used to match against URL paths.
-  - [pg v7.6.0](https://www.npmjs.com/package/pg) - Non-blocking PostgreSQL client for node.js. Pure JavaScript and optional native libpq bindings.
+  - [pg v7.6.1](https://www.npmjs.com/package/pg) - Non-blocking PostgreSQL client for node.js. Pure JavaScript and optional native libpq bindings.
   - [process v0.11.10](https://www.npmjs.com/package/process) - require('process'); just like any other module.
   - [pug v2.0.3](https://www.npmjs.com/package/pug) - Implements the Pug templating language.
   - [redis v2.8.0](https://www.npmjs.com/package/redis) - This is a complete and feature rich Redis client for Node.js.
@@ -59,15 +67,15 @@ NPM Packages:
   - [serve-favicon v2.5.0](https://www.npmjs.com/package/serve-favicon) - Node.js middleware for serving a favicon.
   - [socket.io v2.1.1](https://www.npmjs.com/package/socket.io) - Socket.IO enables real-time bidirectional event-based communication.
   - [socket.io-client v2.1.1](https://www.npmjs.com/package/socket.io-client) - Realtime application framework for socket.io.
-  - [superagent v3.8.3](https://www.npmjs.com/package/superagent) - SuperAgent is a small progressive client-side HTTP request library, and Node.js module with the same API, sporting many high-level HTTP client features.
+  - [superagent v4.0.0-beta.5](https://www.npmjs.com/package/superagent) - SuperAgent is a small progressive client-side HTTP request library, and Node.js module with the same API, sporting many high-level HTTP client features.
   - [swagger-tools v0.10.4](https://www.npmjs.com/package/swagger-tools) - Package that provides various tools for integrating and interacting with Swagger.
   - [twilio v3.23.2](https://www.npmjs.com/package/twilio) - A wrapper for the Twilio API, related to voice, video, and messaging.
   - [underscore v1.9.1](https://www.npmjs.com/package/underscore) - Underscore.js is a utility-belt library for JavaScript that provides support for the usual functional suspects (each, map, reduce, filter...) without extending any core JavaScript objects.
   - [url-pattern v1.0.3](https://www.npmjs.com/package/url-pattern) - Parse URLs for path parameters more easily than from using a regex string matcher.
   - [uuid v3.3.2](https://www.npmjs.com/package/uuid) - Simple, fast generation of RFC4122 UUIDS.
-  - [validator v10.8.0](https://www.npmjs.com/package/validator) - A library of string validators and sanitizers.
+  - [validator v10.9.0](https://www.npmjs.com/package/validator) - A library of string validators and sanitizers.
   - [vcap_services v0.6.0](https://www.npmjs.com/package/vcap_services)Parse and return service credentials from VCAP_SERVICES environment variable that IBM Cloud provides.
- - [when v3.7.8](https://www.npmjs.com/package/when) - When.js is a rock solid, battle-tested Promises/A+ and when() implementation, including a complete ES6 Promise shim.
+  - [when v3.7.8](https://www.npmjs.com/package/when) - When.js is a rock solid, battle-tested Promises/A+ and when() implementation, including a complete ES6 Promise shim.
   - [winston v3.1.0](https://www.npmjs.com/package/winston) - A multi-transport async logging library for node.js. "CHILL WINSTON! ... I put it in the logs."
   - [ws v6.1.0](https://www.npmjs.com/package/ws) - ws is a simple to use, blazing fast, and thoroughly tested WebSocket client and server implementation.
   - [xml2js v0.4.19](https://www.npmjs.com/package/xml2js) - Simple XML to JavaScript object converter. It supports bi-directional conversion.
