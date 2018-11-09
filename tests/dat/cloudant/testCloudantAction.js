@@ -6,7 +6,9 @@ function main(args){
   var dbName = `test_cloud_functions_nodejs_${process.version}_ibm_runtime`
 
   //Configuration to use Cloudant
-  var cloudant = Cloudant({account:username, password:password, plugin:'promises'});
+  var config = {account:username, password:password}
+  config = process.version.startsWith('v8.') ? config.plugin='promises' : config.plugins=['promises']
+  var cloudant = Cloudant(config);
 
   var beforeAction = new Promise(function(resolve ,reject){
     cloudant.db.destroy(dbName)
