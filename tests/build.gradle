@@ -25,7 +25,7 @@ task testBlueCI(type: Test) {
   exclude '**/IBMNodeJsActionDB2Tests*'
 }
 task testBlueDeployment(type: Test) {
-  include 'integration/**'
+  include 'runtime/integration/**'
   include 'system/**'
 }
 
