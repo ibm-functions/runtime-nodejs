@@ -1,6 +1,6 @@
 {
   "name": "ibm-functions-runtime-nodejs-v8",
-  "version": "1.27.0",
+  "version": "1.28.0",
   "description": "IBM Functions",
   "repository": {
     "type": "git",
