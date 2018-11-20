@@ -2,7 +2,7 @@
 
 ## Migrating from `nodejs:8` to `nodejs:10`
 - The `ibm_db` npm package is not available in `nodejs:10`. The `ibm_db` currently doesn't support nodejs10, track progress in [issue ibmdb/node-ibm_db/issues/482](https://github.com/ibmdb/node-ibm_db/issues/482#issuecomment-436895541) expected on Dec. 7th 2018
-- The `cloudant` npm package is not available in `nodejs:10`, the package is deprecated, you need to use the official npm package [@cloudant/cloudant](https://www.npmjs.com/package/@cloudant/cloudant)v3.0.0 when importing the nodejs module (i.e `require('@cloudant/cloudant')) also the [v3.x only return Promises](https://github.com/cloudant/nodejs-cloudant/blob/master/api-migration.md#2x--3x).
+- The `cloudant` npm package is not available in `nodejs:10`, the package is deprecated, you need to use the official npm package [@cloudant/cloudant](https://www.npmjs.com/package/@cloudant/cloudant) v3.0.0 when importing the nodejs module (i.e `require('@cloudant/cloudant')) also the [v3.x only return Promises](https://github.com/cloudant/nodejs-cloudant/blob/master/api-migration.md#2x--3x).
 - The `cradle` npm package is not available in `nodejs:10`.
 - The `log4js` npm package is not available in `nodejs10`. The `log4js` will be added onced the new major version `4.0.0` is released, to track use issue [log4js-node/issues/805](https://github.com/log4js-node/log4js-node/issues/805)
 - The `watson-developer-cloud` npm package is not availble in `nodejs:10`. The `watson-developer-cloud` will be added once the new major version `4.0.0` is released,to track progress on the new version in this [watson-developer-cloud/node-sdk/issues/780](https://github.com/watson-developer-cloud/node-sdk/issues/780)
