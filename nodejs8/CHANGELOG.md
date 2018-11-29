@@ -2,6 +2,7 @@
 
 # 1.30.0
 Changes:
+  - nodejs from `8.12.0` to `8.14.0`
   - update pg  from `7.6.1` to `7.7.1`
   - update socket.io from `2.1.1` to `2.2.0`
   - update socket.io-client from `2.1.1` to `2.2.0`

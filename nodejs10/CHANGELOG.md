@@ -9,6 +9,7 @@
 
 # 1.3.0
 Changes:
+  - update nodejs from `10.13.0` to `10.14.0`
   - update @cloudant/cloudant  from `3.0.0` to `3.0.1`
   - update pg  from `7.6.1` to `7.7.1`
   - update socket.io from `2.1.1` to `2.2.0`
