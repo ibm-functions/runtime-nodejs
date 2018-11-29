@@ -7,6 +7,7 @@ Changes:
   - update socket.io from `2.1.1` to `2.2.0`
   - update socket.io-client from `2.1.1` to `2.2.0`
   - update watson-developer-cloud from `3.13.0` to `3.13.1`
+  - remove cradle package (not maintained and contains [vulnerability](https://nodesecurity.io/advisories/534))
 
 NodeJS version:
   - [8.14.0](https://nodejs.org/en/blog/release/v8.14.0)
@@ -25,7 +26,6 @@ NPM Packages:
   - [composeaddresstranslator v1.0.4](https://www.npmjs.com/package/composeaddresstranslator) - Address translator from Compose UI or API for Scylla databases.
   - [consul v0.34.1](https://www.npmjs.com/package/consul) - A client for Consul, involving service discovery and configuration.
   - [cookie-parser v1.4.3](https://www.npmjs.com/package/cookie-parser) - Parse Cookie header and populate req.cookies with an object keyed by the cookie names.
-  - [cradle v0.7.1](https://www.npmjs.com/package/cradle) - A high-level, caching, CouchDB client for Node.js.
   - [elasticsearch v15.2.0](https://www.npmjs.com/package/elasticsearch) - The official low-level Elasticsearch client for Node.js.
   - [errorhandler v1.5.0](https://www.npmjs.com/package/errorhandler) - Development-only error handler middleware.
   - [etcd3 v0.2.11](https://www.npmjs.com/package/etcd3) - A high-quality, production-ready client for the Protocol Buffer-based etcdv3 API.

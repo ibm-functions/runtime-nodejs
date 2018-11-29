@@ -23,7 +23,6 @@
     "composeaddresstranslator": "1.0.4",
     "consul": "0.34.1",
     "cookie-parser": "1.4.3",
-    "cradle": "0.7.1",
     "elasticsearch": "15.2.0",
     "errorhandler": "1.5.0",
     "etcd3": "0.2.11",
