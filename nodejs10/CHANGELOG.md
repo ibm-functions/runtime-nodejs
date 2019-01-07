@@ -16,6 +16,7 @@ Changes:
   - update superagent from `4.0.0` to `4.1.0`
   - update twilio from `3.25.0` to `3.26.1`
   - update validator from `10.9.0` to `10.10.0`
+  - add xlsx `0.14.1`
 
 NodeJS version:
   - [10.14.2](https://nodejs.org/en/blog/release/v10.14.2/)
@@ -82,6 +83,7 @@ NPM Packages:
   - [when v3.7.8](https://www.npmjs.com/package/when) - When.js is a rock solid, battle-tested Promises/A+ and when() implementation, including a complete ES6 Promise shim.
   - [winston v3.1.0](https://www.npmjs.com/package/winston) - A multi-transport async logging library for node.js. "CHILL WINSTON! ... I put it in the logs."
   - [ws v6.1.2](https://www.npmjs.com/package/ws) - ws is a simple to use, blazing fast, and thoroughly tested WebSocket client and server implementation.
+  - [xlsx v0.14.1](https://www.npmjs.com/package/xlsx) - Parser and writer for various spreadsheet formats.
   - [xml2js v0.4.19](https://www.npmjs.com/package/xml2js) - Simple XML to JavaScript object converter. It supports bi-directional conversion.
   - [xmlhttprequest v1.8.0](https://www.npmjs.com/package/xmlhttprequest) - node-XMLHttpRequest is a wrapper for the built-in http client to emulate the browser XMLHttpRequest object.
   - [yauzl v2.10.0](https://www.npmjs.com/package/yauzl) - yet another unzip library for node. For zipping.
