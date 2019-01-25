@@ -12,7 +12,7 @@ Changes:
 
 
 NodeJS version:
-  - [8.14.0](https://nodejs.org/en/blog/release/v8.14.0)
+  - [8.15.0](https://nodejs.org/en/blog/release/v8.15.0)
 
 NPM Packages:
   - [amqplib v0.5.3](https://www.npmjs.com/package/amqplib) - A library for making AMQP 0-9-1 clients for Node.JS.
