@@ -135,27 +135,49 @@ Then update the `whisk.properties` file located in the directory `$OPENWHISK_HOM
 ## Maintenance Tasks
 
 ### Updating Node.js 10 runtime
+- Get the version of the latest tag ibm image
+```
+VERSION=$(git tag | grep 10@ | tail -2 | head -1 | awk -F"@" '{print $2 }')
+```
+- Check the version of nodejs on the latest ibm image released
+```
+docker run --rm -it ibmfunctions/action-nodejs-v10:$VERSION sh -c "node -v"
+```
 - Check if there is a new version of the [Node.js LTS 10](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V10.md).
+```
+nvm ls-remote | grep v10.
+```
   - If there is a new version update the [OpenWhisk Node.js 10 Dockerfile](https://github.com/apache/incubator-openwhisk-runtime-nodejs/blob/master/core/nodejs10Action/Dockerfile#L18) and submit PR.
   - After PR is merged wait for Travis CI to build and push a new tag image for [openwhisk/action-nodejs-v10](https://hub.docker.com/r/openwhisk/action-nodejs-v10/tags)
   - Update the ibm image [nodejs10/Dockerfile](nodejs10/Dockerfile) FROM usign the new upstream tag
 - Check if there are new npm packages available
   - Use the latest released image to check the outdated npm packages
   ```
-  docker run --rm -it ibmfunctions/action-nodejs-v10:1.6.0 sh -c "cd / && npm outdated"
+  docker run --rm -it ibmfunctions/action-nodejs-v10:$VERSION sh -c "cd / && npm outdated"
   ```
   - Update [nodejs10/package.json](nodejs10/package.json)
   - Update [nodejs10/CHANGELOG.md](nodejs10/CHANGELOG.md)
 
 ### Updating Node.js 8 runtime
+- Get the version of the latest tag ibm image
+```
+VERSION=$(git tag | grep 8@ | tail -2 | head -1 | awk -F"@" '{print $2 }')
+```
+- Check the version of nodejs on the latest ibm image released
+```
+docker run --rm -it ibmfunctions/action-nodejs-v8:$VERSION sh -c "node -v"
+```
 - Check if there is a new version of the [Node.js LTS 8](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V8.md).
+```
+nvm ls-remote | grep v8.
+```
   - If there is a new version update the [OpenWhisk Node.js 8 Dockerfile](https://github.com/apache/incubator-openwhisk-runtime-nodejs/blob/master/core/nodejs8Action/Dockerfile#L18) and submit PR.
   - After PR is merged wait for Travis CI to build and push a new tag image for [openwhisk/action-nodejs-v8](https://hub.docker.com/r/openwhisk/action-nodejs-v8/tags)
   - Update the ibm image [nodejs8/Dockerfile](nodejs8/Dockerfile) FROM usign the new upstream tag
 - Check if there are new npm packages available
   - Use the latest released image to check the outdated npm packages
   ```
-  docker run --rm -it ibmfunctions/action-nodejs-v8:1.33.0 sh -c "cd / && npm outdated"
+  docker run --rm -it ibmfunctions/action-nodejs-v8:$VERSION sh -c "cd / && npm outdated"
   ```
   - Update [nodejs8/package.json](nodejs8/package.json) only minor and patch levels.
   - Update [nodejs8/CHANGELOG.md](nodejs8/CHANGELOG.md)
