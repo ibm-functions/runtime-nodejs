@@ -7,7 +7,7 @@
 
 # 1.7.0
 Changes:
-  - Add log4js `4.0.0`
+  - Add log4js `4.0.1`
   - update elasticsearch from `15.3.0` to `15.3.1`
   - update mongodb from `3.1.10` to `3.2.0`
   - update jsdom from `13.1.0` to `13.2.0`
@@ -15,6 +15,7 @@ Changes:
   - update mongodb from `3.1.12` to `3.1.13`
   - update nano from `7.1.1` to `8.0.0`
   - update ws from `6.1.2` to `6.1.3`
+  - update winston from `3.1.0` to `3.2.1`
 
 NodeJS version:
   - [10.15.0](https://nodejs.org/en/blog/release/v10.15.0/)
@@ -46,7 +47,7 @@ NPM Packages:
   - [jsforce v1.9.1](https://www.npmjs.com/package/jsforce)Salesforce API Library for JavaScript applications.
   - [jsonwebtoken v8.4.0](https://www.npmjs.com/package/jsonwebtoken) - An implementation of JSON Web Tokens.
   - [lodash v4.17.11](https://www.npmjs.com/package/lodash) - The Lodash library exported as Node.js modules.
-  - [log4js v4.0.0](https://www.npmjs.com/package/log4js) - This is a conversion of the log4js framework to work with Node.
+  - [log4js v4.0.1](https://www.npmjs.com/package/log4js) - This is a conversion of the log4js framework to work with Node.
   - [marked v0.6.0](https://www.npmjs.com/package/marked) - A full-featured markdown parser and compiler, written in JavaScript. Built for speed.
   - [merge v1.2.1](https://www.npmjs.com/package/merge) - Merge multiple objects into one, optionally creating a new cloned object.
   - [moment v2.24.0](https://www.npmjs.com/package/moment) - A lightweight JavaScript date library for parsing, validating, manipulating, and formatting dates.
@@ -80,7 +81,7 @@ NPM Packages:
   - [validator v10.11.0](https://www.npmjs.com/package/validator) - A library of string validators and sanitizers.
   - [vcap_services v0.6.0](https://www.npmjs.com/package/vcap_services)Parse and return service credentials from VCAP_SERVICES environment variable that IBM Cloud provides.
   - [when v3.7.8](https://www.npmjs.com/package/when) - When.js is a rock solid, battle-tested Promises/A+ and when() implementation, including a complete ES6 Promise shim.
-  - [winston v3.1.0](https://www.npmjs.com/package/winston) - A multi-transport async logging library for node.js. "CHILL WINSTON! ... I put it in the logs."
+  - [winston v3.2.1](https://www.npmjs.com/package/winston) - A multi-transport async logging library for node.js. "CHILL WINSTON! ... I put it in the logs."
   - [ws v6.1.3](https://www.npmjs.com/package/ws) - ws is a simple to use, blazing fast, and thoroughly tested WebSocket client and server implementation.
   - [xlsx v0.14.1](https://www.npmjs.com/package/xlsx) - Parser and writer for various spreadsheet formats.
   - [xml2js v0.4.19](https://www.npmjs.com/package/xml2js) - Simple XML to JavaScript object converter. It supports bi-directional conversion.
