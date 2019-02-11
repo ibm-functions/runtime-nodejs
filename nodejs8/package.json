@@ -72,7 +72,7 @@
     "uuid": "3.3.2",
     "validator": "10.11.0",
     "vcap_services": "0.6.0",
-    "watson-developer-cloud": "3.16.1",
+    "watson-developer-cloud": "3.18.0",
     "when": "3.7.8",
     "winston": "3.2.1",
     "ws": "6.1.3",
