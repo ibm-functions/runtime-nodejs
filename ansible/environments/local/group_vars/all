@@ -46,6 +46,13 @@ runtimes_manifest:
       image:
         name: "action-nodejs-v10"
       deprecated: false
+    swift:
+    - kind: "swift:4.2"
+      default: true
+      image:
+        name: "action-swift-v4.2"
+        prefix: "openwhisk"
+      deprecated: false
   blackboxes:
     - name: "dockerskeleton"
 
