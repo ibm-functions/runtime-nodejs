@@ -28,7 +28,7 @@ import org.scalatest.BeforeAndAfterAll
 class IBMNodeJsActionWatsonTests extends TestHelpers with WskTestHelpers with BeforeAndAfterAll with WskActorSystem {
 
   implicit val wskprops: WskProps = WskProps()
-  var defaultKind = "nodejs:8"
+  lazy val defaultKind = "nodejs:8"
   val wsk = new WskRestOperations
   val datdir = "tests/dat/"
 
@@ -54,7 +54,7 @@ class IBMNodeJsActionWatsonTests extends TestHelpers with WskTestHelpers with Be
     withActivation(wsk.activation, wsk.action.invoke("testWatsonAction")) { activation =>
       val response = activation.response
       response.result.get.fields.get("error") shouldBe empty
-      response.result.get.fields.get("message") should be(Some(JsString("2017-08-01")))
+      response.result.get.fields.get("message") should be(Some(JsString("2017-09-01")))
     }
 
   }
