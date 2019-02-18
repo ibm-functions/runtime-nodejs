@@ -15,15 +15,22 @@ function main(args){
     target: 'es'
   };
 
-  var promise = new Promise(function (resolve, reject) {
-    language_translator.translate(params, function(err, body){
-      if(err){
-        reject(err);
-      }
-      resolve(body);
-    });
+  var promise = {};
+  if(process.version.startsWith('v8.')){
+    promise = new Promise(function (resolve, reject) {
+      language_translator.translate(params, function(err, body){
+        if(err){
+          reject(err);
+        }
+        resolve(body);
+      });
 
-  });
+    });
+  } else {
+    // nodejs 10+ uses the watson sdk 4.x that supports promises
+    promise = language_translator.translate(params)
+  }
   return promise;
 
 }
+
