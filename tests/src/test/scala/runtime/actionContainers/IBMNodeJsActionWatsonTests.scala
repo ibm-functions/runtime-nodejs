@@ -54,7 +54,6 @@ class IBMNodeJsActionWatsonTests extends TestHelpers with WskTestHelpers with Be
     withActivation(wsk.activation, wsk.action.invoke("testWatsonAction")) { activation =>
       val response = activation.response
       response.result.get.fields.get("error") shouldBe empty
-      response.result.get.fields.get("message") should be(Some(JsString("2017-09-01")))
     }
 
   }
