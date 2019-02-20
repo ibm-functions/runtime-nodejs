@@ -7,7 +7,7 @@
 
 # 1.9.0
 Changes:
-  - add rc for watson-developer-cloud `4.0.0-rc1`
+  - add rc for watson-developer-cloud `4.0.0-rc2`
   - update request-promise from `4.2.2` to `4.2.4`
   - update ws from `6.1.3` to `6.1.4`
 
@@ -74,7 +74,7 @@ NPM Packages:
   - [uuid v3.3.2](https://www.npmjs.com/package/uuid) - Simple, fast generation of RFC4122 UUIDS.
   - [validator v10.11.0](https://www.npmjs.com/package/validator) - A library of string validators and sanitizers.
   - [vcap_services v0.6.0](https://www.npmjs.com/package/vcap_services)Parse and return service credentials from VCAP_SERVICES environment variable that IBM Cloud provides.
-  - [watson-developer-cloud v4.0.0-rc1](https://www.npmjs.com/package/watson-developer-cloud) - Node.js client library to use the Watson Developer Cloud services, a collection of APIs that use cognitive computing to solve complex problems.
+  - [watson-developer-cloud v4.0.0-rc2](https://www.npmjs.com/package/watson-developer-cloud) - Node.js client library to use the Watson Developer Cloud services, a collection of APIs that use cognitive computing to solve complex problems.
   - [when v3.7.8](https://www.npmjs.com/package/when) - When.js is a rock solid, battle-tested Promises/A+ and when() implementation, including a complete ES6 Promise shim.
   - [winston v3.2.1](https://www.npmjs.com/package/winston) - A multi-transport async logging library for node.js. "CHILL WINSTON! ... I put it in the logs."
   - [ws v6.1.4](https://www.npmjs.com/package/ws) - ws is a simple to use, blazing fast, and thoroughly tested WebSocket client and server implementation.
