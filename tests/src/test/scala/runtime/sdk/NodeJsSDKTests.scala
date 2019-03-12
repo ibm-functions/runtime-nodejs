@@ -20,6 +20,7 @@ import java.io.File
 import scala.concurrent.duration.DurationInt
 import scala.language.postfixOps
 import common._
+import org.apache.openwhisk.core.entity.WhiskAction
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import spray.json._
@@ -46,7 +47,11 @@ class NodeJsSDKTests extends TestHelpers with WskTestHelpers with WskActorSystem
 
     val actionName = "invokeAction"
     assetHelper.withCleaner(wsk.action, actionName) { (action, _) =>
-      action.create(name = actionName, artifact = file, kind = Some(actionKind))
+      action.create(
+        name = actionName,
+        artifact = file,
+        kind = Some(actionKind),
+        annotations = Map(WhiskAction.provideApiKeyAnnotationName -> JsBoolean(true)))
     }
     // invoke the action
     var params = Map("dummy" -> JsString("dummy"), "ignore_certs" -> JsBoolean(ignoreSSL))
@@ -79,7 +84,11 @@ class NodeJsSDKTests extends TestHelpers with WskTestHelpers with WskActorSystem
     // create a dummy action
     assetHelper.withCleaner(wsk.action, ruleActionName) { (action, name) =>
       val dummyFile = Some(new File(actionTypeDir, "hello.js").toString())
-      action.create(name, dummyFile, kind = Some(actionKind))
+      action.create(
+        name,
+        dummyFile,
+        kind = Some(actionKind),
+        annotations = Map(WhiskAction.provideApiKeyAnnotationName -> JsBoolean(true)))
     }
     // create a dummy rule
     assetHelper.withCleaner(wsk.rule, ruleName) { (rule, name) =>
@@ -90,7 +99,11 @@ class NodeJsSDKTests extends TestHelpers with WskTestHelpers with WskActorSystem
     val file = Some(new File(actionTypeDir, "trigger.js").toString())
     val actionName = "ActionThatTriggers"
     assetHelper.withCleaner(wsk.action, actionName) { (action, _) =>
-      action.create(name = actionName, file, kind = Some(actionKind))
+      action.create(
+        name = actionName,
+        file,
+        kind = Some(actionKind),
+        annotations = Map(WhiskAction.provideApiKeyAnnotationName -> JsBoolean(true)))
     }
 
     // invoke the action
@@ -123,7 +136,11 @@ class NodeJsSDKTests extends TestHelpers with WskTestHelpers with WskActorSystem
     assetHelper.withCleaner(wsk.action, actionName) { (action, _) =>
       assetHelper.withCleaner(wsk.trigger, triggerName) { (_, _) =>
         // using an asset cleaner on the created trigger name will clean it up at the conclusion of the test
-        action.create(name = actionName, file, kind = Some(actionKind))
+        action.create(
+          name = actionName,
+          file,
+          kind = Some(actionKind),
+          annotations = Map(WhiskAction.provideApiKeyAnnotationName -> JsBoolean(true)))
       }
     }
 
@@ -148,7 +165,11 @@ class NodeJsSDKTests extends TestHelpers with WskTestHelpers with WskActorSystem
     // create a dummy action and trigger for the rule
     assetHelper.withCleaner(wsk.action, ruleActionName) { (action, name) =>
       val dummyFile = Some(new File(actionTypeDir, "hello.js").toString())
-      action.create(name, dummyFile, kind = Some(actionKind))
+      action.create(
+        name,
+        dummyFile,
+        kind = Some(actionKind),
+        annotations = Map(WhiskAction.provideApiKeyAnnotationName -> JsBoolean(true)))
     }
 
     assetHelper.withCleaner(wsk.trigger, ruleTriggerName) { (trigger, name) =>
@@ -161,7 +182,11 @@ class NodeJsSDKTests extends TestHelpers with WskTestHelpers with WskActorSystem
     // create an action that creates the rule
     val createRuleFile = Some(new File(actionTypeDir, "createRule.js").toString())
     assetHelper.withCleaner(wsk.action, "ActionThatCreatesRule") { (action, name) =>
-      action.create(name, createRuleFile, kind = Some(actionKind))
+      action.create(
+        name,
+        createRuleFile,
+        kind = Some(actionKind),
+        annotations = Map(WhiskAction.provideApiKeyAnnotationName -> JsBoolean(true)))
     }
 
     // invoke the create rule action
