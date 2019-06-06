@@ -33,6 +33,7 @@
     "ibm-cos-sdk": "1.4.3",
     "ibm_db": "2.5.0",
     "ibmiotf": "0.2.41",
+    "ibm-watson": "4.1.2",
     "iconv-lite": "0.4.24",
     "jsdom": "13.2.0",
     "jsforce": "1.9.1",
@@ -78,6 +79,7 @@
     "xlsx": "0.14.1",
     "xml2js": "0.4.19",
     "xmlhttprequest": "1.8.0",
-    "yauzl": "2.10.0"
+    "yauzl": "2.10.0",
+    "yazl": "2.5.1"
   }
 }
