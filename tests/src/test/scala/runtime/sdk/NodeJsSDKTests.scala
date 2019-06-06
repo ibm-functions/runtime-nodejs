@@ -20,7 +20,7 @@ import java.io.File
 import scala.concurrent.duration.DurationInt
 import scala.language.postfixOps
 import common._
-import org.apache.openwhisk.core.entity.WhiskAction
+import org.apache.openwhisk.core.entity.Annotations
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import spray.json._
@@ -51,7 +51,7 @@ class NodeJsSDKTests extends TestHelpers with WskTestHelpers with WskActorSystem
         name = actionName,
         artifact = file,
         kind = Some(actionKind),
-        annotations = Map(WhiskAction.provideApiKeyAnnotationName -> JsBoolean(true)))
+        annotations = Map(Annotations.ProvideApiKeyAnnotationName -> JsBoolean(true)))
     }
     // invoke the action
     var params = Map("dummy" -> JsString("dummy"), "ignore_certs" -> JsBoolean(ignoreSSL))
@@ -88,7 +88,7 @@ class NodeJsSDKTests extends TestHelpers with WskTestHelpers with WskActorSystem
         name,
         dummyFile,
         kind = Some(actionKind),
-        annotations = Map(WhiskAction.provideApiKeyAnnotationName -> JsBoolean(true)))
+        annotations = Map(Annotations.ProvideApiKeyAnnotationName -> JsBoolean(true)))
     }
     // create a dummy rule
     assetHelper.withCleaner(wsk.rule, ruleName) { (rule, name) =>
@@ -103,7 +103,7 @@ class NodeJsSDKTests extends TestHelpers with WskTestHelpers with WskActorSystem
         name = actionName,
         file,
         kind = Some(actionKind),
-        annotations = Map(WhiskAction.provideApiKeyAnnotationName -> JsBoolean(true)))
+        annotations = Map(Annotations.ProvideApiKeyAnnotationName -> JsBoolean(true)))
     }
 
     // invoke the action
@@ -140,7 +140,7 @@ class NodeJsSDKTests extends TestHelpers with WskTestHelpers with WskActorSystem
           name = actionName,
           file,
           kind = Some(actionKind),
-          annotations = Map(WhiskAction.provideApiKeyAnnotationName -> JsBoolean(true)))
+          annotations = Map(Annotations.ProvideApiKeyAnnotationName -> JsBoolean(true)))
       }
     }
 
@@ -169,7 +169,7 @@ class NodeJsSDKTests extends TestHelpers with WskTestHelpers with WskActorSystem
         name,
         dummyFile,
         kind = Some(actionKind),
-        annotations = Map(WhiskAction.provideApiKeyAnnotationName -> JsBoolean(true)))
+        annotations = Map(Annotations.ProvideApiKeyAnnotationName -> JsBoolean(true)))
     }
 
     assetHelper.withCleaner(wsk.trigger, ruleTriggerName) { (trigger, name) =>
@@ -186,7 +186,7 @@ class NodeJsSDKTests extends TestHelpers with WskTestHelpers with WskActorSystem
         name,
         createRuleFile,
         kind = Some(actionKind),
-        annotations = Map(WhiskAction.provideApiKeyAnnotationName -> JsBoolean(true)))
+        annotations = Map(Annotations.ProvideApiKeyAnnotationName -> JsBoolean(true)))
     }
 
     // invoke the create rule action
