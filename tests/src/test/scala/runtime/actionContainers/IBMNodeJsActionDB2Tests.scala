@@ -62,9 +62,12 @@ class IBMNodeJsActionDB2Tests extends TestHelpers with WskTestHelpers with Befor
   Other exit codes are acceptable, for example 2 means that there was no active databases
   exitCode 4 = SQL1032N  No start database manager command was issued.
   exitCode 2 = SQL1611W  No data was returned by Database System Monitor.
+  exitCode 8 = SQL10007N Message "-1390" could not be retrieved.  Reason code: "3".
+  exitCode 126 = stat /database/config/db2inst1/sqllib/bin/db2: no such file or directory.
+  exitCode 127 = /database/config/db2inst1/sqllib/bin/db2: No such file or directory.
    */
   def sleepUntilContainerRunning() {
-    var counter = 5;
+    var counter = 48; // 48*5s=240s -> 4 minutes
     var running = false;
     do {
       counter = counter - 1
@@ -78,12 +81,11 @@ class IBMNodeJsActionDB2Tests extends TestHelpers with WskTestHelpers with Befor
           "--user",
           "db2inst1",
           db2containerName,
-          "/home/db2inst1/sqllib/bin/db2",
-          "list",
-          "active",
-          "databases")
+          "bash",
+          "-c",
+          ". /database/config/db2inst1/.bashrc && db2 list active databases")
 
-      if (isdb2Running.exitCode == 4) {
+      if ((isdb2Running.exitCode != 0) && (isdb2Running.exitCode != 2)) {
         Thread.sleep(5000)
       } else {
         running = true;
@@ -105,13 +107,15 @@ class IBMNodeJsActionDB2Tests extends TestHelpers with WskTestHelpers with Befor
       "-p",
       "50000:50000",
       "-e",
+      "DB2INSTANCE=db2inst1",
+      "-e",
       "DB2INST1_PASSWORD=db2inst1-pwd",
       "-e",
       "LICENSE=accept",
+      "--privileged=true",
       "--name",
       db2containerName,
-      "ibmcom/db2express-c",
-      "db2start")
+      "ibmcom/db2")
 
     sleepUntilContainerRunning()
 
@@ -122,7 +126,7 @@ class IBMNodeJsActionDB2Tests extends TestHelpers with WskTestHelpers with Befor
       "docker",
       "cp",
       db2dir + "setup.sql",
-      db2containerName + ":/home/db2inst1/setup.sql")
+      db2containerName + ":/database/config/db2inst1/setup.sql")
     println("Creating db2 database, might take up to 5 minutes")
     TestUtils.runCmd(
       0,
@@ -133,9 +137,9 @@ class IBMNodeJsActionDB2Tests extends TestHelpers with WskTestHelpers with Befor
       "--user",
       "db2inst1",
       db2containerName,
-      "/home/db2inst1/sqllib/bin/db2",
-      "-tvf",
-      "/home/db2inst1/setup.sql")
+      "bash",
+      "-c",
+      ". /database/config/db2inst1/.bashrc && db2 -tvf /database/config/db2inst1/setup.sql")
   }
 
   override def afterAll() {
