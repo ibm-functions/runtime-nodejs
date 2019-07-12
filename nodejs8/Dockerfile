@@ -1,4 +1,4 @@
-FROM openwhisk/action-nodejs-v8:14d2af8
+FROM openwhisk/action-nodejs-v8:b2007fb
 COPY ./package.json /
 RUN cd / && npm install --production \
     && npm cache clean --force
