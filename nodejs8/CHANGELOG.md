@@ -1,5 +1,12 @@
 # IBM Functions NodeJS 8 Runtime Container
 
+# 1.40.0
+Changes:
+  - update to a newer nodejs version to catch fixes
+
+NodeJS version:
+  - [8.16.1](https://nodejs.org/en/blog/release/v8.16.1)
+
 # 1.39.0
 Changes:
   - update to a newer base image to catch fixes
