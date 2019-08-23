@@ -5,6 +5,13 @@
 - The `watson-developer-cloud` npm package available in `nodejs:10` is version 4.x. This version includes support for Promises. [A list of the changes made is documented](https://github.com/watson-developer-cloud/node-sdk/blob/master/UPGRADE-4.0.md).
 - The `ibm-watson` npm package available in `nodejs:10` is version 4.x. This package is the successor of package `watson-developer-cloud`. Upgrade your action code to this new package, since the former will not receive updates anymore. This version includes support for Promises. [A list of the changes made is documented](https://github.com/watson-developer-cloud/node-sdk/blob/master/UPGRADE-4.0.md).
 
+# 1.13.0
+Changes:
+  - update to a newer nodejs version to catch fixes
+
+NodeJS version:
+  - [10.16.3](https://nodejs.org/en/blog/release/v10.16.3)
+
 # 1.12.0
 Changes:
   - update to a newer base image to catch fixes
