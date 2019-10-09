@@ -15,12 +15,13 @@
  */
 package runtime.integration
 
-import common.{TestHelpers, TestUtils, WskActorSystem, WskProps, WskTestHelpers}
+import common.{TestHelpers, WhiskProperties, WskActorSystem, WskProps, WskTestHelpers}
 import common.rest.WskRestOperations
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import java.io.File
 import spray.json._
+import scala.io.Source
 import org.scalatest.BeforeAndAfterAll
 
 @RunWith(classOf[JUnitRunner])
@@ -35,7 +36,15 @@ class CredentialsIBMNodeJsActionWatsonTests
   val wsk = new WskRestOperations
   val datdir = "tests/dat/"
 
-  var creds = TestUtils.getVCAPcredentials("language_translator")
+  // read credentials from from vcap_services.json
+  val vcapFile = WhiskProperties.getProperty("vcap.services.file")
+  val vcapString = Source.fromFile(vcapFile).getLines.mkString
+  val vcapInfo =
+    JsonParser(ParserInput(vcapString)).asJsObject.fields("language_translator").asInstanceOf[JsArray].elements(0)
+  val creds = vcapInfo.asJsObject.fields("credentials").asJsObject
+  val url = creds.fields("url").asInstanceOf[JsString]
+  val username = creds.fields("username").asInstanceOf[JsString]
+  val password = creds.fields("password").asInstanceOf[JsString]
 
   /*
     Uses Watson Translation Service to translate the word "Hello" in English, to "Hola" in Spanish.
@@ -48,11 +57,8 @@ class CredentialsIBMNodeJsActionWatsonTests
         file,
         main = Some("main"),
         kind = defaultKind,
-        parameters = Map(
-          "version" -> JsString("2018-05-01"),
-          "url" -> JsString(creds.get("url")),
-          "username" -> JsString(creds.get("username")),
-          "password" -> JsString(creds.get("password"))))
+        parameters =
+          Map("version" -> JsString("2018-05-01"), "url" -> url, "username" -> username, "password" -> password))
     }
 
     withActivation(wsk.activation, wsk.action.invoke("testWatsonAction2")) { activation =>

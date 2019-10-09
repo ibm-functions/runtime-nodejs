@@ -15,12 +15,13 @@
  */
 package runtime.integration
 
-import common.{TestHelpers, TestUtils, WskActorSystem, WskProps, WskTestHelpers}
+import common.{TestHelpers, WhiskProperties, WskActorSystem, WskProps, WskTestHelpers}
 import common.rest.WskRestOperations
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import java.io.File
 import spray.json._
+import scala.io.Source
 
 @RunWith(classOf[JUnitRunner])
 class CredentialsIBMNodeJsActionCloudantTests extends TestHelpers with WskTestHelpers with WskActorSystem {
@@ -29,7 +30,15 @@ class CredentialsIBMNodeJsActionCloudantTests extends TestHelpers with WskTestHe
   lazy val defaultKind = Some("nodejs:8")
   val wsk = new WskRestOperations
   val datdir = "tests/dat/"
-  var creds = TestUtils.getVCAPcredentials("cloudantNoSQLDB")
+
+  // read credentials from from vcap_services.json
+  val vcapFile = WhiskProperties.getProperty("vcap.services.file")
+  val vcapString = Source.fromFile(vcapFile).getLines.mkString
+  val vcapInfo =
+    JsonParser(ParserInput(vcapString)).asJsObject.fields("cloudantNoSQLDB").asInstanceOf[JsArray].elements(0)
+  val creds = vcapInfo.asJsObject.fields("credentials").asJsObject
+  val username = creds.fields("username").asInstanceOf[JsString]
+  val password = creds.fields("password").asInstanceOf[JsString]
 
   it should "Test whether or not cloudant database is reachable using cloudant npm module" in withAssetCleaner(wskprops) {
     (wp, assetHelper) =>
@@ -41,7 +50,7 @@ class CredentialsIBMNodeJsActionCloudantTests extends TestHelpers with WskTestHe
           file,
           main = Some("main"),
           kind = defaultKind,
-          parameters = Map("username" -> JsString(creds.get("username")), "password" -> JsString(creds.get("password"))))
+          parameters = Map("username" -> username, "password" -> password))
       }
 
       withActivation(wsk.activation, wsk.action.invoke("testCloudantAction")) { activation =>
