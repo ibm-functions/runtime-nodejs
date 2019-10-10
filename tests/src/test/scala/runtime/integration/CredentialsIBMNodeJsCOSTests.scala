@@ -21,6 +21,7 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import java.io.File
 import spray.json._
+import scala.io.Source
 import org.scalatest.BeforeAndAfterAll
 
 @RunWith(classOf[JUnitRunner])
@@ -30,13 +31,20 @@ class CredentialsIBMNodeJsCOSTests extends TestHelpers with WskTestHelpers with 
   lazy val defaultKind = Some("nodejs:8")
   val wsk = new WskRestOperations
   val datdir = "tests/dat/"
-  val creds = TestUtils.getCredentials("cloud-object-storage")
-  val apikey = creds.get("apikey").getAsString()
-  var resource_instance_id = creds.get("resource_instance_id").getAsString()
+
+  // read credentials from from vcap_services.json
+  val vcapFile = WhiskProperties.getProperty("vcap.services.file")
+  val vcapString = Source.fromFile(vcapFile).getLines.mkString
+  val vcapInfo =
+    JsonParser(ParserInput(vcapString)).asJsObject.fields("cloud-object-storage").asInstanceOf[JsArray].elements(0)
+  val creds = vcapInfo.asJsObject.fields("credentials").asJsObject
+
+  val apikey = creds.fields("apikey").asInstanceOf[JsString]
+
+  var resource_instance_id = creds.fields("resource_instance_id").asInstanceOf[JsString]
+
   val __bx_creds = JsObject(
-    "cloud-object-storage" -> JsObject(
-      "apikey" -> JsString(apikey),
-      "resource_instance_id" -> JsString(resource_instance_id)))
+    "cloud-object-storage" -> JsObject("apikey" -> apikey, "resource_instance_id" -> resource_instance_id))
 
   it should "Test connection to Cloud Object Storage COS on IBM Cloud" in withAssetCleaner(wskprops) {
     (wp, assetHelper) =>
