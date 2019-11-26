@@ -1,6 +1,6 @@
 {
   "name": "ibm-functions-runtime-nodejs-v10",
-  "version": "1.11.0",
+  "version": "1.14.0",
   "description": "IBM Functions",
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
     "marked": "0.6.2",
     "merge": "1.2.1",
     "moment": "2.24.0",
-    "mongodb": "3.1.13",
+    "mongodb": "3.3.4",
     "mustache": "3.0.1",
     "mysql": "2.16.0",
     "nano": "8.0.0",
