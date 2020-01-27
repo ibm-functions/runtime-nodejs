@@ -43,8 +43,7 @@ class CredentialsIBMNodeJsActionWatsonTests
     JsonParser(ParserInput(vcapString)).asJsObject.fields("language_translator").asInstanceOf[JsArray].elements(0)
   val creds = vcapInfo.asJsObject.fields("credentials").asJsObject
   val url = creds.fields("url").asInstanceOf[JsString]
-  val username = creds.fields("username").asInstanceOf[JsString]
-  val password = creds.fields("password").asInstanceOf[JsString]
+  val apikey = creds.fields("apikey").asInstanceOf[JsString]
 
   /*
     Uses Watson Translation Service to translate the word "Hello" in English, to "Hola" in Spanish.
@@ -57,8 +56,11 @@ class CredentialsIBMNodeJsActionWatsonTests
         file,
         main = Some("main"),
         kind = defaultKind,
-        parameters =
-          Map("version" -> JsString("2018-05-01"), "url" -> url, "username" -> username, "password" -> password))
+        parameters = Map(
+          "version" -> JsString("2018-05-01"),
+          "url" -> url,
+          "username" -> JsString("APIKey"),
+          "password" -> apikey))
     }
 
     withActivation(wsk.activation, wsk.action.invoke("testWatsonAction2")) { activation =>
