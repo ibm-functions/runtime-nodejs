@@ -2,6 +2,7 @@ include 'tests'
 
 include 'nodejs8'
 include 'nodejs10'
+include 'nodejs12'
 
 rootProject.name = 'runtime-nodejs-ibm'
 

@@ -3,7 +3,8 @@
 [![Build Status](https://travis-ci.org/ibm-functions/runtime-nodejs.svg?branch=master)](https://travis-ci.org/ibm-functions/runtime-nodejs)
 
 - The runtime provides [nodejs v8](nodejs8/) with a set of [npm packages](nodejs8/package.json) see [nodejs8/CHANGELOG.md](nodejs8/CHANGELOG.md)
-- The runtime provides [nodejs v10](nodejs10/) with a set of [npm packages](nodejs10/package.json) see [nodejs8/CHANGELOG.md](nodejs10/CHANGELOG.md)
+- The runtime provides [nodejs v10](nodejs10/) with a set of [npm packages](nodejs10/package.json) see [nodejs10/CHANGELOG.md](nodejs10/CHANGELOG.md)
+- The runtime provides [nodejs v12](nodejs12/) with a set of [npm packages](nodejs12/package.json) see [nodejs12/CHANGELOG.md](nodejs12/CHANGELOG.md)
 
 
 The runtime provides the following npm packages for [IBM Cloud](https://bluemix.net):
@@ -12,19 +13,18 @@ The runtime provides the following npm packages for [IBM Cloud](https://bluemix.
 - IBM Watson Cloud [watson-developer-cloud](https://www.npmjs.com/package/watson-developer-cloud)
 - IBM Cloud Object Storage [ibm-cos-sdk](https://www.npmjs.com/package/ibm-cos-sdk)
 
-*Note: Nodejs10 runtime does not include Watson npm package yet, this will be added soon.
 
 ### How to use as a docker Action
 To use as a docker action
 ```
-bx wsk action update myAction myAction.js --docker ibmfunctions/action-nodejs-ibm-v10
+ibmcloud wsk action update myAction myAction.js --docker ibmfunctions/action-nodejs-ibm-v10
 ```
 This works on any deployment of Apache OpenWhisk or IBM Cloud Functions
 
 ### Future: IBM Cloud Functions (based on Apache OpenWhisk)
 To use as a nodejs kind action
 ```
-bx wsk action update myAction myAction --kind nodejs:10
+ibmcloud wsk action update myAction myAction --kind nodejs:10
 ```
 Tip: Not available yet in the IBM Cloud
 
@@ -42,6 +42,12 @@ To build the `nodejs:10` runtime:
 ./gradlew nodejs10:distDocker
 ```
 This will produce the image `whisk/action-nodejs-ibm-v10`
+
+To build the `nodejs:12` runtime:
+```
+./gradlew nodejs12:distDocker
+```
+This will produce the image `whisk/action-nodejs-ibm-v12`
 
 
 Build and Push image
@@ -105,8 +111,7 @@ you need to set up a tests/credentials.json file containing Watson credentials i
     {
       "credentials": {
         "url": "",
-        "password": "",
-        "username": ""
+        "apikey": ""
       }
     }
   ],
@@ -127,12 +132,45 @@ you need to set up a tests/credentials.json file containing Watson credentials i
           "ssldsn": "DATABASE=BLUDB;HOSTNAME=<hostname_value>;PORT=50001;PROTOCOL=TCPIP;UID=<username_value>;PWD=<password_value>;Security=SSL;"
         }
       }
-    ]
+  ],
+  "cloud-object-storage":[
+      {
+        "credentials": {
+          "resource_instance_id": "",
+          "apikey": ""
+        }
+      }
+  ],
+
 }
 ```
 Then update the `whisk.properties` file located in the directory `$OPENWHISK_HOME`, using the variable `vcap.services.file`
 
 ## Maintenance Tasks
+
+### Updating Node.js 12 runtime
+- Get the version of the latest tag ibm image
+```
+VERSION=$(git tag | grep 12@ | tail -2 | head -1 | awk -F"@" '{print $2 }')
+```
+- Check the version of nodejs on the latest ibm image released
+```
+docker run --rm -it ibmfunctions/action-nodejs-v12:$VERSION sh -c "node -v"
+```
+- Check if there is a new version of the [Node.js LTS 12](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V12.md).
+```
+nvm ls-remote | grep v12.
+```
+  - If there is a new version update the [OpenWhisk Node.js 12 Dockerfile](https://github.com/apache/openwhisk-runtime-nodejs/blob/master/core/nodejs12Action/Dockerfile#L18) and submit PR.
+  - After PR is merged wait for Travis CI to build and push a new tag image for [openwhisk/action-nodejs-v12](https://hub.docker.com/r/openwhisk/action-nodejs-v12/tags)
+  - Update the ibm image [nodejs12/Dockerfile](nodejs10/Dockerfile) FROM usign the new upstream tag
+- Check if there are new npm packages available
+  - Use the latest released image to check the outdated npm packages
+  ```
+  docker run --rm -it ibmfunctions/action-nodejs-v12:$VERSION sh -c "cd / && npm outdated"
+  ```
+  - Update [nodejs12/package.json](nodejs12/package.json)
+  - Update [nodejs12/CHANGELOG.md](nodejs12/CHANGELOG.md)
 
 ### Updating Node.js 10 runtime
 - Get the version of the latest tag ibm image
@@ -147,7 +185,7 @@ docker run --rm -it ibmfunctions/action-nodejs-v10:$VERSION sh -c "node -v"
 ```
 nvm ls-remote | grep v10.
 ```
-  - If there is a new version update the [OpenWhisk Node.js 10 Dockerfile](https://github.com/apache/incubator-openwhisk-runtime-nodejs/blob/master/core/nodejs10Action/Dockerfile#L18) and submit PR.
+  - If there is a new version update the [OpenWhisk Node.js 10 Dockerfile](https://github.com/apache/openwhisk-runtime-nodejs/blob/master/core/nodejs10Action/Dockerfile#L18) and submit PR.
   - After PR is merged wait for Travis CI to build and push a new tag image for [openwhisk/action-nodejs-v10](https://hub.docker.com/r/openwhisk/action-nodejs-v10/tags)
   - Update the ibm image [nodejs10/Dockerfile](nodejs10/Dockerfile) FROM usign the new upstream tag
 - Check if there are new npm packages available
@@ -171,7 +209,7 @@ docker run --rm -it ibmfunctions/action-nodejs-v8:$VERSION sh -c "node -v"
 ```
 nvm ls-remote | grep v8.
 ```
-  - If there is a new version update the [OpenWhisk Node.js 8 Dockerfile](https://github.com/apache/incubator-openwhisk-runtime-nodejs/blob/master/core/nodejs8Action/Dockerfile#L18) and submit PR.
+  - If there is a new version update the [OpenWhisk Node.js 8 Dockerfile](https://github.com/apache/openwhisk-runtime-nodejs/blob/master/core/nodejs8Action/Dockerfile#L18) and submit PR.
   - After PR is merged wait for Travis CI to build and push a new tag image for [openwhisk/action-nodejs-v8](https://hub.docker.com/r/openwhisk/action-nodejs-v8/tags)
   - Update the ibm image [nodejs8/Dockerfile](nodejs8/Dockerfile) FROM usign the new upstream tag
 - Check if there are new npm packages available

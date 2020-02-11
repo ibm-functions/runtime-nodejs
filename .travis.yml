@@ -30,7 +30,7 @@ deploy:
       all_branches: true
       repo: ibm-functions/runtime-nodejs
   - provider: script
-    script: "./tools/travis/publish.sh ibmfunctions 8 master && ./tools/travis/publish.sh ibmfunctions 10 master "
+    script: "./tools/travis/publish.sh ibmfunctions 8 master && ./tools/travis/publish.sh ibmfunctions 10 master && ./tools/travis/publish.sh ibmfunctions 12 master "
     on:
       branch: master
       repo: ibm-functions/runtime-nodejs
