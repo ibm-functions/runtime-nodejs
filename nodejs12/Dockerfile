@@ -1,7 +1,6 @@
-FROM openwhisk/action-nodejs-v12:3d237e1
+FROM openwhisk/action-nodejs-v12:3e843c0
 
 COPY ./package.json /
-COPY iam-client/iam-openwhisk-main.js /node_modules/openwhisk/lib/
 
 RUN apt-get update \
     # Update some installed packages to get security fixes.
@@ -19,3 +18,5 @@ RUN apt-get update \
     && rm -rf /root/.cache/node-gyp \
     # Replace default openwhisk main with an iam enabled version.
     && sed -i.bak 's/lib\/main.js/lib\/iam-openwhisk-main.js/' /node_modules/openwhisk/package.json
+
+COPY iam-client/iam-openwhisk-main.js /node_modules/openwhisk/lib/
