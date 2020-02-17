@@ -7,7 +7,7 @@
 Initial release.
 
 NodeJS version:
-  - [12.14.1](https://nodejs.org/en/blog/release/v12.14.1/)
+  - [12.15.0](https://nodejs.org/en/blog/release/v12.15.0/)
 
 NPM version:
   - [6.13.4](https://github.com/npm/cli/releases/tag/v6.13.4)
