@@ -2,6 +2,7 @@
 
 ## Migrating from `nodejs:10` to `nodejs:12`
   - The ibm-watson sdk version moved to 5.x. It includes a number of breaking changes. See https://github.com/watson-developer-cloud/node-sdk/blob/HEAD/MIGRATION-V5.md for details.
+  - The `ibmiotf` package is renamed to `@wiotp/sdk`. See https://www.npmjs.com/package/@wiotp/sdk for all changes.
 
 # 1.0.0
 Initial release.
@@ -16,6 +17,7 @@ NPM Packages:
   - [@cloudant/cloudant v4.2.3](https://www.npmjs.com/package/@cloudant/cloudant) - This is the official Cloudant library for Node.js.
   - [@ibm-functions/iam-token-manager v1.0.4](https://www.npmjs.com/package/@ibm-functions/iam-token-manager) - This is an IAM access token manager library for Node.js.
   - [@sendgrid/mail v6.5.2](https://www.npmjs.com/package/@sendgrid/mail) - Provides email support via the SendGrid API.
+  - [@wiotp/sdk v0.6.2](https://www.npmjs.com/package/@wiotp/sdk) - IBM Watson IoT Platform Javascript SDK.
   - [amqplib v0.5.5](https://www.npmjs.com/package/amqplib) - A library for making AMQP 0-9-1 clients for Node.JS.
   - [apn v2.2.0](https://www.npmjs.com/package/apn) - A Node.js module for interfacing with the Apple Push Notification service.
   - [async v3.1.1](https://www.npmjs.com/package/async) - Provides functions for working with asynchronous functions.
@@ -40,7 +42,6 @@ NPM Packages:
   - [gm v1.23.1](https://www.npmjs.com/package/gm) - GraphicsMagick and ImageMagick for Node.
   - [ibm-cos-sdk v1.6.0](https://www.npmjs.com/package/ibm-cos-sdk) - {{site.data.keyword.cos_full}} SDK for Node.js
   - [ibm_db v2.6.3](https://www.npmjs.com/package/ibm_db) - An asynchronous/synchronous interface for node.js to IBM DB2 and IBM Informix.
-  - [ibmiotf v0.2.41](https://www.npmjs.com/package/ibmiotf) - The node.js client is used for simplifying the interaction with the IBM Watson Internet of Things Platform.
   - [ibm-watson v5.3.1](https://www.npmjs.com/package/ibm-watson) - A node.js client library to use the Watson APIs.
   - [iconv-lite v0.5.1](https://www.npmjs.com/package/iconv-lite) - Pure JS character encoding conversion.
   - [jest v25.1.0](https://www.npmjs.com/package/jest) - Delightful JavaScript Testing.
