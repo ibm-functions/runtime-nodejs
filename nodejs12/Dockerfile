@@ -4,7 +4,7 @@ COPY ./package.json /
 
 RUN apt-get update \
     # Update some installed packages to get security fixes.
-    && apt-get install -y --no-install-recommends e2fsprogs file git openssl subversion \
+    && apt-get install -y --no-install-recommends curl e2fsprogs file git openssl subversion \
     # Cleanup apt data, we do not need them later on.
     && rm -rf /var/lib/apt/lists/* \
     # We do not have mysql-server installed but mysql-common contains config files (/etc/mysql/my.cnf) for it.
