@@ -1,8 +1,8 @@
 FROM openwhisk/action-nodejs-v8:3e843c0
 COPY ./package.json /
 RUN apt-get update \
-    # Update some installed packages to get security fixes.
-    && apt-get install -y --no-install-recommends curl \
+    # Upgrade installed packages to get latest security fixes if the base image does not contain them already.
+    && apt-get upgrade -y --no-install-recommends \
     # Cleanup apt data, we do not need them later on.
     && rm -rf /var/lib/apt/lists/* \
     # Start adding/updating npm packages.
