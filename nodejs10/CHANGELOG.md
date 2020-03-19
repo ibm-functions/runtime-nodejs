@@ -7,6 +7,12 @@
 - The `ibm-watson` npm package available in `nodejs:10` is version 4.x. This package is the successor of package `watson-developer-cloud`. Upgrade your action code to this new package, since the former will not receive updates anymore. This version includes support for Promises. [A list of the changes made is documented](https://github.com/watson-developer-cloud/node-sdk/blob/master/UPGRADE-4.0.md).
 - The package `ibmiotf` has been renamed by the maintainers to `@wiotp/sdk`. Make sure to update your action code to the new package. See https://www.npmjs.com/package/@wiotp/sdk for all changes. The package `ibmiotf` will not receive updates anymore and will be removed from this runtime in the future.
 
+
+# 1.15.1
+Changes:
+  - Catch latest security fixes with each build.
+
+
 # 1.15.0
 Changes:
   - update to a newer base image to catch security fixes

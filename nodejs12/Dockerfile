@@ -3,8 +3,8 @@ FROM openwhisk/action-nodejs-v12:7aca443
 COPY ./package.json /
 
 RUN apt-get update \
-    # Update some installed packages to get security fixes.
-    && apt-get install -y --no-install-recommends curl e2fsprogs file git openssl subversion \
+    # Upgrade installed packages to get latest security fixes if the base image does not contain them already.
+    && apt-get upgrade -y --no-install-recommends \
     # Cleanup apt data, we do not need them later on.
     && rm -rf /var/lib/apt/lists/* \
     # We do not have mysql-server installed but mysql-common contains config files (/etc/mysql/my.cnf) for it.
