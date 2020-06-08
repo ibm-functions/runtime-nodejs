@@ -9,6 +9,10 @@
 - The `cradle` NPM package is not available in nodejs:10.
 
 
+# 1.15.2
+NodeJS version:
+  - [10.21.0](https://nodejs.org/en/blog/release/v10.21.0)
+
 # 1.15.1
 Changes:
   - Catch latest security fixes with each build.
