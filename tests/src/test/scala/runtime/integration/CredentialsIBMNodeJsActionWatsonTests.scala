@@ -67,7 +67,7 @@ class CredentialsIBMNodeJsActionWatsonTests
       val response = activation.response
       response.result.get.fields.get("error") shouldBe empty
       response.result.get.fields.get("translations") should be(
-        Some(JsArray(JsObject("translation" -> JsString("Hola")))))
+        Some(JsArray(JsObject("translation" -> JsString("hola")))))
     }
 
   }
