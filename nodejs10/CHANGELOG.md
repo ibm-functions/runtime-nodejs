@@ -19,10 +19,12 @@ Changes:
   - update glob from `7.1.4` to `7.1.6`
   - update ibm_db from `2.6.3` to `2.7.0`
   - update lodash from `4.17.13` to `4.17.15`
-  - update oauth2-server from `0.5.3` to `0.5.6`
+  - update oauth2-server from `3.0.1` to `3.0.2`
+  - update openwhisk from `3.19.0` to `3.21.2`
   - update request-promise from `4.2.4` to `4.2.5`
   - update socket.io from `2.2.0` to `2.3.0`
   - update socket.io-client from `2.2.0` to `2.3.0`
+  - downgrade uuid from `3.3.2` to `3.3.0` to match version required by the parent image
   - update vcap_services from `0.7.0` to `0.7.1`
   - update xml2js from `0.4.19` to `0.4.23`
 
@@ -72,7 +74,7 @@ NPM Packages:
   - [nano v8.0.0](https://www.npmjs.com/package/nano) - minimalistic couchdb driver for Node.js.
   - [nodemailer v5.1.1](https://www.npmjs.com/package/nodemailer) - Send e-mails from Node.js – easy as cake!
   - [oauth2-server v3.0.2](https://www.npmjs.com/package/oauth2-server) - Complete, compliant and well tested module for implementing an OAuth2 Server/Provider with express in Node.js.
-  - [openwhisk v3.19.0](https://www.npmjs.com/package/openwhisk) - JavaScript client library for the OpenWhisk platform. Provides a wrapper around the OpenWhisk APIs.
+  - [openwhisk v3.21.2](https://www.npmjs.com/package/openwhisk) - JavaScript client library for the OpenWhisk platform. Provides a wrapper around the OpenWhisk APIs.
   - [path-to-regex v3.0.0](https://www.npmjs.com/package/path-to-regexp) - Turn a path string such as /user/:name into a regular expression which can then be used to match against URL paths.
   - [pg v7.11.0](https://www.npmjs.com/package/pg) - Non-blocking PostgreSQL client for node.js. Pure JavaScript and optional native libpq bindings.
   - [process v0.11.10](https://www.npmjs.com/package/process) - require('process'); just like any other module.
@@ -92,7 +94,7 @@ NPM Packages:
   - [twilio v3.28.0](https://www.npmjs.com/package/twilio) - A wrapper for the Twilio API, related to voice, video, and messaging.
   - [underscore v1.9.1](https://www.npmjs.com/package/underscore) - Underscore.js is a utility-belt library for JavaScript that provides support for the usual functional suspects (each, map, reduce, filter...) without extending any core JavaScript objects.
   - [url-pattern v1.0.3](https://www.npmjs.com/package/url-pattern) - Parse URLs for path parameters more easily than from using a regex string matcher.
-  - [uuid v3.3.2](https://www.npmjs.com/package/uuid) - Simple, fast generation of RFC4122 UUIDS.
+  - [uuid v3.3.0](https://www.npmjs.com/package/uuid) - Simple, fast generation of RFC4122 UUIDS.
   - [validator v10.11.0](https://www.npmjs.com/package/validator) - A library of string validators and sanitizers.
   - [vcap_services v0.7.1](https://www.npmjs.com/package/vcap_services)Parse and return service credentials from VCAP_SERVICES environment variable that IBM Cloud provides.
   - [watson-developer-cloud v4.0.0-rc2](https://www.npmjs.com/package/watson-developer-cloud) - Node.js client library to use the Watson Developer Cloud services, a collection of APIs that use cognitive computing to solve complex problems.
