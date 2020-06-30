@@ -50,8 +50,8 @@ NPM Packages:
   - [elasticsearch v15.4.1](https://www.npmjs.com/package/elasticsearch) - The official low-level Elasticsearch client for Node.js.
   - [errorhandler v1.5.1](https://www.npmjs.com/package/errorhandler) - Development-only error handler middleware.
   - [etcd3 v0.2.13](https://www.npmjs.com/package/etcd3) - A high-quality, production-ready client for the Protocol Buffer-based etcdv3 API.
-  - [express v4.16.4] (https://www.npmjs.com/package/express) - Fast, unopinionated, minimalist web framework for node.
-  - [express-session v1.15.6] (https://www.npmjs.com/package/express-session) - Managing sessions for express.
+  - [express v4.16.4](https://www.npmjs.com/package/express) - Fast, unopinionated, minimalist web framework for node.
+  - [express-session v1.15.6](https://www.npmjs.com/package/express-session) - Managing sessions for express.
   - [formidable v1.2.2](https://www.npmjs.com/package/formidable) - A Node.js module for parsing form data, especially file uploads.
   - [glob v7.1.6](https://www.npmjs.com/package/glob) - Match files using the patterns the shell uses, like stars and stuff.
   - [gm v1.23.1](https://www.npmjs.com/package/gm) - GraphicsMagick and ImageMagick for Node.
