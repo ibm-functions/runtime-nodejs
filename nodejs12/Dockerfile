@@ -1,4 +1,4 @@
-FROM openwhisk/action-nodejs-v12:240ada7
+FROM openwhisk/action-nodejs-v12:f3aaa44
 
 COPY ./package.json /
 
@@ -13,6 +13,17 @@ RUN apt-get update \
     # Start adding/updating npm packages.
     && cd / \
     && npm install --production \
+    # Check if the base runtime packages required by /nodejsAction/package.json are still available.
+    # In case this step fails, the package versions required by the /nodejsAction/package.json
+    # do not match the versions in /package.json. The /package.json versions need to contain the same
+    # versions as in /nodejsAction/package.json, otherwise the runtime can fail. Adjust the values in
+    # /packages.json to the values in /nodejsAction/package.json.
+    # To do the check, we try to install /nodejsAction/package.json with the --dry-run option (only check
+    # what would happen, no real install). When the install tries to GET (install) packages, we know,
+    # something is missing and that should not be the case!
+    && echo "\nCheck if the packages required by the parent image provided '/nodejsAction/package.json' are installed...\n" \
+    && npm install ./nodejsAction/ --dry-run -verbose 2>&1 | ( ! grep "npm http fetch GET") \
+    && echo "Done, the packages required by '/nodejsAction/package.json' are installed.\n" \
     # Do some cleanup of not used npm install artifacts.
     && npm cache clean --force \
     && rm -rf /root/.cache/node-gyp \
