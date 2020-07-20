@@ -3,6 +3,7 @@
 ## Migrating from `nodejs:10` to `nodejs:12`
   - The ibm-watson sdk version moved to 5.x. It includes a number of breaking changes. See https://github.com/watson-developer-cloud/node-sdk/blob/HEAD/MIGRATION-V5.md for details.
   - The `ibmiotf` package is renamed to `@wiotp/sdk`. See https://www.npmjs.com/package/@wiotp/sdk for all changes.
+  - The `request` package is deprecated and therefore not available in this runtime.
 
 # 1.0.0
 Initial release.
@@ -11,7 +12,7 @@ NodeJS version:
   - [12.18.2](https://nodejs.org/en/blog/release/v12.18.2/)
 
 NPM version:
-  - [6.13.4](https://github.com/npm/cli/releases/tag/v6.13.4)
+  - [6.14.5](https://github.com/npm/cli/releases/tag/v6.14.5)
 
 NPM Packages:
   - [@cloudant/cloudant v4.2.3](https://www.npmjs.com/package/@cloudant/cloudant) - This is the official Cloudant library for Node.js.
@@ -65,7 +66,6 @@ NPM Packages:
   - [process v0.11.10](https://www.npmjs.com/package/process) - require('process'); just like any other module.
   - [pug v2.0.4](https://www.npmjs.com/package/pug) - Implements the Pug templating language.
   - [redis v2.8.0](https://www.npmjs.com/package/redis) - This is a complete and feature rich Redis client for Node.js.
-  - [request v2.88.0](https://www.npmjs.com/package/request) - Request is designed to be the simplest way possible to make HTTP calls.
   - [request-promise v4.2.5](https://www.npmjs.com/package/request-promise) - The simplified HTTP request client 'request' with Promise support. Powered by Bluebird.
   - [rimraf v3.0.2](https://www.npmjs.com/package/rimraf) - The UNIX command rm -rf for node.
   - [semver v7.1.2](https://www.npmjs.com/package/semver) - Semantic Versioning for Nodejs
