@@ -18,7 +18,7 @@ Changes:
   - update formidable from `1.2.1` to `1.2.2`
   - update glob from `7.1.4` to `7.1.6`
   - update ibm_db from `2.6.3` to `2.7.0`
-  - update lodash from `4.17.13` to `4.17.15`
+  - update lodash from `4.17.13` to `4.17.19`
   - update oauth2-server from `3.0.1` to `3.0.2`
   - update openwhisk from `3.19.0` to `3.21.2`
   - update request-promise from `4.2.4` to `4.2.5`
@@ -63,7 +63,7 @@ NPM Packages:
   - [jsdom v13.2.0](https://www.npmjs.com/package/jsdom) - jsdom is a pure-JavaScript implementation of many web standards, notably the WHATWG DOM and HTML Standards.
   - [jsforce v1.9.3](https://www.npmjs.com/package/jsforce)Salesforce API Library for JavaScript applications.
   - [jsonwebtoken v8.5.1](https://www.npmjs.com/package/jsonwebtoken) - An implementation of JSON Web Tokens.
-  - [lodash v4.17.15](https://www.npmjs.com/package/lodash) - The Lodash library exported as Node.js modules.
+  - [lodash v4.17.19](https://www.npmjs.com/package/lodash) - The Lodash library exported as Node.js modules.
   - [log4js v4.0.2](https://www.npmjs.com/package/log4js) - This is a conversion of the log4js framework to work with Node.
   - [marked v0.6.2](https://www.npmjs.com/package/marked) - A full-featured markdown parser and compiler, written in JavaScript. Built for speed.
   - [merge v1.2.1](https://www.npmjs.com/package/merge) - Merge multiple objects into one, optionally creating a new cloned object.

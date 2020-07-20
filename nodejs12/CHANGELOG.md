@@ -48,7 +48,7 @@ NPM Packages:
   - [jsdom v16.1.0](https://www.npmjs.com/package/jsdom) - jsdom is a pure-JavaScript implementation of many web standards, notably the WHATWG DOM and HTML Standards.
   - [jsforce v1.9.3](https://www.npmjs.com/package/jsforce)Salesforce API Library for JavaScript applications.
   - [jsonwebtoken v8.5.1](https://www.npmjs.com/package/jsonwebtoken) - An implementation of JSON Web Tokens.
-  - [lodash v4.17.15](https://www.npmjs.com/package/lodash) - The Lodash library exported as Node.js modules.
+  - [lodash v4.17.19](https://www.npmjs.com/package/lodash) - The Lodash library exported as Node.js modules.
   - [log4js v6.1.2](https://www.npmjs.com/package/log4js) - This is a conversion of the log4js framework to work with node.
   - [marked v0.8.0](https://www.npmjs.com/package/marked) - A full-featured markdown parser and compiler, written in JavaScript. Built for speed.
   - [merge v1.2.1](https://www.npmjs.com/package/merge) - Merge multiple objects into one, optionally creating a new cloned object.
