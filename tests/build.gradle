@@ -28,8 +28,8 @@ task testBlueCI(type: Test) {
 task testBlueDeployment(type: Test) {
   include 'runtime/integration/**'
   include 'runtime/sdk/**'
-  // BlueDeployment does not contain nodejs12, yet. Therefore we exclude all NodeJs12 tests.
-  exclude '**/*NodeJs12*'
+  // To exlude tests from the BlueDeployment, place them here. See sample to exclude all NodeJs12 tests, below.
+  // exclude '**/*NodeJs12*'
 }
 
 dependencies {
