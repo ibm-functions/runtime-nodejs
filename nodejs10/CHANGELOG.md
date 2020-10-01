@@ -8,7 +8,10 @@
 - The package `ibmiotf` has been renamed by the maintainers to `@wiotp/sdk`. Make sure to update your action code to the new package. See https://www.npmjs.com/package/@wiotp/sdk for all changes. The package `ibmiotf` will not receive updates anymore and will be removed from this runtime in the future.
 - The `cradle` NPM package is not available in nodejs:10.
 
-
+# 1.16.1
+NodeJS version:
+  - [10.22.1](https://nodejs.org/en/blog/release/v10.22.1)
+  
 # 1.16.0
 Changes:
   - update to a newer base image to catch security fixes
