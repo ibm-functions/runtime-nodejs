@@ -7,7 +7,7 @@
 
 # 1.0.2
 NodeJS version:
-  - [12.19.1](https://nodejs.org/en/blog/release/v12.19/)
+  - [12.19.1](https://nodejs.org/en/blog/release/v12.19.1/)
 
 # 1.0.1
 NodeJS version:
