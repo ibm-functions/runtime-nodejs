@@ -9,6 +9,9 @@
 - The `cradle` NPM package is not available in nodejs:10.
 
 # 1.16.2
+Changes:
+ - update openwhisk from `3.21.2` to `3.21.3`
+
 NodeJS version:
   - [10.23.0](https://nodejs.org/en/blog/release/v10.23.0)
 
