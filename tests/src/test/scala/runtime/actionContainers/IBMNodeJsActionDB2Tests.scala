@@ -104,6 +104,10 @@ class IBMNodeJsActionDB2Tests extends TestHelpers with WskTestHelpers with Befor
       "docker",
       "run",
       "-d",
+      "--cap-add",
+      "IPC_LOCK",
+      "--cap-add",
+      "IPC_OWNER",
       "-p",
       "50000:50000",
       "-e",
@@ -112,7 +116,6 @@ class IBMNodeJsActionDB2Tests extends TestHelpers with WskTestHelpers with Befor
       "DB2INST1_PASSWORD=db2inst1-pwd",
       "-e",
       "LICENSE=accept",
-      "--privileged=true",
       "--name",
       db2containerName,
       "ibmcom/db2")
