@@ -1,5 +1,5 @@
 
-FROM openwhisk/action-nodejs-v12:5a34ace
+FROM openwhisk/action-nodejs-v12:14195a8
 
 COPY ./package.json /
 
