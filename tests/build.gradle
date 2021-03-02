@@ -28,8 +28,16 @@ task testBlueCI(type: Test) {
 task testBlueDeployment(type: Test) {
   include 'runtime/integration/**'
   include 'runtime/sdk/**'
+
   // To exlude tests from the BlueDeployment, place them here. See sample to exclude all NodeJs12 tests, below.
   // exclude '**/*NodeJs12*'
+
+  // Exclude the nodejs:8 specific tests as this runtime is deprecated.
+  exclude '**/*IBMNodeJsActionCloudant*'
+  exclude '**/*IBMNodeJsActionWatson*'
+  exclude '**/*IBMNodeJsCOS*'
+  exclude '**/*IBMNodeJsDb2Cloud*'
+  exclude '**/*NodeJsSDK*'
 }
 
 dependencies {
