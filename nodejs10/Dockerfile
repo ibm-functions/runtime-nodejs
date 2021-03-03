@@ -1,4 +1,4 @@
-FROM openwhisk/action-nodejs-v10:14195a8
+FROM openwhisk/action-nodejs-v10:5a87b7f
 
 COPY ./package.json /
 
