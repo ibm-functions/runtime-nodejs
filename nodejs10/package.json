@@ -1,6 +1,6 @@
 {
   "name": "ibm-functions-runtime-nodejs-v10",
-  "version": "1.16.1",
+  "version": "1.17.0",
   "description": "IBM Functions",
   "repository": {
     "type": "git",
@@ -9,7 +9,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@cloudant/cloudant": "3.0.2",
-    "@ibm-functions/iam-token-manager": "1.0.4",
+    "@ibm-functions/iam-token-manager": "1.0.5",
     "@sendgrid/mail": "6.3.1",
     "@wiotp/sdk": "0.6.2",
     "amqplib": "0.5.6",
@@ -31,8 +31,8 @@
     "formidable": "1.2.2",
     "glob": "7.1.6",
     "gm": "1.23.1",
-    "ibm-cos-sdk": "1.5.0",
-    "ibm_db": "2.7.0",
+    "ibm-cos-sdk": "1.10.0",
+    "ibm_db": "2.7.3",
     "ibmiotf": "0.2.41",
     "ibm-watson": "4.2.1",
     "iconv-lite": "0.4.24",
@@ -62,8 +62,8 @@
     "semver": "5.6.0",
     "serialize-error": "3.0.0",
     "serve-favicon": "2.5.0",
-    "socket.io": "2.3.0",
-    "socket.io-client": "2.3.0",
+    "socket.io": "2.4.1",
+    "socket.io-client": "2.4.0",
     "superagent": "4.1.0",
     "swagger-tools": "0.10.4",
     "tmp": "0.0.33",
