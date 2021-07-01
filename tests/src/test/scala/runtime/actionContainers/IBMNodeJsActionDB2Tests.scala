@@ -67,7 +67,7 @@ class IBMNodeJsActionDB2Tests extends TestHelpers with WskTestHelpers with Befor
   exitCode 127 = /database/config/db2inst1/sqllib/bin/db2: No such file or directory.
    */
   def sleepUntilContainerRunning() {
-    var counter = 48; // 48*5s=240s -> 4 minutes
+    var counter = 48; // 48*10s=480s -> 8 minutes
     var running = false;
     do {
       counter = counter - 1
@@ -86,9 +86,11 @@ class IBMNodeJsActionDB2Tests extends TestHelpers with WskTestHelpers with Befor
           ". /database/config/db2inst1/.bashrc && db2 list active databases")
 
       if ((isdb2Running.exitCode != 0) && (isdb2Running.exitCode != 2)) {
-        Thread.sleep(5000)
+        Thread.sleep(10000)
+        println("Wait some more time...")
       } else {
         running = true;
+        println("Database seems to be up, now.")
       }
     } while (counter > 0 && running == false);
   }
@@ -98,6 +100,7 @@ class IBMNodeJsActionDB2Tests extends TestHelpers with WskTestHelpers with Befor
 
     TestUtils.runCmd(TestUtils.DONTCARE_EXIT, new File("."), "docker", "kill", db2containerName)
     TestUtils.runCmd(TestUtils.DONTCARE_EXIT, new File("."), "docker", "rm", db2containerName)
+    println("Creating local db2 instance, might take up to 5 minutes...")
     TestUtils.runCmd(
       0,
       new File("."),
@@ -118,7 +121,7 @@ class IBMNodeJsActionDB2Tests extends TestHelpers with WskTestHelpers with Befor
       "LICENSE=accept",
       "--name",
       db2containerName,
-      "ibmcom/db2")
+      "ibmcom/db2:11.5.5.1")
 
     sleepUntilContainerRunning()
 
@@ -130,7 +133,7 @@ class IBMNodeJsActionDB2Tests extends TestHelpers with WskTestHelpers with Befor
       "cp",
       db2dir + "setup.sql",
       db2containerName + ":/database/config/db2inst1/setup.sql")
-    println("Creating db2 database, might take up to 5 minutes")
+    println("Creating db2 database, might take up to 5 minutes.")
     TestUtils.runCmd(
       0,
       new File("."),
