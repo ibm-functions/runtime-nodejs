@@ -56,7 +56,7 @@
     "needle": "2.5.0",
     "nodemailer": "6.4.10",
     "oauth2-server": "3.0.2",
-    "openwhisk": "3.21.3",
+    "openwhisk": "3.21.4",
     "path-to-regexp": "6.1.0",
     "pg": "8.2.1",
     "process": "0.11.10",
