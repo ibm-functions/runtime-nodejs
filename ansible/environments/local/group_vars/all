@@ -55,5 +55,3 @@ runtimes_manifest:
       deprecated: false
   blackboxes:
     - name: "dockerskeleton"
-
-controller_protocol: "http"
