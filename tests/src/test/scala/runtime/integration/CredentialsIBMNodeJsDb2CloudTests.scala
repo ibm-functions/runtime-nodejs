@@ -32,7 +32,7 @@ class CredentialsIBMNodeJsDb2CloudTests
     with WskActorSystem {
 
   implicit val wskprops: WskProps = WskProps()
-  lazy val defaultKind = Some("nodejs:8")
+  lazy val defaultKind = Some("nodejs:14")
   val wsk = new WskRestOperations
   val datdir = "tests/dat/"
 

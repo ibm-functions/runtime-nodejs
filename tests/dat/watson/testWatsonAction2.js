@@ -1,10 +1,10 @@
 // get the runtime version we are running in
 const runtime_version=process.version;
 
-// For the nodejs12 runtime we use the ibm-watson package. On the earlier
+// For the nodejs12 runtime (and later) we use the ibm-watson package. On the earlier
 // runtime versions we use the watson-developer-cloud package.
-var LanguageTranslatorV3 = runtime_version.startsWith('v12.') ? require("ibm-watson/language-translator/v3")
-                                                              : require("watson-developer-cloud/language-translator/v3")
+var LanguageTranslatorV3 = runtime_version.startsWith('v10.') ? require("watson-developer-cloud/language-translator/v3")
+                                                              : require("ibm-watson/language-translator/v3")
 
 /*
 Args in the form of:
@@ -18,8 +18,8 @@ function main(args){
 
   // setup options for a language translator service
   var options={};
-  if (runtime_version.startsWith('v12.')) {
-     // the watson sdk 5+ in the nodejs12 runtime requires authenticators
+  if (!runtime_version.startsWith('v10.')) {
+     // the watson sdk 5+ in the nodejs12 runtime (and later) requires authenticators
      const { BasicAuthenticator } = require('ibm-watson/auth');
      options= {
        authenticator: new BasicAuthenticator({ username: args.username, password: args.password }),
@@ -27,7 +27,7 @@ function main(args){
        version: args.version
      };
   } else {
-     // for watson sdk below 5.0 we just pass the arguments 
+     // for watson sdk below 5.0 we just pass the arguments
      options= args;
   }
 

@@ -28,7 +28,7 @@ import org.scalatest.BeforeAndAfterAll
 class IBMNodeJsActionWatsonTests extends TestHelpers with WskTestHelpers with BeforeAndAfterAll with WskActorSystem {
 
   implicit val wskprops: WskProps = WskProps()
-  lazy val defaultKind = "nodejs:8"
+  lazy val defaultKind = "nodejs:14"
   val wsk = new WskRestOperations
   val datdir = "tests/dat/"
 

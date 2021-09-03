@@ -32,7 +32,7 @@ class NodeJsSDKTests extends TestHelpers with WskTestHelpers with WskActorSystem
   implicit val wskprops = WskProps()
   val wsk = new Wsk
   val activationPollDuration = 2.minutes
-  lazy val actionKind = "nodejs:8"
+  lazy val actionKind = "nodejs:14"
   lazy val actionTypeDir: String = "tests/dat/sdk/"
   val controllerHost = WhiskProperties.getBaseControllerHost()
   val controllerPort = WhiskProperties.getControllerBasePort()

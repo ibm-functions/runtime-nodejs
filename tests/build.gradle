@@ -32,7 +32,7 @@ task testBlueDeployment(type: Test) {
   // To exlude tests from the BlueDeployment, place them here. See sample to exclude all NodeJs12 tests, below.
   // exclude '**/*NodeJs12*'
 
-  // Exclude the nodejs:8 specific tests as this runtime is deprecated.
+  // Exclude the nodejs:14 specific tests as this runtime is not available, yet.
   exclude '**/*IBMNodeJsActionCloudant*'
   exclude '**/*IBMNodeJsActionWatson*'
   exclude '**/*IBMNodeJsCOS*'
