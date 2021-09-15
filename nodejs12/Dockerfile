@@ -13,6 +13,8 @@ RUN apt-get update \
     && echo "\n[mysqld]\nssl-ca=/tmp/ca.pem\nssl-cert=/tmp/server-cert.pem\nssl-key=/tmp/server-key.pem\n" >> /etc/mysql/my.cnf \
     # Start adding/updating npm packages.
     && cd / \
+    # Installing latest version of npm for latest security fixes
+    && npm -g install npm@latest \
     && npm install --production \
     # Check if the base runtime packages required by /nodejsAction/package.json are still available.
     # In case this step fails, the package versions required by the /nodejsAction/package.json
