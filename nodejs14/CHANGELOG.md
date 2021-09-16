@@ -8,10 +8,10 @@
 Alpha release (changes can happen at any time).
 
 NodeJS version:
-  - [14.17.5](https://nodejs.org/en/blog/release/v14.17.5/)
+  - [14.17.6](https://nodejs.org/en/blog/release/v14.17.6/)
 
 NPM version:
-  - [6.14.5](https://github.com/npm/cli/releases/tag/v6.14.5)
+  - [6.14.15](https://github.com/npm/cli/releases/tag/v6.14.15)
 
 NPM Packages:
   - [@cloudant/cloudant v4.3.1](https://www.npmjs.com/package/@cloudant/cloudant) - This is the official Cloudant library for Node.js.
