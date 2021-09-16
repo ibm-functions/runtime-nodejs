@@ -27,7 +27,7 @@ import scala.io.Source
 class CredentialsIBMNodeJsActionCloudantTests extends TestHelpers with WskTestHelpers with WskActorSystem {
 
   implicit val wskprops: WskProps = WskProps()
-  lazy val defaultKind = Some("nodejs:8")
+  lazy val defaultKind = Some("nodejs:14")
   val wsk = new WskRestOperations
   val datdir = "tests/dat/"
 

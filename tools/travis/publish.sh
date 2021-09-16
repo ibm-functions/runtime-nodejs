@@ -14,12 +14,12 @@ IMAGE_PREFIX=$1
 RUNTIME_VERSION=$2
 IMAGE_TAG=$3
 
-if [ ${RUNTIME_VERSION} == "8" ]; then
-  RUNTIME="nodejs8"
-elif [ ${RUNTIME_VERSION} == "10" ]; then
+if [ ${RUNTIME_VERSION} == "10" ]; then
   RUNTIME="nodejs10"
 elif [ ${RUNTIME_VERSION} == "12" ]; then
   RUNTIME="nodejs12"
+elif [ ${RUNTIME_VERSION} == "14" ]; then
+  RUNTIME="nodejs14"
 fi
 
 if [[ ! -z ${DOCKER_USER} ]] && [[ ! -z ${DOCKER_PASSWORD} ]]; then

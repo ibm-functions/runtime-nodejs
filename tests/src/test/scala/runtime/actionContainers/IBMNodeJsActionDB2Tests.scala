@@ -28,7 +28,7 @@ import org.scalatest.BeforeAndAfterAll
 class IBMNodeJsActionDB2Tests extends TestHelpers with WskTestHelpers with BeforeAndAfterAll with WskActorSystem {
 
   implicit val wskprops: WskProps = WskProps()
-  lazy val defaultKind = "nodejs:8"
+  lazy val defaultKind = "nodejs:14"
   val wsk = new WskRestOperations
   val db2dir = "tests/dat/db2/"
   val db2containerName = "db2test"
