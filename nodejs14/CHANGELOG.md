@@ -8,7 +8,7 @@
 Alpha release (changes can happen at any time).
 
 NodeJS version:
-  - [14.17.6](https://nodejs.org/en/blog/release/v14.17.6/)
+  - [14.18.1](https://nodejs.org/en/blog/release/v14.18.1/)
 
 NPM version:
   - [6.14.15](https://github.com/npm/cli/releases/tag/v6.14.15)

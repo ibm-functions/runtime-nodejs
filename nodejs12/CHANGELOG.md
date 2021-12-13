@@ -5,6 +5,13 @@
   - The `ibmiotf` package is renamed to `@wiotp/sdk`. See https://www.npmjs.com/package/@wiotp/sdk for all changes.
   - The `request` package is deprecated and therefore not available in this runtime.
 
+# 1.1.5
+Changes:
+  - update to nodejs 12.22.7
+
+NodeJS version:
+  - [12.22.7](https://nodejs.org/en/blog/release/v12.22.7/)
+
 # 1.1.4
 Changes:
   - update to nodejs 12.22.6
