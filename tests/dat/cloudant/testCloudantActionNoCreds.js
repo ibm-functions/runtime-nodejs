@@ -1,11 +1,30 @@
-var Cloudant = process.version.startsWith('v8.') ? require("cloudant") : require("@cloudant/cloudant")
+if (process.version.startsWith('v8.')) {
+  var Cloudant = require("cloudant")
+} else if (process.version.startsWith('v16.')) {
+  var { CloudantV1 } = require('@ibm-cloud/cloudant');
+} else {
+  var Cloudant = require("@cloudant/cloudant")
+}
+
 
 function main(args){
-  var cloudant = Cloudant({account: "test", password: "test",plugin:'promises'})
-  if(cloudant.config.url == "https://test:test@test.cloudant.com")
+  if (process.version.startsWith('v16.')) {
+    try {
+      var { CloudantV1 } = require('@ibm-cloud/cloudant');
+      var version = require('@ibm-cloud/cloudant').version
+    } catch (er) {
+      return {err: "url did not match expected"}
+    }
+    console.log(version)
     return {message: "cloudant url formed successfully"};
-  else
-    return {err: "url did not match expected"}
+  } else {
+    var cloudant = Cloudant({account: "test", password: "test",plugin:'promises'})
+    if(cloudant.config.url == "https://test:test@test.cloudant.com")
+      return {message: "cloudant url formed successfully"};
+    else
+      return {err: "url did not match expected"}
+  }
+ 
 
 
 

@@ -5,6 +5,7 @@
 - The runtime provides [nodejs v10](nodejs10/) with a set of [npm packages](nodejs10/package.json) see [nodejs10/CHANGELOG.md](nodejs10/CHANGELOG.md)
 - The runtime provides [nodejs v12](nodejs12/) with a set of [npm packages](nodejs12/package.json) see [nodejs12/CHANGELOG.md](nodejs12/CHANGELOG.md)
 - The runtime provides [nodejs v14](nodejs14/) with a set of [npm packages](nodejs14/package.json) see [nodejs14/CHANGELOG.md](nodejs14/CHANGELOG.md)
+- The runtime provides [nodejs v16](nodejs16/) with a set of [npm packages](nodejs16/package.json) see [nodejs16/CHANGELOG.md](nodejs16/CHANGELOG.md)
 
 
 The runtime provides the following npm packages for [IBM Cloud](https://bluemix.net):
@@ -142,6 +143,30 @@ Then update the `whisk.properties` file located in the directory `$OPENWHISK_HOM
 
 ## Maintenance Tasks
 
+### Updating Node.js 16 runtime
+- Get the version of the latest tag ibm image
+```
+VERSION=$(git tag | grep 16@ | tail -2 | head -1 | awk -F"@" '{print $2 }')
+```
+- Check the version of nodejs on the latest ibm image released
+```
+docker run --rm -it ibmfunctions/action-nodejs-v16:$VERSION sh -c "node -v"
+```
+- Check if there is a new version of the [Node.js LTS 16](https://github.com/nodejs/node/blob/master/doc/changelogs/CHANGELOG_V16.md).
+```
+nvm ls-remote | grep v16.
+```
+  - If there is a new version update the [OpenWhisk Node.js 16 Dockerfile](https://github.com/apache/openwhisk-runtime-nodejs/blob/master/core/nodejs16Action/Dockerfile#L18) and submit PR.
+  - After PR is merged wait for Travis CI to build and push a new tag image for [openwhisk/action-nodejs-v16](https://hub.docker.com/r/openwhisk/action-nodejs-v16/tags)
+  - Update the ibm image [nodejs16/Dockerfile](nodejs16/Dockerfile) FROM usign the new upstream tag
+- Check if there are new npm packages available
+  - Use the latest released image to check the outdated npm packages
+  ```
+  docker run --rm -it ibmfunctions/action-nodejs-v16:$VERSION sh -c "cd / && npm outdated"
+  ```
+  - Update [nodejs16/package.json](nodejs16/package.json)
+  - Update [nodejs16/CHANGELOG.md](nodejs16/CHANGELOG.md)
+
 ### Updating Node.js 14 runtime
 - Get the version of the latest tag ibm image
 ```
@@ -218,13 +243,13 @@ nvm ls-remote | grep v10.
 - After the PR is merged and the master pass Travis CI, checkout master.
 - Create tag for each runtime and push upstream
 ```
-git tag 14@<new version>
-git push upstream 14@<new version>
+git tag 16@<new version>
+git push upstream 16@<new version>
 ```
 - After the image is deployed to production update the `latest` tag for each runtime.
 ```
-git tag 14@latest -f
-git push upstream 14@latest -f
+git tag 16@latest -f
+git push upstream 16@latest -f
 ```
 
 
