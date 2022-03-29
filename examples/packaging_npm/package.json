@@ -1,0 +1,7 @@
+{
+    "name": "my-action",
+    "main": "my-action.js",
+    "dependencies" : {
+    "left-pad" : "1.1.3"
+    }
+} 
