@@ -4,4 +4,4 @@ function myAction(args) {
     return { padded: lines.map(l => leftPad(l, 30, ".")) }
 }
 
-global.main = myAction;
+exports.main = myAction;
