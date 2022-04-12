@@ -3,7 +3,8 @@ FROM openwhisk/action-nodejs-v16:339bc7b
 
 COPY ./package.json /
 
-ENV NODE_ENV=production
+#ENV NODE_ENV=production
+ARG NODE_ENV=production
 
 RUN apt-get update  \
     # Upgrade installed packages to get latest security fixes if the base image does not contain them already.
