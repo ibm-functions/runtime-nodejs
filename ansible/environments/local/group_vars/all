@@ -42,9 +42,14 @@ runtimes_manifest:
         name: "action-nodejs-v12"
       deprecated: false
     - kind: "nodejs:14"
-      default: true
+      default: false
       image:
         name: "action-nodejs-v14"
+      deprecated: false
+    - kind: "nodejs:16"
+      default: true
+      image:
+        name: "action-nodejs-v16"
       deprecated: false
     swift:
     - kind: "swift:4.2"

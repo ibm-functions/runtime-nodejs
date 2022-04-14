@@ -39,6 +39,7 @@ class CredentialsIBMNodeJsActionCloudantTests extends TestHelpers with WskTestHe
   val creds = vcapInfo.asJsObject.fields("credentials").asJsObject
   val username = creds.fields("username").asInstanceOf[JsString]
   val password = creds.fields("password").asInstanceOf[JsString]
+  val url = creds.fields("url").asInstanceOf[JsString]
 
   it should "Test whether or not cloudant database is reachable using cloudant npm module" in withAssetCleaner(wskprops) {
     (wp, assetHelper) =>
@@ -50,13 +51,18 @@ class CredentialsIBMNodeJsActionCloudantTests extends TestHelpers with WskTestHe
           file,
           main = Some("main"),
           kind = defaultKind,
-          parameters = Map("username" -> username, "password" -> password))
+          parameters = Map("username" -> username, "password" -> password, "url" -> url))
       }
 
       withActivation(wsk.activation, wsk.action.invoke("testCloudantAction")) { activation =>
         val response = activation.response
         response.result.get.fields.get("error") shouldBe empty
-        response.result.get.fields.get("lastname") should be(Some(JsString("Queue")))
+        if (defaultKind.getOrElse("") == "nodejs:16") {
+          response.result.get.fields.get("result").get.asJsObject.fields.get("lastname") should be(
+            Some(JsString("Queue")))
+        } else {
+          response.result.get.fields.get("lastname") should be(Some(JsString("Queue")))
+        }
       }
 
   }
