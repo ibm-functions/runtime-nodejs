@@ -1,0 +1,17 @@
+{
+    "name": "my-action",
+    "main": "dist/bundle.js",
+    "scripts": {
+        "prebuild": "NODE_ENV=development npm install",
+        "build": "webpack --config webpack.config.js ",
+        "deploy": "ibmcloud fn action update my-action dist/bundle.js --kind nodejs:16",
+        "clean": "rm -rf node_modules package-lock.json dist"
+    },
+    "dependencies": {
+        "left-pad": "1.1.3"
+    },
+    "devDependencies": {
+        "webpack": "^5.72.0",
+        "webpack-cli": "^4.9.2"
+    }
+}
