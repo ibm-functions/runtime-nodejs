@@ -1,4 +1,4 @@
-# IBM Functions NodeJS 12 Runtime Container
+# IBM Functions NodeJS 16 Runtime Container
 
 ## Migrating from `nodejs:12` to `nodejs:16`
   - The `@cloudant/cloudant` package is deprecated and therefore not available in this runtime. Please see the [Migration Guide](https://github.com/cloudant/nodejs-cloudant/blob/HEAD/MIGRATION.md) for advice about migrating to the replacement library [@ibm-cloud/cloudant](https://github.com/IBM/cloudant-node-sdk).  
