@@ -10,6 +10,9 @@
 # 1.0.2
   Changes:
   - Update base image to latest Tag 59dd01a
+  
+  NodeJS version:
+  - 16.19.0
 
 # 1.0.1
   Changes:
