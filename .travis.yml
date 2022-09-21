@@ -1,9 +1,10 @@
 sudo: required
-group: deprecated-2017Q3
-language: scala
+os: linux
+dist: bionic
 
 services:
 - docker
+
 env:
   global:
   - secure: lQT7+rxOmzmbsvaNfcp1CzriB9i5DXcbN3kdEY5sLJpDG9wYJjTImzLK2tUpzV2M7Se8cXyrSc0oGr3HwfR7UR/4QZE8IjiZUrE4tFWjuRWehUPZ4Lx7o9QpesUfERohADnh1mxCsQ79wnvv+BZMwa7XrAhRYvqsx+mz/mz54Qfs99wGtc8tIlJBX2UI9+wIik03U4EyqG9QHcvHJtaBopeczv+tQ5pNSdM55LTbl3TUc1s0Q5Lmf0GUmQyPrRAVfZMx0rQVnAANScxByTBbiLrMvJrZkj5WOjfFn/9uCSt5Fg0iTdKX77CdXEInRfCQ34gcLvvbTBxlsm9kPbEpTkBdlWCC6M4HF6vVjqyrc6BIF/NQmh/c8yr1KC+46W2Tz2dKoz53bli+lU5SVPsgqjpQtzel4oUDLqaBRfRuQzruL5hzr6HQVuJo2zYrAC84aA+/4ezk3cGNbkFYxq71wrWf3HrCxUAlSwfTzZpwQKulVIL4ofgJxphC7/6Akmqze80D3ux3xqiB0CiCOArc40hWq/EdHCn86hDLfIZOjj8lLO26cVNZU3sbl1TMEMLKBidULodNnlppLvO0D2qXrPm2wEuKaGZz9qLcg4utSixPWKGNHjsN/0N0uOVNevtJC6x1AgfzWP4z+NVEA+/Dyo7esFr1XSnIFzks5pr2d3s=
@@ -17,8 +18,13 @@ notifications:
       secure: kLdOkrKzqb3ihx6PTWV/CLunhdIVdayNEYIiFSh6X8fDLSuLyjJnYWYrb71c8qdYwDwrgOzulEDMouWjwg2sFBzsNJXLxGjYaMTXJtCtgWegFDK90VkrGNDoRzm4Emh+Ou8+8nM72k4Mnb02RFXkJACVPwrcYEHFtlXvm+ZEb9+bvUwu1UbrFWhFqCpjYzpyLrJaZRhhU3N3EJoGOLkOnNQRtC9x2hY2bkoFDSqCqji75tB/MvdEL70mT5fYgZ/iLIoJ9FjoPHzRZ4b4sP6isfrHk/SI9FAiqXO4p6Kg70RWPLAipN/MZrWz5qepSzdn2Njk3LxDH+XxsDaU0jKbK0c9F0g75CkKNLwHpHNxGDNEkWf7ELSJ2H2ekgIoq5OHEvyPBV+u8iJXVt3AS7jEcVIsL+CEnbbUF0mb4sC8auyUS4FQIHzgUxHQt3pzQffDBTqP9lhmWy9ceeHc6SlAdehzo8RQ5NkFUfSGWhlzCCP5xRuEY+BIaoeeTZNny1pPmeLd69pnYjIBnODtPDy4n3kFCZaS5rSHHcDZHY7hq+RLbhrAnoVtiw7sy1bAKNn+iJvnFTveKeBD/aD/nadBlSg+4mBXxvc0ggldt8niOH0oq1c42/s7XIsD9RY7WkJw4VCyMunGa0dhbtnyy4Te2uN3oXvGY+ObDhMwLA2ftsc=
 
 before_install:
-- 'if [ "$TRAVIS_PULL_REQUEST" = "false" ] && [ "$TRAVIS_REPO_SLUG" = "ibm-functions/runtime-nodejs" ]; then openssl aes-256-cbc -K "$encrypted_94FB9778302A_key" -iv "$encrypted_94FB9778302A_iv" -in tests/credentials.json.enc -out tests/credentials.json -d; fi'
-- "./tools/travis/setup.sh"
+  # Refresh built in certificates.
+  - sudo update-ca-certificates --fresh
+  # Decrypt only when building in original repository (not on forks).
+  - 'if [ "$TRAVIS_PULL_REQUEST" = "false" ] && [ "$TRAVIS_REPO_SLUG" = "ibm-functions/runtime-nodejs" ]; then openssl aes-256-cbc -K "$encrypted_94FB9778302A_key" -iv "$encrypted_94FB9778302A_iv" -in tests/credentials.json.enc -out tests/credentials.json -d; fi'
+  # Do the setup.
+  - "./tools/travis/setup.sh"
+
 install: true
 script:
 - "./tools/travis/build.sh && ./tools/travis/deploy.sh && ./tools/travis/test.sh"
