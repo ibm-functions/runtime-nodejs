@@ -16,7 +16,7 @@ RUN apt-get update  \
     && echo "\n[mysqld]\nssl-ca=/tmp/ca.pem\nssl-cert=/tmp/server-cert.pem\nssl-key=/tmp/server-key.pem\n" >> /etc/mysql/my.cnf \
     # Start adding/updating npm packages.
     && cd / \
-    && npm install --production \
+    && npm install --omit=dev \
     # Check if the base runtime packages required by /nodejsAction/package.json are still available.
     # In case this step fails, the package versions required by the /nodejsAction/package.json
     # do not match the versions in /package.json. The /package.json versions need to contain the same
@@ -33,6 +33,12 @@ RUN apt-get update  \
     && npm cache clean --force \
     && rm -rf /root/.cache/node-gyp \
     # Replace default openwhisk main with an iam enabled version.
-    && sed -i.bak 's/lib\/main.js/lib\/iam-openwhisk-main.js/' /node_modules/openwhisk/package.json
+    && sed -i.bak 's/lib\/main.js/lib\/iam-openwhisk-main.js/' /node_modules/openwhisk/package.json \
+    # Show current nodejs version.
+    && echo "node version: $(node --version)" \
+    # Show current npm version.
+    && echo "npm version: $(npm --version)" \
+    # Show full list of installed modules.
+    && echo "npm list:" && echo "$(cd / && npm list)"
 
 COPY iam-client/iam-openwhisk-main.js /node_modules/openwhisk/lib/
