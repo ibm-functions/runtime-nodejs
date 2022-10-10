@@ -1,6 +1,6 @@
 {
   "name": "ibm-functions-runtime-nodejs-v16",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "IBM Functions",
   "repository": {
     "type": "git",
@@ -8,7 +8,7 @@
   },
   "license": "Apache-2.0",
   "dependencies": {
-    "@ibm-cloud/cloudant": "0.1.1", 
+    "@ibm-cloud/cloudant": "0.1.1",
     "@ibm-functions/iam-token-manager": "1.0.11",
     "@sendgrid/mail": "7.6.2",
     "@wiotp/sdk": "0.7.8",
