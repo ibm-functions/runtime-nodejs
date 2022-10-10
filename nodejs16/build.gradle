@@ -4,6 +4,10 @@ apply from: '../gradle/docker.gradle'
 distDocker.dependsOn 'copyIAMClient'
 distDocker.finalizedBy('cleanup')
 
+// To always get the latest vulnerability updates into the image, use --no-cache for building the image.
+// This is not needed for travis builds (the VM is always new), but for local development.
+dockerBuildArg = ['build','--no-cache']
+
 task copyIAMClient(type: Copy) {
     from '../iam-client'
     into 'iam-client'
