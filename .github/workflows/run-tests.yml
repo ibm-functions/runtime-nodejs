@@ -22,8 +22,20 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v2
 
-      - name: befor install
-        run:  sudo update-ca-certificates --fresh && ./tools/travis/setup.sh
+      - name: update ca certificates
+        run:  sudo update-ca-certificates --fresh && 
 
-      - name: script
-        run: ./tools/travis/build.sh && ./tools/travis/deploy.sh && ./tools/travis/test.sh
+      - name: Setup
+        run: ./tools/travis/setup.sh
+      
+      - name: Fix Old ansible 
+        run: python -m pip install --user ansible==2.8.18
+
+      - name: Build
+        run: ./tools/travis/build.sh 
+
+      - name: Deploy
+        run: ./tools/travis/deploy.sh
+
+      - name: Test
+        run: ./tools/travis/test.sh
