@@ -1,0 +1,29 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Deploy gitMusic Action To IBM Cloud Functions
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "master" branch
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+  workflow_dispatch:
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+
+      - name: befor install
+        run:  sudo update-ca-certificates --fresh && ./tools/travis/setup.sh
+
+      - name: script
+        run: ./tools/travis/build.sh && ./tools/travis/deploy.sh && ./tools/travis/test.sh
