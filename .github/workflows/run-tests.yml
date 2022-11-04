@@ -23,7 +23,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: update ca certificates
-        run:  sudo update-ca-certificates --fresh && 
+        run:  sudo update-ca-certificates --fresh  
 
       - name: Setup
         run: ./tools/travis/setup.sh
