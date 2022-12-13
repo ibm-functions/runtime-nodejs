@@ -7,12 +7,19 @@
   - Mongodb drivers have been upgraded to version 4 please check the [Upgrade Guide](https://github.com/mongodb/node-mongodb-native/blob/HEAD/docs/CHANGES_4.0.0.md)
   - The `redis` package has been updated to version 4 please check the [Migration Guide](https://github.com/redis/node-redis/blob/HEAD/docs/v3-to-v4.md)
 
+# 1.0.3
+  Changes:
+  - Update base image to latest Tag 21de03c
+  
+  NodeJS version:
+  - v16.18.1
+
 # 1.0.2
   Changes:
   - Update base image to latest Tag 59dd01a
   
   NodeJS version:
-  - 16.19.0
+  - v16.17.1
 
 # 1.0.1
   Changes:
