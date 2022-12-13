@@ -11,9 +11,9 @@ export OPENWHISK_HOME=$WHISKDIR
 
 IMAGE_PREFIX="testing"
 
-ansible-playbook --version
 python --version
 ansible --version
+ansible-playbook --version
 
 # Setup Ansible CMD
 cd $WHISKDIR/ansible
