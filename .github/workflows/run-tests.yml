@@ -25,5 +25,8 @@ jobs:
       - name: befor install
         run:  sudo update-ca-certificates --fresh && ./tools/travis/setup.sh
 
+      - name: Ansible fix (python downgrade)
+        run: sudo apt purge python3 && sudo apt install python3.9
+
       - name: script
         run: ./tools/travis/build.sh && ./tools/travis/deploy.sh && ./tools/travis/test.sh
