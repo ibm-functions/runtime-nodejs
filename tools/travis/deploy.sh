@@ -11,10 +11,6 @@ export OPENWHISK_HOME=$WHISKDIR
 
 IMAGE_PREFIX="testing"
 
-python --version
-ansible --version
-ansible-playbook --version
-
 # Setup Ansible CMD
 cd $WHISKDIR/ansible
 ANSIBLE_CMD="ansible-playbook -i ${ROOTDIR}/ansible/environments/local -e docker_image_prefix=${IMAGE_PREFIX}"
