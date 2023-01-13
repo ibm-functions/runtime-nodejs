@@ -1,6 +1,5 @@
 # IBM Cloud Functions runtime for nodejs
 
-[![Build Status](https://travis-ci.org/ibm-functions/runtime-nodejs.svg?branch=master)](https://travis-ci.com/ibm-functions/runtime-nodejs)
 
 - The runtime provides [nodejs v10](nodejs10/) with a set of [npm packages](nodejs10/package.json) see [nodejs10/CHANGELOG.md](nodejs10/CHANGELOG.md)
 - The runtime provides [nodejs v12](nodejs12/) with a set of [npm packages](nodejs12/package.json) see [nodejs12/CHANGELOG.md](nodejs12/CHANGELOG.md)
