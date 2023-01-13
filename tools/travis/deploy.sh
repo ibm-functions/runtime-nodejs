@@ -1,6 +1,8 @@
 #!/bin/bash
 set -ex
 
+python --version
+ansible --version
 # Build script for Travis-CI.
 
 SCRIPTDIR=$(cd $(dirname "$0") && pwd)
