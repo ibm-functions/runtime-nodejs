@@ -32,7 +32,7 @@ git clone  https://github.com/ibm-functions/openwhisk.git openwhisk
 cd openwhisk
 # Use a fixed commit to run the tests, to explicitly control when changes are consumed.
 # Commit: Dedicated Invokers (#5292) 
-git checkout 7ae02b8ede4f4b4068b3b95dbc3f02f902d936c9
+git checkout bb21dd04f3cfd7bf845029334e7ebf79ee95d0e1
 
 ./tools/travis/setup.sh
 
