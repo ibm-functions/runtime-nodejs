@@ -7,6 +7,18 @@
   - Mongodb drivers have been upgraded to version 4 please check the [Upgrade Guide](https://github.com/mongodb/node-mongodb-native/blob/HEAD/docs/CHANGES_4.0.0.md)
   - The `redis` package has been updated to version 4 please check the [Migration Guide](https://github.com/redis/node-redis/blob/HEAD/docs/v3-to-v4.md)
 
+# 1.0.4
+  Changes:
+  - Update base image to latest Openwhisk Tag 7e0173b
+  - Update openwhisk 3.21.6 -> 3.21.7 to match openwhisk/action-nodejs-v16
+  
+  NodeJS version:
+  - v16.19.1
+
+  NodeJS packages:
+  - The file [package.json](package.json) lists the packages we guarantee to be included in this runtime.
+    Ensure that you only use packages mentioned there. Other nodejs packages might be part of this runtime, but only due to indirect dependencies of the above listed packages. These indirectly included packages are candidates to be removed at any time in case they are not required by the referring package anymore.
+
 # 1.0.3
   Changes:
   - Update base image to latest Tag 21de03c
