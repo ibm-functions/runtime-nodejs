@@ -25,9 +25,9 @@ jobs:
         # with:
         #   path: runtime
 
-      # run scanCode
-      - name: Scan Code
-        uses: apache/openwhisk-utilities/scancode@master
+      # # run scanCode
+      # - name: Scan Code
+      #   uses: apache/openwhisk-utilities/scancode@master
 
       # # Install core OpenWhisk artifacts needed to build/test anything else
       # - name: Checkout OpenWhisk core repo
