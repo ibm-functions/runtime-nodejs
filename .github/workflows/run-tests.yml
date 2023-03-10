@@ -45,7 +45,8 @@ jobs:
           distribution: 'temurin'
           java-version: '11'
 
-      - uses: actions/setup-python@v4
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
           python-version: '3.9'
     
@@ -81,16 +82,20 @@ jobs:
       #     export OPENWHISK_HOME=$(pwd)/../core
       
       - name: befor install -> setup.sh
-        run:  "./tools/travis/setup.sh"
+        run:  |
+          "./tools/travis/setup.sh"
 
       - name: script -> build
-        run:  "./tools/travis/build.sh"
+        run:  |
+          "./tools/travis/build.sh"
       
       - name: script -> deploy
-        run:  ./tools/travis/deploy.sh
+        run:  |
+          ./tools/travis/deploy.sh
       
       - name: script-> test
-        run:  "./tools/travis/setup.sh"
+        run:  |
+          "./tools/travis/setup.sh"
       
 
 
