@@ -37,6 +37,12 @@ jobs:
       #     ref: master/7ae02b8ede4f4b4068b3b95dbc3f02f902d936c9
       #     path: core
       #     fetch-depth: 0
+      
+      # Setup Java to run the Scala Tests 
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
 
       # Setup Java to run the Scala Tests
       - name: Setup Java
@@ -45,10 +51,6 @@ jobs:
           distribution: 'temurin'
           java-version: '11'
 
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
     
       # # Setup OpenWhisk
       # - name: Setup OpenWhisk
@@ -80,22 +82,26 @@ jobs:
       #   working-directory: core
       #   run: |
       #     export OPENWHISK_HOME=$(pwd)/../core
-      
+      - name: Python verison
+        run: python --version
+
       - name: befor install -> setup.sh
         run:  |
-          "./tools/travis/setup.sh"
+          ./tools/travis/setup.sh
 
       - name: script -> build
         run:  |
-          "./tools/travis/build.sh"
+          ./tools/travis/build.sh
       
       - name: script -> deploy
         run:  |
+          python --version
+          python3 --version
           ./tools/travis/deploy.sh
       
       - name: script-> test
         run:  |
-          "./tools/travis/setup.sh"
+          ./tools/travis/setup.sh
       
 
 
