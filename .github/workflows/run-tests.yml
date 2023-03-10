@@ -44,6 +44,10 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '11'
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
     
       # # Setup OpenWhisk
       # - name: Setup OpenWhisk
@@ -76,22 +80,20 @@ jobs:
       #   run: |
       #     export OPENWHISK_HOME=$(pwd)/../core
       
-      - name: befor install -> docker.sh
+      - name: befor install -> setup.sh
         run:  "./tools/travis/setup.sh"
 
       - name: script -> build
         run:  "./tools/travis/build.sh"
       
-      - name: script -> deploy.sh
+      - name: script -> deploy
         run:  ./tools/travis/deploy.sh
       
-      - name: script-> test.sh
+      - name: script-> test
         run:  "./tools/travis/setup.sh"
       
 
-      # - uses: actions/setup-python@v4
-      #   with:
-      #     python-version: '3.9'
+
 
       # - name: befor install
       #   run:  sudo update-ca-certificates --fresh && ./tools/travis/setup.sh
