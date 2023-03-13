@@ -111,6 +111,7 @@ jobs:
       
       - name: script -> deploy
         run:  |
+          pip install --user ansible==2.11.18
           ./tools/travis/deploy.sh
       
       - name: script-> test
