@@ -108,7 +108,6 @@ jobs:
       - name: find ansible
         run: |
           which ansible
-          anisble --verison
           find / -name "ansible.cfg"
 
       - name: script -> build
