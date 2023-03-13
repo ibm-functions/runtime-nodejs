@@ -30,9 +30,8 @@ cd $HOMEDIR
 # Clone and setup openwhisk to have a local test environment.
 git clone  https://github.com/ibm-functions/openwhisk.git openwhisk
 cd openwhisk
-# Use a fixed commit to run the tests, to explicitly control when changes are consumed.
-# Commit: Dedicated Invokers (#5292) 
-git checkout 7ae02b8ede4f4b4068b3b95dbc3f02f902d936c9
+
+git checkout 8d7f1dfc85b12fda81153c34a540f6c01a4780f4
 
 ./tools/travis/setup.sh
 
