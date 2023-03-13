@@ -105,6 +105,12 @@ jobs:
         run:  |
           ./tools/travis/setup.sh
 
+      - name: find ansible
+        run: |
+          which ansible
+          anisble --verison
+          find / -name "ansible.cfg"
+
       - name: script -> build
         run:  |
           ./tools/travis/build.sh
