@@ -89,11 +89,15 @@ jobs:
 
       - name: befor install -> upgrade pip setuptools six
         run:  |
-          pip install --upgrade pip setuptools six 
-          pip3 install --upgrade pip setuptools six 
+          pip install --user --upgrade pip setuptools six 
+          pip3 install --user --upgrade pip setuptools six 
 
       - name: Python verison
-        run: python --version
+        run: |
+          python --version
+          python3 --version
+          pip --version
+          pip3 --version
 
       - name: befor install -> setup.sh
         run:  |
@@ -105,6 +109,7 @@ jobs:
       
       - name: script -> deploy
         run:  |
+          pip install --user ansible==2.8.18
           python --version
           python3 --version
           ./tools/travis/deploy.sh
