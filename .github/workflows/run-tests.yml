@@ -89,8 +89,8 @@ jobs:
 
       - name: befor install -> upgrade pip setuptools six
         run:  |
-          pip install --upgrade pip setuptools six collections
-          pip3 install --upgrade pip setuptools six collections
+          pip install --upgrade pip setuptools six 
+          pip3 install --upgrade pip setuptools six 
 
       - name: Python verison
         run: python --version
