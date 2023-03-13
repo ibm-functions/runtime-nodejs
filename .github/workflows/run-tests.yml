@@ -88,12 +88,10 @@ jobs:
         run:  sudo apt-get install -y python3-pip
 
       - name: befor install -> upgrade pip setuptools six
-        run:  pip install --user --upgrade pip setuptools six
+        run:  |
+          pip install --upgrade pip setuptools six collections
+          pip3 install --upgrade pip setuptools six collections
 
-      - name: befor install -> install setuptools six
-        run:  pip3 install --user setuptools six
-
-        
       - name: Python verison
         run: python --version
 
