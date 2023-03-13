@@ -49,7 +49,7 @@ jobs:
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '11'
+          java-version: '8'
 
     
       # # Setup OpenWhisk
@@ -82,6 +82,18 @@ jobs:
       #   working-directory: core
       #   run: |
       #     export OPENWHISK_HOME=$(pwd)/../core
+
+
+      - name: befor install -> install python3-pip
+        run:  sudo apt-get install -y python3-pip
+
+      - name: befor install -> upgrade pip setuptools six
+        run:  pip install --user --upgrade pip setuptools six
+
+      - name: befor install -> install setuptools six
+        run:  pip3 install --user setuptools six
+
+        
       - name: Python verison
         run: python --version
 
