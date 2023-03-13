@@ -42,14 +42,14 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: '3.10'
 
       # Setup Java to run the Scala Tests
       - name: Setup Java
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '8'
+          java-version: '11'
 
     
       # # Setup OpenWhisk
@@ -105,20 +105,12 @@ jobs:
         run:  |
           ./tools/travis/setup.sh
 
-      - name: find ansible
-        run: |
-          which ansible
-          find / -name "ansible.cfg"
-
       - name: script -> build
         run:  |
           ./tools/travis/build.sh
       
       - name: script -> deploy
         run:  |
-          pip install --user ansible==2.8.18
-          python --version
-          python3 --version
           ./tools/travis/deploy.sh
       
       - name: script-> test
