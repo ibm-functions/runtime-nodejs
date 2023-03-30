@@ -111,6 +111,8 @@ jobs:
       
       - name: script -> deploy
         run:  |
+          pip install --user --upgrade  Jinja2<3.1
+          pip3 install --user --upgrade Jinja2<3.1
           ./tools/travis/deploy.sh
       
       - name: script-> test
