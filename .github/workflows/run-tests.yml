@@ -103,7 +103,6 @@ jobs:
 
       - name: befor install -> setup.sh
         run:  |
-          pip install --user ansible==2.18.0
           ./tools/travis/setup.sh
 
       - name: script -> build
