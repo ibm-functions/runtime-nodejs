@@ -111,6 +111,7 @@ jobs:
       
       - name: script -> deploy
         run:  |
+          pip uninstall -y ansible
           pip install --user ansible==5.10.0
           ./tools/travis/deploy.sh
       
