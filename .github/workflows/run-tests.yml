@@ -111,7 +111,8 @@ jobs:
       
       - name: script -> deploy
         run:  |
-          pip install --user jinja2==2.9.6 markupsafe==2.0.1
+          pip uninstall markupsafe
+          pip install --user jinja2==2.9.6
           ./tools/travis/deploy.sh
       
       - name: script-> test
