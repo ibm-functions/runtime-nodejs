@@ -111,8 +111,7 @@ jobs:
       
       - name: script -> deploy
         run:  |
-          pip uninstall markupsafe -y
-          pip install --user jinja2==2.9.6
+          pip install --user ansible==5.10.0
           ./tools/travis/deploy.sh
       
       - name: script-> test
