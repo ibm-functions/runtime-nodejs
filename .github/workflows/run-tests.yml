@@ -116,7 +116,7 @@ jobs:
       
       - name: script-> test
         run:  |
-          ./tools/travis/setup.sh
+          ./tools/travis/test.sh
       
 
 
