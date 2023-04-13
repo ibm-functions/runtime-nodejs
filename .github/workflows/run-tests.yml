@@ -16,18 +16,113 @@ jobs:
 
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
-      - name: Check out the repo
-        uses: actions/checkout@v2
+      # Checkout just this repo 
+      - name: Checkout runtime repo
+        uses: actions/checkout@v3
+        # with:
+        #   path: runtime
 
-      - uses: actions/setup-python@v4
+      # # run scanCode
+      # - name: Scan Code
+      #   uses: apache/openwhisk-utilities/scancode@master
+
+      # # Install core OpenWhisk artifacts needed to build/test anything else
+      # - name: Checkout OpenWhisk core repo
+      #   uses: actions/checkout@v3
+      #   with:
+      #     repository: ibm-functions/openwhisk
+      #     ref: master/7ae02b8ede4f4b4068b3b95dbc3f02f902d936c9
+      #     path: core
+      #     fetch-depth: 0
+      
+      # Setup Python to run the Scala Tests 
+      - name: Setup Python
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: '3.10'
 
-      - name: befor install
-        run:  sudo update-ca-certificates --fresh && ./tools/travis/setup.sh
+      # Setup Java to run the Scala Tests
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
 
-      - name: script
-        run: ./tools/travis/build.sh && ./tools/travis/deploy.sh && ./tools/travis/test.sh
+    
+      # # Setup OpenWhisk
+      # - name: Setup OpenWhisk
+      #   working-directory: core
+      #   run: |
+      #     ./tools/travis/setup.sh
+
+
+
+      # - name: Compile and Install Core OpenWhisk
+      #   working-directory: core
+      #   run: |
+      #     export OPENWHISK_HOME=$(pwd)/../core
+      #     IMAGE_PREFIX="testing"
+      #     docker pull ibmfunctions/controller:nightly
+      #     docker tag ibmfunctions/controller:nightly ${IMAGE_PREFIX}/controller
+      #     docker pull ibmfunctions/invoker:nightly
+      #     docker tag ibmfunctions/invoker:nightly ${IMAGE_PREFIX}/invoker
+      #     ./gradlew install
+
+      # # Build Runtime:
+      # - name: Build Runtime
+      #   working-directory: runtime
+      #   run: |
+      #     IMAGE_PREFIX="testing"
+      #     ./gradlew distDocker -PdockerImagePrefix=${IMAGE_PREFIX}
+
+      # - name: Deploy
+      #   working-directory: core
+      #   run: |
+      #     export OPENWHISK_HOME=$(pwd)/../core
+
+
+      - name: befor install -> install python3-pip
+        run:  sudo apt-get install -y python3-pip
+
+      - name: befor install -> upgrade pip setuptools six
+        run:  |
+          pip install --user --upgrade pip setuptools six 
+          pip3 install --user --upgrade pip setuptools six 
+
+      - name: Python verison
+        run: |
+          python --version
+          python3 --version
+          python3.10 --version
+          pip --version
+          pip3 --version
+          pip3.10 --version
+
+      - name: befor install -> setup.sh
+        run:  |
+          ./tools/travis/setup.sh
+
+      - name: script -> build
+        run:  |
+          ./tools/travis/build.sh
+      
+      - name: script -> deploy
+        run:  |
+          pip install --user jinja2==3.0.3
+          ./tools/travis/deploy.sh
+      
+      - name: script-> test
+        run:  |
+          ./tools/travis/test.sh
+      
+
+
+
+      # - name: befor install
+      #   run:  sudo update-ca-certificates --fresh && ./tools/travis/setup.sh
+
+      # - name: script
+      #   run: ./tools/travis/build.sh && ./tools/travis/deploy.sh && ./tools/travis/test.sh
