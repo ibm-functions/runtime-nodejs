@@ -31,21 +31,6 @@ skip_pull_runtimes: true
 runtimes_manifest:
   runtimes:
     nodejs:
-    - kind: "nodejs:10"
-      default: false
-      image:
-        name: "action-nodejs-v10"
-      deprecated: false
-    - kind: "nodejs:12"
-      default: false
-      image:
-        name: "action-nodejs-v12"
-      deprecated: false
-    - kind: "nodejs:14"
-      default: false
-      image:
-        name: "action-nodejs-v14"
-      deprecated: false
     - kind: "nodejs:16"
       default: true
       image:

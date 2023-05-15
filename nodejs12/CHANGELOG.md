@@ -1,5 +1,8 @@
 # IBM Functions NodeJS 12 Runtime Container
 
+# Attention
+This runtime is deprecated and will not be supported anymore. The code is still here for reference only and might be deleted at any time!
+
 ## Migrating from `nodejs:10` to `nodejs:12`
   - The ibm-watson sdk version moved to 6.x. It includes a number of breaking changes. See https://github.com/watson-developer-cloud/node-sdk/blob/HEAD/MIGRATION-V6.md for details.
   - The `ibmiotf` package is renamed to `@wiotp/sdk`. See https://www.npmjs.com/package/@wiotp/sdk for all changes.
