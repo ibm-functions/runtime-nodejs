@@ -1,5 +1,8 @@
 # IBM Functions NodeJS 8 Runtime Container
 
+# Attention
+This runtime is deprecated and will not be supported anymore. The code is still here for reference only and might be deleted at any time!
+
 # 1.42.0
 Changes:
   - update lodash from `4.17.13` to `4.17.19` (security fixes)

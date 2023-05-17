@@ -1,5 +1,8 @@
 # IBM Functions NodeJS 10 Runtime Container
 
+# Attention
+This runtime is deprecated and will not be supported anymore. The code is still here for reference only and might be deleted at any time!
+
 ## Migrating from `nodejs:8` to `nodejs:10`
 - The `cloudant` npm package is not available in `nodejs:10`, the package is deprecated, you need to use the official npm package [@cloudant/cloudant](https://www.npmjs.com/package/@cloudant/cloudant) v3.x when importing the nodejs module (i.e `require('@cloudant/cloudant')`) also [v3.x only returns Promises](https://github.com/cloudant/nodejs-cloudant/blob/master/api-migration.md#2x--3x).
 - The `watson-developer-cloud` npm package available in `nodejs:10` is version 4.x. This version includes support for Promises. [A list of the changes made is documented](https://github.com/watson-developer-cloud/node-sdk/blob/master/UPGRADE-4.0.md).

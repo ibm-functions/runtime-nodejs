@@ -1,4 +1,7 @@
-# IBM Functions NodeJS 12 Runtime Container
+# IBM Functions NodeJS 14 Runtime Container
+
+# Attention
+This runtime is deprecated and will not be supported anymore. The code is still here for reference only and might be deleted at any time!
 
 ## Migrating from `nodejs:12` to `nodejs:14`
   - The `@cloudant/cloudant` package is deprecated and therefore not available in this runtime. Please see the [Migration Guide](https://github.com/cloudant/nodejs-cloudant/blob/HEAD/MIGRATION.md) for advice about migrating to the replacement library [@ibm-cloud/cloudant](https://github.com/IBM/cloudant-node-sdk).  

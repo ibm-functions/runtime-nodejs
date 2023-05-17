@@ -15,6 +15,22 @@ tasks.withType(Test) {
         exceptionFormat = 'full'
     }
     outputs.upToDateWhen { false } // force tests to run every time
+
+    // Exclude the nodejs:10 specific tests as this runtime is not supported anymore.
+    exclude '**/*NodeJs10*'
+
+    // Exclude the nodejs:12 specific tests as this runtime is not supported anymore.
+    exclude '**/*NodeJs12*'
+
+    // Exclude the nodejs:14 specific tests as this runtime is not supported anymore.
+    exclude '**/*IBMNodeJsActionContainerTests*'
+    exclude '**/*IBMNodeJsActionDB2Tests*'
+    exclude '**/*IBMNodeJsActionCloudant*'
+    exclude '**/*IBMNodeJsActionWatson*'
+    exclude '**/*IBMNodeJsCOS*'
+    exclude '**/*IBMNodeJsDb2Cloud*'
+    exclude '**/*NodeJsSDK*'
+
 }
 
 task testWithoutCredentials(type: Test) {
