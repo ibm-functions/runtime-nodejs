@@ -41,4 +41,6 @@ RUN apt-get update  \
     # Show full list of installed modules.
     && echo "npm list:" && echo "$(cd / && npm list)"
 
+ENV OW_ENABLE_INIT_INSTALL=false
+
 COPY iam-client/iam-openwhisk-main.js /node_modules/openwhisk/lib/
