@@ -1,5 +1,5 @@
 
-FROM openwhisk/action-nodejs-v16:577ccbb
+FROM openwhisk/action-nodejs-v16:28ac4c0
 
 COPY ./package.json /
 
@@ -40,5 +40,7 @@ RUN apt-get update  \
     && echo "npm version: $(npm --version)" \
     # Show full list of installed modules.
     && echo "npm list:" && echo "$(cd / && npm list)"
+
+ENV OW_ENABLE_INIT_INSTALL=false
 
 COPY iam-client/iam-openwhisk-main.js /node_modules/openwhisk/lib/
