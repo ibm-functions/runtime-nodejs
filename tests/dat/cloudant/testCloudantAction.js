@@ -4,7 +4,7 @@ const isNodeJS8 = nodeRuntime === 'nodejs8' ? true : false
 
 if (process.version.startsWith('v8.')) {
   var Cloudant = require("cloudant")
-} else if (process.version.startsWith('v16.')) {
+} else if (process.version.startsWith('v16.') || process.version.startsWith('v20.')) {
   console.log("------------------------- require @ibm-cloud/cloudant ----------------------");
   var { CloudantV1 } = require('@ibm-cloud/cloudant');
 } else {
@@ -17,7 +17,7 @@ function main(args){
   var url = args.url;
   var dbName = `test_cloud_functions_nodejs_${nodeRuntime}_ibm_runtime`
 
-  if (process.version.startsWith('v16.')) {
+  if (process.version.startsWith('v16.') || process.version.startsWith('v20.')) {
     process.env['CLOUDANT_AUTH_TYPE'] = 'BASIC'
     process.env['CLOUDANT_URL'] = url
     process.env['CLOUDANT_USERNAME'] = username

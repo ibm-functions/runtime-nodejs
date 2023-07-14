@@ -1,6 +1,7 @@
 include 'tests'
 
 include 'nodejs16'
+include 'nodejs20'
 
 rootProject.name = 'runtime-nodejs-ibm'
 
