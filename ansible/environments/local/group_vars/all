@@ -37,7 +37,7 @@ runtimes_manifest:
         name: "action-nodejs-v16"
       deprecated: false
     - kind: "nodejs:20"
-      default: true
+      default: false
       image:
         name: "action-nodejs-v20"
       deprecated: false
