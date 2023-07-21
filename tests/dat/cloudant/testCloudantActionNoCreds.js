@@ -1,6 +1,6 @@
 if (process.version.startsWith('v8.')) {
   var Cloudant = require("cloudant")
-} else if (process.version.startsWith('v16.')) {
+} else if (process.version.startsWith('v18.')) {
   var { CloudantV1 } = require('@ibm-cloud/cloudant');
 } else {
   var Cloudant = require("@cloudant/cloudant")
@@ -8,7 +8,7 @@ if (process.version.startsWith('v8.')) {
 
 
 function main(args){
-  if (process.version.startsWith('v16.')) {
+  if (process.version.startsWith('v18.')) {
     try {
       var { CloudantV1 } = require('@ibm-cloud/cloudant');
       var version = require('@ibm-cloud/cloudant').version
