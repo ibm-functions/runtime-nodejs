@@ -57,7 +57,7 @@ class CredentialsIBMNodeJsActionCloudantTests extends TestHelpers with WskTestHe
       withActivation(wsk.activation, wsk.action.invoke("testCloudantAction")) { activation =>
         val response = activation.response
         response.result.get.fields.get("error") shouldBe empty
-        if (defaultKind.getOrElse("") == "nodejs:16") {
+        if (defaultKind.getOrElse("") == "nodejs:16" || defaultKind.getOrElse("") == "nodejs:20") {
           response.result.get.fields.get("result").get.asJsObject.fields.get("lastname") should be(
             Some(JsString("Queue")))
         } else {
