@@ -57,7 +57,7 @@ jobs:
 
       - name: befor install -> setup.sh
         run:  |
-          ./tools/travis/setup.sh
+          docker image ls && ./tools/travis/setup.sh
 
       - name: script -> build
         run:  |
@@ -66,11 +66,7 @@ jobs:
       - name: script -> deploy
         run:  |
           pip install --user jinja2==3.0.3
-          ./tools/travis/deploy.sh || true; docker image ls; df -h
+          ./tools/travis/deploy.sh && docker image ls 
       - name: script-> test
         run:  |
           ./tools/travis/test.sh 
-
-# debugging notes
-# #|| true;  set -x; docker ps -a; for i in $(docker ps -a --format="{{.Names}}"); do  docker logs $i || true; done; ls -alhR /tmp/wsklogs; cat /tmp/wsklogs/invoker0/invoker0_logs.log; cat /tmp/wsklogs/controller0/controller0_logs.log
-# || true;  set -x; docker ps -a; ls -R /tmp/wsklogs ;cat /tmp/wsklogs/invoker0/invoker0_logs.log; cat /tmp/wsklogs/controller0/controller0_logs.log
