@@ -9,6 +9,8 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+  schedule:
+      - cron: "0 8 * * 1" # At 08:00 AM, only on Monday
 
   workflow_dispatch:
 
@@ -68,5 +70,4 @@ jobs:
       
       - name: script-> test
         run:  |
-          ./tools/travis/test.sh || true;  set -x; docker ps -a --format="{{.Names}}"; docker logs controller0; docker logs invoker0
-
+          ./tools/travis/test.sh || true;  set -x; for i in docker ps -a --format="{{.Names}}"; do  docker logs $i || true; done
