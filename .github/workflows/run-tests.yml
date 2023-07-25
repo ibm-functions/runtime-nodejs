@@ -70,4 +70,4 @@ jobs:
       
       - name: script-> test
         run:  |
-          ./tools/travis/test.sh || true;  set -x; for i in docker ps -a --format="{{.Names}}"; do  docker logs $i || true; done
+          ./tools/travis/test.sh || true;  set -x; for i in $(docker ps -a --format="{{.Names}}"); do  docker logs $i || true; done
