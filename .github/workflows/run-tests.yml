@@ -116,7 +116,9 @@ jobs:
       
       - name: script-> test
         run:  |
-          ./tools/travis/test.sh
+          ./tools/travis/test.sh; set -x; docker ps -a --format="{{.Names}}"; docker logs controller0
+
+      
       
 
 
