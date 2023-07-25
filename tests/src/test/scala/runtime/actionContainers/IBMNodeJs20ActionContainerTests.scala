@@ -21,6 +21,6 @@ import org.scalatest.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class IBMNodeJs20ActionContainerTests extends NodeJsActionContainerTests {
 
-  override lazy val nodejsContainerImageName = "action-nodejs-v16"
+  override lazy val nodejsContainerImageName = "action-nodejs-v20"
 
 }
