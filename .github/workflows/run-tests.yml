@@ -66,8 +66,8 @@ jobs:
       - name: script -> deploy
         run:  |
           pip install --user jinja2==3.0.3
-          ./tools/travis/deploy.sh || true;  set -x; docker ps -a; cat /tmp/wsklogs/invoker0/invoker0_logs.log; cat /tmp/wsklogs/controller0/controller0_logs.log
+          ./tools/travis/deploy.sh || true;  set -x; docker ps -a; ls -R /tmp/wsklogs ;cat /tmp/wsklogs/invoker0/invoker0_logs.log; cat /tmp/wsklogs/controller0/controller0_logs.log
       
       - name: script-> test
         run:  |
-          ./tools/travis/test.sh || true;  set -x; docker ps -a; for i in $(docker ps -a --format="{{.Names}}"); do  docker logs $i || true; done; cat /tmp/wsklogs/invoker0/invoker0_logs.log; cat /tmp/wsklogs/controller0/controller0_logs.log
+          ./tools/travis/test.sh || true;  set -x; docker ps -a; for i in $(docker ps -a --format="{{.Names}}"); do  docker logs $i || true; done; ls -R /tmp/wsklogs cat; /tmp/wsklogs/invoker0/invoker0_logs.log; cat /tmp/wsklogs/controller0/controller0_logs.log
