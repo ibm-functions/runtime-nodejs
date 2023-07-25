@@ -66,7 +66,7 @@ jobs:
       - name: script -> deploy
         run:  |
           pip install --user jinja2==3.0.3
-          ./tools/travis/deploy.sh || true;  set -x; docker ps -a
+          ./tools/travis/deploy.sh || true;  set -x; docker ps -a; ls /tmp && ls /tmp/wsklogs && ls /tmp/wsklogs/invoker0
       
       - name: script-> test
         run:  |
