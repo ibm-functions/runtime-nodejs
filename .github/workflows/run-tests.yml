@@ -55,9 +55,14 @@ jobs:
           pip3 --version
           pip3.10 --version
 
+      - name: Docker Cleanup
+        run: |
+          docker image ls
+          docker image rm $(docker image ls -q) -f
+
       - name: befor install -> setup.sh
         run:  |
-          docker image ls && docker image rm $(docker image ls -q) -f && ./tools/travis/setup.sh
+          ./tools/travis/setup.sh
 
       - name: script -> build
         run:  |
@@ -67,7 +72,7 @@ jobs:
         run:  |
           pip install --user jinja2==3.0.3
           ./tools/travis/deploy.sh
-          
+
       - name: script-> test
         run:  |
           ./tools/travis/test.sh 

@@ -31,7 +31,7 @@ cd $HOMEDIR
 git clone  https://github.com/ibm-functions/openwhisk.git openwhisk
 cd openwhisk
 
-git checkout 03ce08c5b3fdac1a6dd3ae59f893e07cdc8628a2 #8d7f1dfc85b12fda81153c34a540f6c01a4780f4
+git checkout 03ce08c5b3fdac1a6dd3ae59f893e07cdc8628a2
 
 ./tools/travis/setup.sh
 
