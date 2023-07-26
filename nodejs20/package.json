@@ -1,6 +1,6 @@
 {
-  "name": "ibm-functions-runtime-nodejs-v16",
-  "version": "1.0.4",
+  "name": "ibm-functions-runtime-nodejs-v20",
+  "version": "1.0.0",
   "description": "IBM Functions",
   "repository": {
     "type": "git",

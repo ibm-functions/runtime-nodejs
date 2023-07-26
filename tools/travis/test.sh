@@ -32,7 +32,8 @@ if [ "$TRAVIS_PULL_REQUEST" = "false" ] && [ "$TRAVIS_REPO_SLUG" = "ibm-function
 else
   TERM=dumb ./gradlew :tests:testWithoutCredentials
 fi
-if [[ $? != 0 ]]; then
+
+if [[ "$?" != "0" ]]; then
   # debugging notes
   # || true;  set -x; docker ps -a; for i in $(docker ps -a --format="{{.Names}}"); do  docker logs $i || true; done; ls -alhR /tmp/wsklogs; 
   # || true;  set -x; docker ps -a; ls -R /tmp/wsklogs ;cat /tmp/wsklogs/invoker0/invoker0_logs.log; cat /tmp/wsklogs/controller0/controller0_logs.log
