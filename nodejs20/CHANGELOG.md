@@ -1,7 +1,9 @@
 # IBM Functions NodeJS 16 Runtime Container
 
 ## Migrating from `nodejs:16` to `nodejs:20`
-  Some of the paackages have been updated to the latest version and might contain breaking changes please check that the packages you use are still working as expected all supported packages are refrenced in the [package.json](nodejs20/package.json).
+  Some of the packages have been updated to the latest version and might contain breaking changes please check that the packages you use are still working as expected all supported packages are refrenced in the [package.json](nodejs20/package.json).
+
+  - The `@ibm-cloud/cloudant` package has been updated from 0.3.x to 0.5.x and contains breaking changes check the Repository for changes [cloudant-node-sdk](https://github.com/IBM/cloudant-node-sdk)
 
 # 1.0.0
 
