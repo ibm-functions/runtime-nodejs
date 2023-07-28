@@ -27,13 +27,17 @@ export OPENWHISK_HOME="$ROOTDIR/../openwhisk"
 # run scala tests
 cd ${ROOTDIR}
 TERM=dumb ./gradlew :tests:checkScalafmtAll
+ERROR=0
 if [ "$TRAVIS_PULL_REQUEST" = "false" ] && [ "$TRAVIS_REPO_SLUG" = "ibm-functions/runtime-nodejs" ]; then
   TERM=dumb ./gradlew :tests:test
+  ERROR="$?"
 else
   TERM=dumb ./gradlew :tests:testWithoutCredentials
+  ERROR="$?"
+
 fi
 
-if [[ "$?" != "0" ]]; then
+if [[ "$ERROR" != "0" ]]; then
   # debugging notes
   # || true;  set -x; docker ps -a; for i in $(docker ps -a --format="{{.Names}}"); do  docker logs $i || true; done; ls -alhR /tmp/wsklogs; 
   # || true;  set -x; docker ps -a; ls -R /tmp/wsklogs ;cat /tmp/wsklogs/invoker0/invoker0_logs.log; cat /tmp/wsklogs/controller0/controller0_logs.log
