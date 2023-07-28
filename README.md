@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/ibm-functions/runtime-nodejs.svg?branch=master)](https://travis-ci.com/ibm-functions/runtime-nodejs)
 
 - The runtime provides [nodejs v16](nodejs16/) with a set of [npm packages](nodejs16/package.json) see [nodejs16/CHANGELOG.md](nodejs16/CHANGELOG.md)
+- The runtime provides [nodejs v20](nodejs20/) with a set of [npm packages](nodejs20/package.json) see [nodejs20/CHANGELOG.md](nodejs20/CHANGELOG.md)
 
 
 The runtime provides the following npm packages for [IBM Cloud](https://bluemix.net):

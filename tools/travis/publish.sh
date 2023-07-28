@@ -22,6 +22,8 @@ elif [ ${RUNTIME_VERSION} == "14" ]; then
   RUNTIME="nodejs14"
 elif [ ${RUNTIME_VERSION} == "16" ]; then
   RUNTIME="nodejs16"
+  elif [ ${RUNTIME_VERSION} == "20" ]; then
+  RUNTIME="nodejs20"
 fi
 
 if [[ ! -z ${DOCKER_USER} ]] && [[ ! -z ${DOCKER_PASSWORD} ]]; then

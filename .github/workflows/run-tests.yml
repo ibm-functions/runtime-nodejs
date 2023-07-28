@@ -9,6 +9,8 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
+  schedule:
+      - cron: "0 8 * * 1" # At 08:00 AM, only on Monday
 
   workflow_dispatch:
 
@@ -22,21 +24,6 @@ jobs:
       # Checkout just this repo 
       - name: Checkout runtime repo
         uses: actions/checkout@v3
-        # with:
-        #   path: runtime
-
-      # # run scanCode
-      # - name: Scan Code
-      #   uses: apache/openwhisk-utilities/scancode@master
-
-      # # Install core OpenWhisk artifacts needed to build/test anything else
-      # - name: Checkout OpenWhisk core repo
-      #   uses: actions/checkout@v3
-      #   with:
-      #     repository: ibm-functions/openwhisk
-      #     ref: master/7ae02b8ede4f4b4068b3b95dbc3f02f902d936c9
-      #     path: core
-      #     fetch-depth: 0
       
       # Setup Python to run the Scala Tests 
       - name: Setup Python
@@ -50,39 +37,6 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '11'
-
-    
-      # # Setup OpenWhisk
-      # - name: Setup OpenWhisk
-      #   working-directory: core
-      #   run: |
-      #     ./tools/travis/setup.sh
-
-
-
-      # - name: Compile and Install Core OpenWhisk
-      #   working-directory: core
-      #   run: |
-      #     export OPENWHISK_HOME=$(pwd)/../core
-      #     IMAGE_PREFIX="testing"
-      #     docker pull ibmfunctions/controller:nightly
-      #     docker tag ibmfunctions/controller:nightly ${IMAGE_PREFIX}/controller
-      #     docker pull ibmfunctions/invoker:nightly
-      #     docker tag ibmfunctions/invoker:nightly ${IMAGE_PREFIX}/invoker
-      #     ./gradlew install
-
-      # # Build Runtime:
-      # - name: Build Runtime
-      #   working-directory: runtime
-      #   run: |
-      #     IMAGE_PREFIX="testing"
-      #     ./gradlew distDocker -PdockerImagePrefix=${IMAGE_PREFIX}
-
-      # - name: Deploy
-      #   working-directory: core
-      #   run: |
-      #     export OPENWHISK_HOME=$(pwd)/../core
-
 
       - name: befor install -> install python3-pip
         run:  sudo apt-get install -y python3-pip
@@ -101,6 +55,11 @@ jobs:
           pip3 --version
           pip3.10 --version
 
+      - name: Docker Cleanup
+        run: |
+          docker image ls
+          docker image rm $(docker image ls -q) -f
+
       - name: befor install -> setup.sh
         run:  |
           ./tools/travis/setup.sh
@@ -113,16 +72,7 @@ jobs:
         run:  |
           pip install --user jinja2==3.0.3
           ./tools/travis/deploy.sh
-      
+
       - name: script-> test
         run:  |
-          ./tools/travis/test.sh
-      
-
-
-
-      # - name: befor install
-      #   run:  sudo update-ca-certificates --fresh && ./tools/travis/setup.sh
-
-      # - name: script
-      #   run: ./tools/travis/build.sh && ./tools/travis/deploy.sh && ./tools/travis/test.sh
+          ./tools/travis/test.sh 

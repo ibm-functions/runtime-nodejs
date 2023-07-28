@@ -5,7 +5,7 @@ var ibmdb = require('ibm_db');
 
 function main(args){
 
-  if (process.version.startsWith('v16.')) {
+  if (process.version.startsWith('v16.') || process.version.startsWith('v20.')) {
     return ibmdb.open(`DATABASE=TEST;HOSTNAME=${args.hostname};UID=db2inst1;PWD=db2inst1-pwd;PORT=50000;PROTOCOL=TCPIP`).then((conn) => {
       connection = conn;
       return connection.query("INSERT INTO TESTTABLE (NAME, AGE, LOCATION) VALUES ('Angela', 27, 'Texas')");
