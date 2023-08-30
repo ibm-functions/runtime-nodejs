@@ -49,7 +49,7 @@
     "marked": "5.1.1",
     "merge": "2.1.1",
     "moment": "2.29.4",
-    "mongodb": "5.7.0",
+    "mongodb": "5.8.0",
     "mustache": "4.2.0",
     "mysql": "2.18.1",
     "nano": "10.1.2",
