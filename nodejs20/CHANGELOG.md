@@ -5,7 +5,7 @@
 
   - The `@ibm-cloud/cloudant` package has been updated from 0.3.x to 0.5.x and contains breaking changes check the Repository for changes [cloudant-node-sdk](https://github.com/IBM/cloudant-node-sdk)
 
-# 1.0.6
+# 1.1.0
   Changes:
   - Update base image to latest Openwhisk Tag c60a667
   
