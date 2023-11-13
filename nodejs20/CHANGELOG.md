@@ -4,6 +4,19 @@
   Some of the packages have been updated to the latest version and might contain breaking changes please check that the packages you use are still working as expected all supported packages are refrenced in the [package.json](nodejs20/package.json).
 
   - The `@ibm-cloud/cloudant` package has been updated from 0.3.x to 0.5.x and contains breaking changes check the Repository for changes [cloudant-node-sdk](https://github.com/IBM/cloudant-node-sdk)
+# 1.3.0
+  Changes:
+  - Update base image to latest Openwhisk Tag 08763c2
+  
+  NodeJS version:
+  - v20.7.0
+
+  NPM version:
+  - v10.1.0
+
+  NodeJS packages:
+  - The file [package.json](package.json) lists the packages we guarantee to be included in this runtime.
+    Ensure that you only use packages mentioned there. Other nodejs packages might be part of this runtime, but only due to indirect dependencies of the above listed packages. These indirectly included packages are candidates to be removed at any time in case they are not required by the referring package anymore.
 
 # 1.2.0
   Changes:
