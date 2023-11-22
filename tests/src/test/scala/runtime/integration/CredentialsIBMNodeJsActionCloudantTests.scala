@@ -27,7 +27,7 @@ import scala.io.Source
 class CredentialsIBMNodeJsActionCloudantTests extends TestHelpers with WskTestHelpers with WskActorSystem {
 
   implicit val wskprops: WskProps = WskProps()
-  lazy val defaultKind = Some("nodejs:14")
+  lazy val defaultKind = Some("nodejs:20")
   val wsk = new WskRestOperations
   val datdir = "tests/dat/"
 
@@ -57,12 +57,7 @@ class CredentialsIBMNodeJsActionCloudantTests extends TestHelpers with WskTestHe
       withActivation(wsk.activation, wsk.action.invoke("testCloudantAction")) { activation =>
         val response = activation.response
         response.result.get.fields.get("error") shouldBe empty
-        if (defaultKind.getOrElse("") == "nodejs:16" || defaultKind.getOrElse("") == "nodejs:20") {
-          response.result.get.fields.get("result").get.asJsObject.fields.get("lastname") should be(
-            Some(JsString("Queue")))
-        } else {
-          response.result.get.fields.get("lastname") should be(Some(JsString("Queue")))
-        }
+        response.result.get.fields.get("lastname") should be(Some(JsString("Queue")))
       }
 
   }
