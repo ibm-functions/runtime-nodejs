@@ -41,6 +41,7 @@
     "ibm-watson": "7.0.0",
     "iconv-lite": "0.6.3",
     "jest": "27.5.1",
+    "joi": "^17.9.1",
     "jsdom": "19.0.0",
     "jsforce": "1.11.0",
     "jsonwebtoken": "8.5.1",
