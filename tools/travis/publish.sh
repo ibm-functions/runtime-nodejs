@@ -26,9 +26,16 @@ elif [ ${RUNTIME_VERSION} == "16" ]; then
   RUNTIME="nodejs20"
 fi
 
-if [[ ! -z ${DOCKER_USER} ]] && [[ ! -z ${DOCKER_PASSWORD} ]]; then
-docker login -u "${DOCKER_USER}" -p "${DOCKER_PASSWORD}"
-fi
+# run login in a subshell with disabled trace to avoid having credentials in the logs
+# when trace is on (set -x)
+(
+  set +x # disable trace in this subshell
+  # Login to hub.docker.com to get user specific pull rate.
+  if [ ! -z "${DOCKER_USER}" ] && [ ! -z "${DOCKER_PASSWORD}" ]; then
+    echo "Run docker login..."
+    echo ${DOCKER_PASSWORD} | docker login -u "${DOCKER_USER}" --password-stdin
+  fi
+)
 
 if [[ ! -z ${RUNTIME} ]]; then
 TERM=dumb ./gradlew \
