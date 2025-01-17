@@ -1,3 +1,10 @@
+# This repository is no longer maintained.
+IBM Cloud Functions reached end of life and this repository is no longer active.
+
+For Apache OpenWhisk visit: [https://github.com/apache/openwhisk](https://github.com/apache/openwhisk).
+
+----
+
 # IBM Cloud Functions runtime for nodejs
 
 [![Build Status](https://travis-ci.org/ibm-functions/runtime-nodejs.svg?branch=master)](https://travis-ci.com/ibm-functions/runtime-nodejs)
